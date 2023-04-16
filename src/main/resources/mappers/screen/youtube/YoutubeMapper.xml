@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.screen.youtube.YoutubeMapper">
+
+<resultMap id="youtubeResultMap" type="com.water.Mulbburi.screen.youtube.YoutubeDTO">
+	<id property="ytNo" column="YT_NO"/>
+	<result property="ytWriteDate" column="YT_WRITE_DATE"/>
+	<result property="ytDeleteDate" column="YT_DELETE_DATE"/>
+	<result property="ytPostDate" column="YT_POST_DATE"/>
+	<result property="ytEndDate" column="YT_END_DATE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="ytPath" column="YT_PATH"/>
+	<result property="ytName" column="YT_NAME"/>
+</resultMap>
+
+
+<insert id="insertYoutube">
+	INSERT
+	      INTO YOUTUBE
+	(
+		  YT_NO,
+		  YT_WRITE_DATE,
+		  YT_DELETE_DATE,
+		  YT_POST_DATE,
+		  YT_END_DATE,
+		  MEMBER_NO,
+		  YT_PATH,
+		  YT_NAME
+	)
+	VALUES
+	(
+		  SEQ_YT_NO.NEXTVAL,
+		  #{ytWriteDate},
+		  #{ytDeleteDate},
+		  #{ytPostDate},
+		  #{ytEndDate},
+		  1,
+		  #{ytPath},
+		  #{ytName}		  
+	)
+</insert>
+
+<select id="selectAllYoutube" parameterType="com.water.Mulbburi.screen.youtube.YoutubeDTO" resultMap="youtubeResultMap">
+	SELECT
+		  A.YT_NO,
+		  A.YT_WRITE_DATE,
+		  A.YT_DELETE_DATE,
+		  A.YT_POST_DATE,
+		  A.YT_END_DATE,
+		  A.YT_PATH,
+		  A.YT_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.YT_NO
+	    		 ,B.YT_WRITE_DATE
+	    		 ,B.YT_DELETE_DATE
+	    		 ,B.YT_POST_DATE
+	    		 ,B.YT_END_DATE
+	    		 ,B.YT_PATH
+	    		 ,B.YT_NAME
+	        FROM (SELECT
+	                     C.YT_NO,
+	                     C.YT_WRITE_DATE,
+	                     C.YT_DELETE_DATE,
+	                     C.YT_POST_DATE,
+	                     C.YT_END_DATE,
+	                     C.YT_PATH,
+	                     C.YT_NAME
+	                FROM YOUTUBE C
+	         ORDER BY C.YT_POST_DATE ASC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+	      AND A.YT_DELETE_DATE > TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+        ORDER BY 1 ASC
+	         
+</select>
+
+<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT 
+        	   COUNT(*)
+          FROM YOUTUBE
+</select>
+
+<delete id="deleteYoutube">
+	DELETE 
+	  FROM YOUTUBE
+	 WHERE YT_DELETE_DATE = TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+</delete>
+
+
+
+
+</mapper>

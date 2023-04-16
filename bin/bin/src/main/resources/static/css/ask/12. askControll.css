@@ -1,0 +1,343 @@
+/* 문의 관리 메인 */
+*{padding:0;margin:0}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.totalbackground{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.totalbackground img{
+    width: 100%;
+    height: 100vh;
+}
+
+.totaltitle{
+    text-align: center;
+    font-family: 'HSBombaram21-Regular';
+    font-weight: normal; 
+    color: rgba(118, 141, 131, 0.9);
+    font-size: 60px;
+    margin-top: 20%;
+    margin-bottom: -15%;
+}
+
+.tt1{
+    margin-top: 20%;
+    text-align: center;
+}
+
+.tt1 button{
+     width: 300px;
+    height: 40px;
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+}
+
+.tt1 button:hover,
+.tt2 button:hover,
+.tt3 button:hover{
+    color: white;
+}
+
+.tt2{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.tt2 button{
+     width: 300px;
+    height: 40px;
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+}
+
+.tt3{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.tt3 button{
+    width: 300px;
+    height: 40px;
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+}
+
+.text{
+    background: rgba(169, 197, 185, 0.1);
+    height: 100%;
+    width: 100%;
+}
+
+/* 1 대 1 문의 */
+.totalbackground2{
+    margin: 0 20%;
+}
+
+.totalstory{
+    background-color: rgba(126, 113, 113, 0.1);
+    height: 100vh;
+    border-radius: 30px;
+    margin-top: 3%;
+}
+
+.totalbase{
+    width: 90%;
+    height: 90%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.category1{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 18px;
+    color: rgba(126, 113, 113);
+    text-align: center;
+    padding-top: 3%;
+    display: flex;
+}
+
+.category1 span{
+    margin-right: 7%;
+}
+
+/* drop-down 박스 */
+.titlename{
+    background-color: rgba(118, 141, 131);
+    height: 30px;
+    width: 100px;
+    margin-right: 4%;
+    color: white;
+    padding-top: 1%;
+}
+
+.bannername{
+    margin-left: 4%;
+    padding-top: 1%;
+}
+
+.arrow{
+    font-size: 30px;
+    margin-top: 0.5%;
+}
+
+.mydropdown{
+    background-color: rgba(126, 113, 113, 0.1);
+    height: 400px;
+    border-radius: 10px;
+    margin-top: 1%;
+    display: none;
+}
+
+.active{
+    background-color: rgba(126, 113, 113, 0.1);
+    height: 400px;
+    border-radius: 10px;
+    margin-top: 1%;
+    display: flex;
+    width: 80%;
+    margin-left: 20%;
+}
+
+
+.category2{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 18px;
+    color: rgba(126, 113, 113);
+    padding-top: 1%;
+    margin-left: 3%;
+    width: 100px;
+}
+
+.category2 div{
+    margin-bottom: 40%;
+    margin-left: 3%;
+}
+
+.story{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 18px;
+    color: rgba(126, 113, 113);
+    padding-top: 1%;
+    margin-left: 10%;
+    width: 600px;
+}
+
+.bannertitle,
+.writedate,
+.deletedate,
+.postingdate,
+.enddate{
+    margin-bottom: 6.5%;
+    margin-left: 3%;
+}
+
+.dropdown{
+	display: flex;
+}
+
+/* 답변 */
+.answer{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color:white;
+    width: 80px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 35px;
+}
+
+/* 1대1 답변하기 */
+.topground2{
+    background: rgba(169, 197, 185);
+    height: 60px;
+    width: 100%;
+}
+
+.topground3{
+    background: rgba(169, 197, 185);
+    height: 70px;
+    width: 100%;
+}
+
+.imgback2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.email{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color:white;
+    width: 80px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 35px;
+}
+
+.answerd{
+    display: flex;
+    /* margin-bottom: 30px; */
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 73px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 1%;
+    margin-top: 40%;
+    margin-right: 3%;
+    text-align: center;
+}
+
+.emailid{
+    margin-top: 1%;
+    margin-bottom: -30%;
+}
+
+.answerid{
+    margin-top: -2%;
+}
+
+input:focus {
+    outline: none;
+}
+
+.categoryname2{
+    height: 350px;
+    margin-left: 3%;
+    margin-top: 5%;
+}
+
+.dbbase2{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(126, 113, 113);
+    margin-top: 5%;
+    /* width: 80%; */
+    height: 100%;
+    text-align: center;
+}
+
+.dbbase2 div{
+    margin-bottom: 15%;
+    margin-left: 7%;
+    text-align: left;
+}
+
+#inputanswer{
+    height: 150px;
+    width: 300px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+    text-align: center;
+}
+
+/* 전송버튼 */
+.answerbutton2 button{
+    border: none;
+    width: 70px;
+    height: 30px;
+    background-color: rgba(118, 141, 131, 0.9);
+    color: white;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.answerbutton2{
+    margin-left: -10%;
+    margin-top: 68%;
+}
+
+/* 페이징 */
+.paging {
+    text-align: center;
+    margin: 30px;
+}
+
+.paging button {
+    margin: 0 10px;
+    border: 0;
+    background-color: transparent;
+    color: rgba(118, 141, 131, 0.8);
+    font-size: 12px;
+    font-weight: 700;
+}

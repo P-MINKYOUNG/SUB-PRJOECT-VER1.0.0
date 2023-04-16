@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>refund</title>
+    <link href="/css/member/mypage/refund.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <!-- <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script> -->
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/spheader.html"></div> 
+
+    <div class="title">
+        <p>환불신청</p>
+    </div>
+    <div class="prCode">
+        <span class="orCode" id="orderCode" th:text="${ order.orderNo }">주문번호 20231B419</span>
+    </div>
+     
+<form method="post">
+	<input type="hidden" name="orderNo" th:value="${ order.orderNo }">
+    <div>
+        <div class="test1">
+            <div class="page1">
+            <!--     <span><input type="checkbox" class="check"></span> -->
+                <span><img src="/img/yeob01.png" class="prImg"></span>
+                <span class="slName" th:text="${ order.businessName }">[판매자이름]</span>
+                <span class="prName" th:text="${ order.sbName }">상품명</span>
+                <span class="prCount" th:text="${ order.orderAmount }"></span>
+                <span class="prPrice" th:text="${ order.orderAmountMoney }">20000원</span>
+            </div>
+        </div>
+        <div class="test2">
+            <div class="test3">
+                <div class="page2">
+                    <span class="refundCon">환불 사유</span>
+                    <span class="refundCon2">
+                        <select name="reasonNo" id="reasonNo">
+                            <option value="1">단순변심</option>
+                            <option value="2">배송불량</option>
+                            <option value="3">상품불량</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="page3">
+                    <span class="refundCon3" placeholder="상세 사유를 적어주세요">상세 사유 작성</span><br><br>
+                    <!-- <span class="refundCon4"><input text="text" id="refundText"></span> -->
+                    <input text="text" id="refundReas" name="refundReas">
+                </div>
+                <div class="page2">
+                    <span class="refundCon">환불 계좌 은행</span>
+                    <span class="refundCon5">
+                        <select name="reasonBank" id="reasonBank">
+                            <option>국민은행</option>
+                            <option>신한은행</option>
+                            <option>농협은행</option>
+                            <option>기업은행</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span class="refundCon">환불계좌작성</span><br><br>
+                    <input text="text" id="reasonAccount" name="reasonAccount" placeholder="-를 빼고 작성해주세요">
+                </div>
+            </div>
+            <div class="test4">
+                <div class="sp">
+                    <span class="tit1" th:text="${ order.orderAmountMoney }">상품 금액</span>
+                   
+                </div>
+                <div class="sp2">
+                    <span class="con0" th:text="${ order.sbName }">상품명</span>
+                    <span class="con1" th:text="${ order.orderAmount }">2개</span>
+                    <span class="con2" th:text="${ order.orderAmountMoney }">20000원</span>
+                </div>
+                <!-- <div class="sp">
+                    <span class="tit2">할인 금액</span>
+                    <span class="con3">0원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit3">쿠폰 할인</span>
+                    <span class="con4">0원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit4">적립금</span>
+                    <span class="con5">0원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit5">배송비</span>
+                    <span class="con6">0원</span>
+                </div> -->
+                <hr>
+                <div class="sp">
+                    <span class="tit6">총 환불 금액</span>
+                    <span class="con7" th:text="${ order.orderAmountMoney }">100000원</span>
+                </div>
+                <div>
+                    <span class="con8">* 환불 신청은 최초 결제한 방식으로 진행합니다</span><br>
+                    <span class="con8">* 카드사의 경우 3~5일이 소요될 수 있습니다</span>
+                </div>
+                <div class="btn">
+                    <button type="submit" id="submit" class="actBtn">환불신청</button>
+                    <a href="/member/mypage/mypageMain" class="extBtn">이전으로</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    
+	<div th:replace="common/spfooter.html"></div>
+
+    </div>
+   
+</body>
+</html>

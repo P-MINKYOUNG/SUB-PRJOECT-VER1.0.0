@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/ask/12. askControll.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/ask/12-4. oneAskAnswer.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="topground2"></div>
+    <div class="imgback2">
+    <form id="update/answer" method="POST" action="/askoneAnswer">
+        <div class="dbbase2">
+            	<div class="answerid">
+            	<input type="hidden" name="inquiryNo" th:value="${ param.inquiryNo }">
+            	<input type="text" id="inputanswer" placeholder="답변을 입력해주세요." name="inquiryAnswer">
+            	</div>
+                <input type="submit" value="전송하기">
+            </div></form>
+        </div>
+    
+    <div class="topground3"></div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>delivery</title>
+    <link href="/css/member/mypage/delivery.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+   <div th:replace="common/pheader.html"></div> 
+
+    <div class="title">
+        <p>배송 조회</p>
+    </div>
+    <div class="btn">
+        <a href="#none" class="delivery">배송 현황</a>
+        <a href="#none" class="check">구매 결정</a>
+    </div>
+
+    <div class="delicon">
+        <img src="/img/배송 준비중.png" class="img1">
+        <img src="/img/Vector.png" class="img2">
+        <img src="/img/배송중.png" class="img3">
+        <img src="/img/Vector.png" class="img4">
+        <img src="/img/배송완료.png" class="img5">
+    </div>
+    <div class="deliText">
+        <span class="span1">배송준비중</span>
+        <span class="span2">배송중</span>
+        <span class="span3">배송완료</span>
+    </div>
+
+    <div class="page">
+        <div class="deNum">
+            <span class="deNum1">송장번호</span>
+            <spna class="deNum2">65412355812</spna>
+        </div>
+        <div class="deName">
+            <span class="deName1">택배사</span>
+            <spna class="deName2">CJ대한통운</spna>
+        </div>
+        <div class="orCode">
+            <span class="orCode1">주문번호</span>
+            <span class="orCode2">65412355812</span>
+        </div>
+    </div>
+    <div class="text1">
+        <p>상품 수령후 구매결정 버튼을 눌러서 배송완료 처리를 해주세요</p>
+        <p>구매 결정 후 교환 처리가 힘드니 주의하여 주십시오</p>
+    </div>
+
+	<div th:replace="common/pfooter.html"></div> 
+   
+    </div>
+</body>
+</html>

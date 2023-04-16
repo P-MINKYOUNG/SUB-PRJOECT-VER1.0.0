@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.ask.AskMapper">
+	<resultMap id="askResultMap" type="com.water.Mulbburi.ask.AskDTO">
+		<id property="inquiryNo" column="INQUIRY_NO"/>
+		<result property="inquiryCategory" column="INQUIRY_CATEGORY"/>
+		<result property="inquirySt" column="INQUIRY_ST"/>
+		<result property="inquiryAnswer" column="INQUIRY_ANSWER"/>
+		<result property="administratorNo" column="ADMINISTRATOR_NO"/>
+		<result property="memberNo" column="IMEMBER_NO"/>
+		<result property="inquiryAskTime" column="INQUIRY_ASK_TIME"/>
+		<result property="inquiryAnswerTime" column="INQUIRY_ANSWER_TIME"/>
+		<result property="inquiryTitle" column="INQUIRY_TITLE"/>
+		<result property="email" column="EMAIL"/>
+		<result property="memberID" column="MEMBER_ID"/>
+	</resultMap>
+
+
+<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT 
+        	   COUNT(*)
+          FROM INQUIRY
+</select>
+
+<select id="selectAllAsk" resultMap="askResultMap" parameterType="com.water.Mulbburi.ask.AskDTO">
+	SELECT
+		  A.INQUIRY_NO,
+		  A.INQUIRY_TITLE,
+		  A.MEMBER_ID,
+		  A.INQUIRY_CATEGORY,
+		  A.INQUIRY_ST
+	 FROM (SELECT
+	    		  ROWNUM RNUM,
+	    		 B.INQUIRY_NO,
+		  	  	 B.INQUIRY_TITLE,
+		  		 B.MEMBER_ID,
+		  		 B.INQUIRY_CATEGORY,
+		  		 B.INQUIRY_ST
+	        FROM (SELECT
+	                     C.INQUIRY_NO,
+		  				 C.INQUIRY_TITLE,
+		  				 M.MEMBER_ID,
+		  				 C.INQUIRY_CATEGORY,
+		  				 C.INQUIRY_ST
+	                FROM INQUIRY C
+	                JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+	               WHERE INQUIRY_ANSWER IS NULL
+	         ORDER BY C.INQUIRY_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+
+<update id="updateAnswer">
+ UPDATE INQUIRY
+    SET INQUIRY_ANSWER = #{inquiryAnswer},
+        INQUIRY_ANSWER_TIME = TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+  WHERE INQUIRY_NO = #{inquiryNo}
+</update>
+
+<select id="selectMyInquiry" resultMap="askResultMap" parameterType="com.water.Mulbburi.ask.AskDTO">
+	SELECT
+		   INQUIRY_NO
+	  FROM INQUIRY
+	 WHERE INQUIRY_NO = #{ inquiryNo }
+</select>
+	
+</mapper>

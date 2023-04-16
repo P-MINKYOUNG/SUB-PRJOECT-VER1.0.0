@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.member.dao.MemberMapper">
+
+	<resultMap id="memberResultMap" type="com.water.Mulbburi.member.dto.MemberDTO">
+		<id property="memberNo" column="MEMBER_NO"/>
+		<result property="memberId" column="MEMBER_ID"/>
+		<result property="memberPwd" column="MEMBER_PWD"/>
+		<result property="memberName" column="MEMBER_NAME"/>
+		<result property="phone" column="PHONE"/>
+		<result property="postCode" column="POSTCODE"/>
+		<result property="dtAddress" column="DT_ADDRESS"/>
+		<result property="bsAddress" column="BS_ADDRESS"/>
+		<result property="memberStatus" column="MEMBER_STATUS"/>
+		<result property="memberCustom" column="MEMBER_CUSTOM"/>
+		<result property="businessName" column="BUSINESS_NAME"/>
+		<result property="businessNo" column="BUSINESS_NO"/>
+		<result property="email" column="EMAIL"/>
+		<collection property="memberRoleList" resultMap="memberRoleResultMap"/>
+		<collection property="fileList" resultMap="fileListResultMap"/>
+	</resultMap>
+	
+	<resultMap type="com.water.Mulbburi.member.dto.MemberRoleDTO" id="memberRoleResultMap">
+		<id property="memberNo" column="REF_MEMBER_NO"/>
+		<id property="authorityCode" column="REF_AUTHORITY_CODE"/>
+		<association property="authority" resultMap="authorityResultMap"/>
+	</resultMap>
+	
+	<resultMap type="com.water.Mulbburi.file.FileDTO" id="fileListResultMap">
+		<id property="fileNo" column="FILE_NO"/>
+		<result property="fileoriginalName" column="FILE_ORIGINAL_NAME"/>
+		<result property="filePath" column="FILE_PATH"/>
+		<result property="fileSavedName" column="FILE_SAVED_NAME"/>
+		<result property="custom" column="CUSTOM"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+	</resultMap>
+	
+		<resultMap type="com.water.Mulbburi.member.dto.AuthorityDTO" id="authorityResultMap">
+		<id property="code" column="REF_AUTHORITY_CODE2"/>
+		<result property="name" column="AUTHORITY_NAME"/>
+		<result property="desc" column="AUTHORITY_DESC"/>
+	</resultMap>
+			
+	<select id="findByMemberId" resultMap="memberResultMap">
+        SELECT
+               A.MEMBER_NO
+		     , A.MEMBER_ID
+             , A.MEMBER_PWD
+             , A.MEMBER_NAME
+		     , A.PHONE
+		     , A.POSTCODE
+		     , A.DT_ADDRESS
+		     , A.BS_ADDRESS
+		     , A.MEMBER_STATUS
+		     , A.MEMBER_CUSTOM
+		     , A.BUSINESS_NAME
+		     , A.BUSINESS_NO
+		     , A.EMAIL
+		     , B.MEMBER_NO REF_MEMBER_NO
+		     , B.AUTHORITY_CODE REF_AUTHORITY_CODE
+		     , C.AUTHORITY_CODE REF_AUTHORITY_CODE2
+		     , C.AUTHORITY_NAME
+		     , C.AUTHORITY_DESC
+          FROM MEMBER A
+          LEFT JOIN MEMBER_ROLE B ON (A.MEMBER_NO = B.MEMBER_NO)
+		  LEFT JOIN AUTHORITY C ON (B.AUTHORITY_CODE = C.AUTHORITY_CODE)
+         WHERE A.MEMBER_STATUS = 'Y'
+           AND A.MEMBER_ID = #{ memberId }
+    </select>
+
+    <select id="selectMemberById" resultType="string">
+        SELECT
+               MEMBER_ID
+          FROM MEMBER 
+         WHERE MEMBER_STATUS = 'Y'
+           AND MEMBER_ID = #{ memberId }
+    </select>
+	
+	<!-- 구매자 회원가입  -->
+    <insert id="insertConMember">
+        INSERT
+          INTO MEMBER 
+        (
+          MEMBER_NO
+        , MEMBER_NAME  
+        , MEMBER_ID
+        , MEMBER_PWD
+        , PHONE
+        , EMAIL
+        , POSTCODE
+        , BS_ADDRESS
+        , DT_ADDRESS
+        , MEMBER_CUSTOM
+        , MEMBER_STATUS
+        )
+        VALUES
+        (
+          SEQ_MEMBER_NO.NEXTVAL
+        , #{ memberName }  
+        , #{ memberId }
+        , #{ memberPwd }
+        , #{ phone }
+        , #{ email }
+        , #{ postCode }
+        , #{ bsAddress }
+        , #{ dtAddress }
+        , '구매자'
+        , 'Y'
+        )
+	</insert>
+	
+	<!-- 판매자 회원가입 -->
+	<insert id="insertSelMember">
+        INSERT 
+          INTO MEMBER 
+        (
+          MEMBER_NO
+        , BUSINESS_NAME
+        , BUSINESS_NO 
+        , MEMBER_NAME 
+        , MEMBER_ID
+        , MEMBER_PWD
+        , PHONE
+        , EMAIL
+        , POSTCODE
+        , BS_ADDRESS
+        , DT_ADDRESS
+        , MEMBER_CUSTOM
+        , MEMBER_STATUS
+        )
+        VALUES
+        (
+          SEQ_MEMBER_NO.NEXTVAL
+        , #{ businessName }
+        , #{ businessNo }  
+        , #{ memberName }
+        , #{ memberId }
+        , #{ memberPwd }
+        , #{ phone }
+        , #{ email }
+        , #{ postCode }
+        , #{ bsAddress }
+        , #{ dtAddress }
+        , '판매자'
+        , 'Y'
+        )
+	</insert>
+	
+	<insert id="insertFile">
+	  INSERT	
+		INTO TBL_FILE
+        (
+          FILE_NO
+        , FILE_ORIGINAL_NAME
+        , FILE_PATH
+        , FILE_SAVED_NAME
+        , CUSTOM
+        , MEMBER_NO  
+        )
+        VALUES
+        (
+		  SEQ_FILE_NO.NEXTVAL
+		, #{ fileoriginalName }
+		, #{ filePath }
+		, #{ fileSavedName }
+		, '1'
+		, SEQ_MEMBER_NO.CURRVAL 	        
+        )
+	</insert>
+	
+	<insert id="insertConMemberRole">
+		INSERT
+          INTO MEMBER_ROLE
+        (
+          MEMBER_NO
+        , AUTHORITY_CODE
+        )
+        VALUES
+        (
+          SEQ_MEMBER_NO.CURRVAL
+        , 1
+        )
+	</insert>
+	
+	<insert id="insertSelMemberRole">
+		INSERT
+          INTO MEMBER_ROLE
+        (
+          MEMBER_NO
+        , AUTHORITY_CODE
+        )
+        VALUES
+        (
+          SEQ_MEMBER_NO.CURRVAL
+        , 2
+        )
+	</insert>
+
+    <select id="selectEncryptedPwd" resultType="string">
+        SELECT
+               MEMBER_PWD
+          FROM MEMBER
+         WHERE MEMBER_STATUS = 'Y'
+           AND MEMBER_ID = #{ memberId }
+	</select>
+
+	<select id="selectMember">
+		SELECT
+			   MEMBER_NO
+		     , MEMBER_ID
+		     , MEMBER_PWD
+		     , MEMBER_NAME
+		     , PHONE
+		     , POSTCODE
+		     , BS_ADDRESS
+		     , DT_ADDRESS
+		     , MEMBER_STATUS
+		     , MEMBER_CUSTOM
+		     , BUSINESS_NAME
+		     , BUSINESS_NO
+		     , EMAIL
+		 FROM  MEMBER A
+		WHERE  MEMBER_STATUS = 'Y'
+		  AND  MEMBER_ID = #{ memberId }
+	</select>
+
+       <update id="updateMember">
+        UPDATE 
+              MEMBER 
+          SET MEMBER_NAME = #{ memberName }
+            , PHONE = #{ phone }
+            , EMAIL = #{ email }
+            , POSTCODE= #{ postCode }
+            , BS_ADDRESS = #{ bsAddress }
+            , DT_ADDRESS = #{ dtAddress }
+        WHERE MEMBER_STATUS = 'Y'
+          AND MEMBER_NO = #{ memberNo }
+    </update>
+
+    <update id="deleteMember">
+        UPDATE 
+              MEMBER 
+          SET MEMBER_STATUS = 'N'
+        WHERE MEMBER_STATUS = 'Y'
+          AND MEMBER_ID = #{ memberId }
+    </update>
+    
+     <select id="idCheck" resultType="int">
+    	select
+    			count (*)
+    	  from  member
+    	 where  memberId = #{ memberId } 		
+    </select>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findLoginId" resultType="String">
+		SELECT 
+				MEMBER_ID
+		  FROM  MEMBER
+		 WHERE  MEMBER_NAME = #{ memberName }
+		   AND  PHONE = #{ phone } 		
+	</select>
+	
+	<!-- 비밀번호 찾기 -->
+	<select id="findLoginPwd" resultType="String">
+		SELECT 
+				MEMBER_PWD
+		  FROM  MEMBER
+		 WHERE  MEMBER_NAME = #{ memberName }
+		   AND	MEMBER_ID = #{ memberId } 		
+	</select>
+	
+	<!-- 비밀번호 재설정 -->
+	<update id="pwdModifyMember">
+        UPDATE 
+              MEMBER 
+          SET MEMBER_PWD = #{ memberPwd } 
+        WHERE MEMBER_ID = #{ memberId } 
+    </update>
+        
+</mapper>

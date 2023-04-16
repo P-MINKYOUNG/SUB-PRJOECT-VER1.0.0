@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/seller/06. sellerControll.css" rel="stylesheet" style type="text/css">
+    <link href="/css/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/seller/06-1. sellerSiren.js"></script>
+    <title>Document</title>
+</head>
+<div>
+    <div class="bbgd">
+        <div class="background1">
+            <div class="category">
+                <div>업체명</div>
+                <div>신고자 ID</div>
+                <div>신고 제목</div>
+                <div>처리 일자</div>
+                <div>처리 결과</div>
+            </div>
+            
+            <div class="story">
+                <div class="div1"><input type="checkbox"></div>
+                <span>일랑일랑</span>
+                <span>winter0123</span>
+                <span>응대가 불량해용ㅠ</span>
+                <span>2023.03.22</span>
+                <span>승인</span>
+                <div class="div2"><button id="detaily">자세히</button></div>
+            </div>
+
+            <div class="accept">
+                <button class="ok">승인</button>
+                <button class="no">반려</button>
+            </div>
+
+             <!-- 페이징 -->
+        </div>
+    </div>
+
+    <div class="paging">
+        <button>&lt;&lt;</button>
+        <button>이전</button>
+            
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+
+        <button>다음</button>
+        <button>&gt;&gt;</button>
+    </div>
+    
+    <div th:replace="/common/pfooter.html"></div>
+</body>
+</html>

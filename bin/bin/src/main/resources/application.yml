@@ -1,0 +1,20 @@
+# server config
+server:
+  port: 8018
+  
+# database config
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: C##WATER
+    password: WATER
+# file upload config
+
+
+# image upload directory
+
+      
+# mybatis config
+mybatis:
+  mapper-locations: mappers/**/*.xml

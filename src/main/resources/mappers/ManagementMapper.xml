@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.management.dao.ManagementMapper">
+
+   <resultMap type="com.water.Mulbburi.management.dto.ManagementDTO" id="orderAllResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="memberId" column="MEMBER_ID" />
+      <result property="sbName" column="SB_NAME"/>
+      <result property="orderAmount" column="ORDER_AMOUNT"/>
+      <result property="orderMoney" column="ORDER_AMOUNT_MONEY"/>
+   </resultMap>
+
+	<resultMap type="com.water.Mulbburi.management.dto.ManagementDTO" id="orderDetailResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="sbNo" column="SB_NO"/>
+      <result property="sbName" column="SB_NAME"/>
+      <result property="DtorderAmount" column="DT_ORDER_AMOUNT"/>
+      <result property="DtorderMoney" column="DT_ORDER_MONEY"/>		
+      <result property="orderName" column="ORDER_NAME" />
+      <result property="orderPhone" column="ORDER_PHONE" />
+      <result property="orderPostCode" column="ORDER_POST_CODE" />
+      <result property="orderBsAddress" column="ORDER_BS_ADDRESS" />
+      <result property="orderDtAddress" column="ORDER_DT_ADDRESS" />
+	</resultMap>
+
+	<resultMap type="com.water.Mulbburi.management.dto.ManagementDTO" id="PayResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="memberId" column="MEMBER_ID" />
+      <result property="payNo" column="PAY_NO"/>
+      <result property="payName" column="PAY_NAME"/>
+      <result property="payMoney" column="PAY_MONEY"/>
+      <result property="payStatus" column="PAY_STATUS"/>
+	</resultMap>
+
+	<resultMap type="com.water.Mulbburi.management.dto.ManagementDTO" id="waitSendResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="sbNo" column="SB_NO"/>
+      <result property="sbName" column="SB_NAME"/>
+      <result property="orderAmount" column="ORDER_AMOUNT"/>
+      <result property="memberId" column="MEMBER_ID" />
+      <result property="delNo" column="DEL_NO" />
+	</resultMap>
+	
+	<resultMap type="com.water.Mulbburi.management.dto.ManagementDTO" id="waitRefResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="memberId" column="MEMBER_ID" />
+      <result property="refundNo" column="REFUND_NO"/>
+      <result property="reasonNo" column="REASON_NO"/>
+      <result property="refundReas" column="REFUND_REAS"/>
+      <result property="refundStatus" column="REFUND_STATUS"/>
+      <result property="reasonBank" column="REASON_BANK"/>
+      <result property="reasonAccount" column="REASON_ACCOUNT"/>
+	</resultMap>
+
+	<resultMap type="com.water.Mulbburi.management.dto.ManagementDTO" id="waitExcResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="memberId" column="MEMBER_ID" />
+      <result property="ereptDate" column="EREPT_DATE" />
+      <result property="excNo" column="EXC_NO" />
+      <result property="excQty" column="EXC_QTY" />
+      <result property="reasonNo" column="REASON_NO" />
+      <result property="excReas" column="EXC_REAS" />
+      <result property="excStatus" column="EXC_STATUS" />
+	</resultMap>
+
+   <select id="OcheckTotalCount" resultType="_int">
+	SELECT
+	       COUNT(*)
+	  FROM TBL_ORDER O
+   </select>
+   
+   <select id="checkOrderAllList" resultMap="orderAllResultMap">
+		SELECT 
+		       A.*
+		  FROM (SELECT 
+		               ROWNUM RNUM,
+		               B.*
+		          FROM ( SELECT
+		                        O.ORDER_NO
+		                      , O.ORDER_DATE
+		                      , MEMBER_ID
+		                      , (SELECT MAX(SB_NAME) FROM DETAIL_ORDER DEO JOIN SHOPPINGBASCKET USING (SB_NO) WHERE DEO.ORDER_NO = O.ORDER_NO) SB_NAME
+		                      , ORDER_AMOUNT
+		                      , O.ORDER_AMOUNT_MONEY
+		                   FROM TBL_ORDER O
+		                   JOIN MEMBER USING (MEMBER_NO)
+		                   ORDER BY O.ORDER_NO DESC) B
+		                <![CDATA[ WHERE ROWNUM <= #{ endRow }]]> 
+		          ) A
+		 WHERE RNUM >= #{ startRow }
+	</select>
+	
+	<select id="checkOrderDetail" resultMap="orderDetailResultMap">
+		SELECT
+		       ORDER_NO
+		     , ORDER_DATE
+		     , SB_NO
+		     , SB_NAME
+		     , DT_ORDER_AMOUNT
+		     , (DT_ORDER_AMOUNT)*SB_PRICE DT_ORDER_MONEY
+		     , ORDER_NAME
+		     , ORDER_PHONE
+		     , ORDER_POST_CODE
+		     , ORDER_BS_ADDRESS
+		     , ORDER_DT_ADDRESS
+		  FROM TBL_ORDER
+		  JOIN DETAIL_ORDER USING (ORDER_NO)
+		  JOIN SHOPPINGBASCKET USING (SB_NO)
+		 WHERE ORDER_NO = #{ orderNo }
+<!--		 WHERE ORDER_NO = #{ orderNo, jdbcType=VARCHAR }-->
+	</select>
+	
+   <select id="PcheckTotalCount" resultType="_int">
+		SELECT
+		       COUNT(*)
+		  FROM TBL_PAY P
+   </select>
+	
+	<select id="checkWaitPayList" resultMap="PayResultMap">
+		SELECT
+		       O.ORDER_DATE
+		     , O.ORDER_NO
+		     , MEMBER_ID
+		     , P.PAY_NO
+		     , P.PAY_NAME
+		     , P.PAY_MONEY
+		     , P.PAY_STATUS
+		  FROM TBL_ORDER O
+		  JOIN MEMBER USING (MEMBER_NO)
+		  JOIN TBL_PAY P ON (O.ORDER_NO = P.ORDER_NO)
+		 WHERE P.PAY_STATUS = 'N'
+		 ORDER BY ORDER_NO
+	</select>
+	
+   <select id="checkCompPayList" resultMap="PayResultMap">
+		SELECT
+		       O.ORDER_DATE
+		     , O.ORDER_NO
+		     , MEMBER_ID
+		     , P.PAY_NO
+		     , P.PAY_NAME
+		     , P.PAY_MONEY
+		     , P.PAY_STATUS
+		  FROM TBL_ORDER O
+		  JOIN MEMBER USING (MEMBER_NO)
+		  JOIN TBL_PAY P ON (O.ORDER_NO = P.ORDER_NO)
+		 WHERE P.PAY_STATUS = 'Y'
+		 ORDER BY ORDER_NO
+   </select>
+
+	<select id="ScheckTotalCount" resultType="_int">
+		SELECT
+		       COUNT(*)
+		  FROM TBL_DELIVERY D
+	</select>
+
+	<select id="checkWaitSendList" resultMap="waitSendResultMap">
+		SELECT
+		       ORDER_NO
+		     , ORDER_DATE
+		     , SB_NO
+		     , SB_NAME
+		     , ORDER_AMOUNT
+		     , MEMBER_ID
+		     , DEL_NO
+		  FROM TBL_ORDER
+		  JOIN DETAIL_ORDER USING (ORDER_NO)
+		  JOIN MEMBER USING (MEMBER_NO)
+		  JOIN SHOPPINGBASCKET USING (SB_NO)
+		  JOIN TBL_DELIVERY USING (ORDER_NO)
+		 WHERE DEL_STATUS = 'N'		
+	</select>
+	
+   <select id="RcheckTotalCount" resultType="_int">
+		SELECT
+		       COUNT(*)
+		  FROM TBL_REFUND R
+   </select>
+   
+   <select id="checkWaitRefList" resultMap="waitRefResultMap">
+		SELECT
+		       ORDER_NO
+		     , ORDER_DATE
+		     , MEMBER_ID
+		     , REFUND_NO
+		     , REASON_NO
+		     , REFUND_REAS
+		     , REFUND_STATUS
+		     , REASON_BANK
+		     , REASON_ACCOUNT
+		  FROM TBL_ORDER
+		  JOIN MEMBER USING (MEMBER_NO)
+		  JOIN TBL_REFUND USING (ORDER_NO)
+		 WHERE REFUND_STATUS = 'N'	   
+   </select>
+   
+   <select id="EcheckTotalCount" resultType="_int">
+		SELECT
+		       COUNT(*)
+		  FROM EXCHANGE E
+   </select>
+
+   <select id="checkWaitExcList" resultMap="waitExcResultMap">
+		SELECT
+		       ORDER_NO
+		     , ORDER_DATE
+		     , EREPT_DATE
+		     , MEMBER_ID
+		     , EXC_NO
+		     , EXC_QTY
+		     , REASON_NO
+		     , EXC_REAS
+		     , EXC_STATUS
+		  FROM TBL_ORDER
+		  JOIN MEMBER USING (MEMBER_NO)
+		  JOIN EXCHANGE USING (ORDER_NO)
+		 WHERE EXC_STATUS = 'N'  
+   </select>
+   
+   <update id="modifyCompPay" >
+		UPDATE TBL_PAY P
+		SET P.PAY_STATUS = 'Y'
+		WHERE ORDER_NO IN
+		<foreach collection="array" item="item" 
+                    			separator="," open="(" close=")">
+                    	#{item}
+		</foreach>
+   </update>
+
+</mapper>

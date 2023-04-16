@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/order/order.css" rel="stylesheet" type="text/css">
+    <title>주문/결제</title>
+    <script type="text/javascript" src=/js/order/order.js></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+</head>
+<body>
+    <div th:replace="/common/mheaderLogin.html"></div>
+    <div class="contentWrap">
+    <div class="orderMember"> <br><br>
+    <div class="pageTitle">주문/결제</div>
+            <div class="formTitle">주문상품 정보</div>
+            <table class="proTable">
+                <colgroup>
+                    <col width="150">
+                    <col width="*">
+                    <col width="200px">
+                </colgroup>
+                <tbody>
+                    <tr th:each="ci : ${cartList}" class="jinho">
+                        <td class="image">
+                            <img src="/img/icon_rating.png">
+                        </td>
+                        <td class="spec">
+                            <dl>
+                                <dt th:text="${ci.sbName}"></dt>
+                                <dd>상품 가격 : [[${ci.sbPrice}]] 원<br>
+                                	상품 수량 : [[${ci.pcAmount}]] 개 <br>
+                                	총 가격 : [[${ci.totalPrice}]]원
+                                <input type="hidden" class="individual_totalPrice_input" th:value="${ci.totalPrice}">                                
+								<input type="hidden" class="individual_sbAmount_input" th:value="${ci.pcAmount}">
+								<input type="hidden" name="sbName" th:value="${ci.sbName}">
+								<input type="hidden" name="sbNo" th:value="${ci.sbNo}">
+								<input type="hidden" name="sbCount" th:value="${ci.pcAmount}">
+                                </dd>
+                            </dl>
+                        </td>
+                        <td class="textCenter"></td>
+                    </tr>
+                    <tr>
+                        <td  class="totalPrice" colspan="3">
+                            배송비 0 원
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <form name="orderForm" id="orderForm" action="">
+                <input type="hidden" name="selectedIds" value="">
+                <input type="hidden" name="order_email" value="">
+                <input type="hidden" name="order_mphone" value="">
+                <input type="hidden" name="order_zipcode" value="">
+                <input type="hidden" name="order_address" value="">
+                <input type="hidden" name="order_address_detail" value="">
+                <input type="hidden" name="delivery_mphone" value="">
+                <input type="hidden" name="pay_method" value="">
+                <input type="hidden" name="vban_due_date" value="">
+                <input type="hidden" name="payAmountSumPrice" value="">
+                <input type="hidden" name="totalCount" class="totalCount">
+                <input type="hidden" name="item" class="item">
+            </form>
+        <div class="division">
+        <div class="left">
+        <div class="formWrap">
+            <div class="formTitle">주문자 정보</div>
+            <div class="formRow">
+                <div class="formCol head require">
+                    이름
+                </div>
+                <div class="formCol body">
+                    <input class="input default large" name="order_name" type="text" value="">
+                </div>
+            </div>
+            <div class="formRow">
+                <div class="formCol head require">
+                    휴대폰
+                </div>           
+            <div class="formCol body">
+                <select class="select default mini" name="order_mphone1">
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="017">017</option>
+                    <option value="018">018</option>
+                    <option value="019">019</option>
+                </select>
+                 - 
+                 <input class="input default mini1" type="text" name="order_mphone2">
+                 - 
+                 <input class="input default mini1" type="text" name="order_mphone3">
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formCol head require">
+                이메일 주소
+            </div>
+            <div class="formCol body">
+                <input class="input default medium" type="text" name="order_emailId" value="">
+                @
+                <input class="input default medium" type="text" name="order_emailDomain" value="">
+                <select name='order_emailDomainSelector' class="select default mini1">
+                    <option value="직접입력">직접입력</option>
+                    <option value="naver.com">naver.com</option>
+                    <option value="gmail.com">gmail.com</option>
+                    <option value="nate.com">nate.com</option>
+                    <option value="daum.net">daum.net</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="formWrap">
+        <div class="formTitle noLine">
+            배송지 정보
+            <div class="sameInfoCheckbox" style="font-size: 14px; float: right;">
+            <input type="checkbox" id="sameInfoCheckbox">
+            <label for="sameInfoCheckbox" class="checkText tailCheck">주문자정보와 동일합니다.</label>
+        </div>
+        </div>
+        <div class="formRow">
+            <div class="formCol head require">
+                이름
+            </div>
+            <div class="formCol body">
+                <input type="text" class="input default large" name="delivery_name">
+            </div>
+        </div>
+        <div class="formRow">
+            <div class="formCol head require">
+                주소
+            </div>
+            <div class="formCol bodyInnerCol body">
+                <div class="bodyInnerCol">
+            <input type="text" class="input default medium" name="delivery_zipcode" id="zipCode" readonly placeholder="우편번호">
+            <input type="button" value="검색" id="searchZipCode"><br>   
+            </div>
+            <div class="bodyInnerCol">
+                <input class="input default extraLarge1" type="text" name="delivery_address" id="address" readonly placeholder="기본주소">
+            </div>
+            <div class="bodyinnerCol">
+                <input type="text" class="input default extraLarge1" name="delivery_address_detail" id="delivery_address_detail" placeholder="상세주소">
+            </div>
+        </div>
+    </div>
+    <div class="formRow">
+        <div class="formCol head require">
+            휴대폰
+        </div>
+        <div class="formCol body">
+            <select class="select default mini" name="delivery_mphone1">
+                <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="017">017</option>
+                    <option value="018">018</option>
+                    <option value="019">019</option>
+            </select>
+            - 
+            <input class="input default mini1" type="text" name="delivery_mphone2">
+            - 
+            <input class="input default mini1" type="text" name="delivery_mphone3">
+        </div>
+    </div>
+    <div class="formRow pb10">
+        <div class="formCol head">배송요청사항</div>
+        <div class="formCol body">
+            배송요청사항에는 한글,영문,숫자,기본 특수문자 이외에는 사용하실 수 없습니다.
+            <textarea name="delivery_comment" style="height: 100px;"></textarea>
+        </div>
+    </div>
+</div>
+<div class="formWarp">
+    <div class="formTitle nolineBottom">결제수단선택</div>
+    <div class="payedType payMethodButtons">
+        <div data-pay-method="vbank" data-is-escrow="N" onclick="selectPayMethod(this)">
+            <span></span>
+            <img src="/img/imgPay006.png" alt="무통장입금"><br>
+            무통장입금
+        </div>
+        <div data-pay-method="card" data-is-escrow="N" onclick="selectPayMethod(this)">
+            <span></span>
+            <img src="/img/imgPay001.png" alt="카드"><br>
+            카드
+        </div>
+        <div data-pay-method="trans" data-is-escrow="N" onclick="selectPayMethod(this)">
+            <span></span>
+            <img src="/img/imgPay007.png" alt="계좌이체"><br>
+            계좌이체
+        </div>
+    </div>
+    
+</div>
+    
+</div>
+<div class="right">
+    <table class="priceTable">
+        <tbody>
+            <tr>
+                <th colspan="2">전체주문금액</th>
+            </tr>
+            <tr class="firstChild" >
+                <td>선택 상품 수</td>
+                <td class="txtRight"><span class="quantity"></span> 개</td>
+            </tr>
+            <tr>
+                <td>총 상품금액</td>
+                <td class="txtRight"><span class="totalPrice1"></span> 원</td>
+            </tr>
+            <tr>
+                <td>배송비</td>
+                <td class="txtRight"><span class="orderAmountSum"></span>0 원</td>
+            </tr>
+            <tr>
+                <td class="finalPrice fl">결제 예정 금액</td>
+                <td class="txtRight finalPrice"><span class="payAmountSum"></span> 원</td>
+            </tr>
+        </tbody>
+    </table>
+    <button class="button default full green mt10 buyButton" type="submit" onclick="requestPay()">결제하기</button>
+</div>
+</div></div></div>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>
+        
+		const $searchZipCode = document.getElementById("searchZipCode");
+    	
+    	$searchZipCode.onclick = function(){
+
+    	/* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 인자로 전달한다. */	
+    	new daum.Postcode({
+    		oncomplete: function(data){
+    			/* 팝업에서 검색결과 항목을 클릭 했을 시 실행할 코드를 작성하는 부분 */
+    			document.getElementById("zipCode").value = data.zonecode;
+    			document.getElementById("address").value = data.address;
+    			document.getElementById("delivery_address_detail").focus();
+    		}
+    	}).open();
+    
+    };
+        	$("select[name=order_emailDomainSelector]").change(function(){
+                var emailDomain = $(this).val();
+
+                if(emailDomain == ""){
+                    $("input[name=order_emailDomain]").val("");
+                    $("input[name=order_emailDomain]").focus();
+                } else {
+                    $("input[name=order_emailDomain]").val(emailDomain);
+                }
+            });
+                function selectPayMethod(selected) {
+                // 선택된 결제수단에 대한 처리를 여기에 구현
+                console.log('선택된 결제수단:', selected.dataset.payMethod);
+  
+                 // 이전에 선택된 요소의 클래스를 삭제
+                 const selectedEls = document.querySelectorAll('.payMethodButtons div.selected');
+                 selectedEls.forEach(el => el.classList.remove('selected'));
+  
+                // 새로 선택된 요소에 클래스를 추가
+                selected.classList.add('selected');
+                }
+
+                $(".sameInfoCheckbox input[type=checkbox]").click(function(){
+                    if($(this).prop("checked") == true) {
+                        $("input[name=delivery_name]").val($("input[name=order_name]").val());
+                        $("select[name=delivery_mphone1]").val($("select[name=order_mphone1]").val());
+                        $("input[name=delivery_mphone2]").val($("input[name=order_mphone2]").val());
+                        $("input[name=delivery_mphone3]").val($("input[name=order_mphone3]").val());
+                        $("input[name=delivery_zipcode]").val($("input[name=order_zipcode]").val());
+                        $("input[name=delivery_address]").val($("input[name=order_address]").val());
+                        $("input[name=delivery_address_detail]").val($("input[name=order_address_detail]").val());
+                    } else {
+                        $("input[name=delivery_name]").val("");
+                        $("select[name=delivery_mphone1]").val("");
+                        $("input[name=delivery_mphone2]").val("");
+                        $("input[name=delivery_mphone3]").val("");
+                        $("input[name=delivery_zipcode]").val("");
+                        $("input[name=delivery_address]").val("");
+                        $("input[name=delivery_address_detail]").val("");
+                    }
+                });
+                
+                function requestPay(){
+                const IMP = window.IMP;
+                IMP.init("imp03186754");
+                const name = $("input[name=delivery_name]").val();
+                const emailId = $("input[name=order_emailId]").val();
+                const emailDomain = $("input[name=order_emailDomain]").val();
+                const selectBox = $("select[name=order_emailDomainSelector]");
+                const domainSelector = selectBox.val();
+                const domain = domainSelector === "직접입력" ? $("input[name=order_emailDomain]").val() : domainSelector;
+                const email = emailId + "@" + domain;
+                const amount = $("input[name=payAmountSumPrice]").val();
+                const sbName = $("input[name=sbName]").val();
+                const mphone1 = $("select[name=delivery_mphone1]");
+                const mphone = mphone1.val();
+                const mphone2 = $("input[name=delivery_mphone2]").val();
+                const mphone3 = $("input[name=delivery_mphone3]").val();
+                const phone = mphone + "-" + mphone2 + "-" + mphone3;
+                const addr = $("input[name=delivery_address]").val();
+                const addr_detail = $("input[name=delivery_address_detail]").val();
+                const postcode = $("input[name=delivery_zipcode]").val();
+                const address = addr + " " + addr_detail;
+                const totalCount = $(".totalCount").val();
+                const sbNo = $("input[name=sbNo]").val();
+                const orderDetail = $("input[name=item]").val();
+                IMP.request_pay({
+                	pg:"inicis",
+                	pay_method : "card",
+                	merchant_uid : new Date().getTime(),
+                	name : sbName,
+                	amount : 100,
+                	buyer_email :  email,
+                	buyer_name : name,
+                	buyer_tel : phone,
+                	buyer_addr : address,
+                	buyer_postcode : postcode
+                }, function(rsp){
+                	if(rsp.success){
+                		const msg = '결제가 완료되었습니다.';
+                		alert(msg);
+                		const orderDate = new Date();
+                		$.ajax({
+                			type:"POST",
+                			url:"/order/payment",
+                			contentType : 'application/json;charset=UTF-8',
+                			data:JSON.stringify({
+                				orderNo: rsp.merchant_uid,
+                				orderDate : orderDate,
+                				orderAmountMoney : rsp.paid_amount,
+                				memberName : name,
+                				orderAmount : totalCount,
+                				orderAbleStatus : rsp.status,
+                				phone : phone,
+                				orderPostCode : postcode,
+                				bsAddress : addr,
+                				dtAddress : addr_detail,
+                				orderDetail : JSON.parse(orderDetail)
+                			})
+                		});
+                		window.location.href="/Mulbburi/login"
+                	} else {
+                		const msg = '결제가 실패하였습니다.';
+                		alert(msg);
+                	}
+                }
+                
+                )};
+                
+               
+        </script>
+            
+       <div th:replace="/common/j.footer2.html"></div>
+</body>
+</html>

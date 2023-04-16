@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스토어</title>
+    <link href="../css/store/store.css" rel="stylesheet" style type="text/css">
+</head>
+<body>
+	
+	<div th:replace="common/msellerLoginHeader.html"></div>
+​
+    <div class="wrapper">
+​
+        <div class="seller-id">
+            <span sec:authentication="principal.memberName"></span>님의 스토어입니다.
+        </div>
+        
+        <div class="wrap">
+            <img src="/img/프로필.png">
+            <div class="my-shop">
+                <span id="name" sec:authentication="principal.memberName"></span>
+                <div class="briefing">
+                    <ul>
+<!--                         <li>- 입점기간 : 213일</li>
+                        <li>- 총 상품 갯수 : 21개</li>
+                        <li>- 전체 판매 수익 : 9,500,000원</li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+​
+        <!-- 메뉴바 -->
+​
+        <div class="sub-menu">
+            <span>내 상품 페이지</span>
+            <div class="">
+                <a href="/store/prodReg" id="contour">상품 등록</a>
+                <a href="/store/prodInq">문의 관리</a>
+            </div>
+        </div>
+​
+        <!-- 내 상품 -->
+​
+        <div class="my-prod">
+        
+<!--             <ul class="prod-list">
+                <li>
+                    <a href="">
+                        <img src="/img/상품.png">
+                    </a>
+                    <div class="data">
+                        <span>[어니스트 플라워]</span>
+                        <span>호말로메나 션샤인</span>
+                        <span class="price">8,000원</span>
+                    </div>
+                    <div class="prod-up">
+                        <button>상품 확인</button>
+                    </div>
+                </li>
+            </ul> -->
+            
+        </div>
+        
+        <div class="my-prod">
+				
+<!-- 			<th:block th:each="product : ${ productList }">
+				
+				<th:block th:each="attachment : ${ attachment.attachmentList }">
+					<img th:if="${ attachment.fileType == 'MAIN' }"
+						th:src="${ attachment.filePath }"
+						width="300px" height="300px"
+						style="border: 2px solid blue" >
+				</th:block>
+				<p>
+					<span th:text="${ product.sbName }"></span>
+					<span th:text="${ product.sbPrice }"></span>원
+					<span th:text="${ product.sbIventory }"></span>개
+				</p>
+			</th:block> -->
+			
+			<th:block th:each="attachment : ${ attachmentList }">
+			<img th:if="${ attachment.fileType == 'MAIN'}" th:src="${ attachment.filePath }">
+			</th:block>
+			<th:block th:each="product : ${ productList }">
+               <p>
+                  <span th:text="${ product.sbName }"></span>
+                  <span th:text="${ product.sbPrice }"></span>원
+                  <span th:text="${ product.sbIventory }"></span>개
+               </p>
+            </th:block>
+​
+        </div>
+​
+        <!-- 페이징 -->
+​
+        <div class="paging">
+            <button>&lt;&lt;</button>
+            <button>이전</button>
+                
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+​
+            <button>다음</button>
+            <button>&gt;&gt;</button>
+        </div>
+​
+    </div>
+​
+    <div th:replace="common/hfooter.html"></div>
+​
+</body>
+</html>

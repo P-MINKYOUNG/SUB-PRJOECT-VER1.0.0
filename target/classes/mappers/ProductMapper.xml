@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.product.dao.ProductMapper">
+
+	<resultMap type="com.water.Mulbburi.product.dto.ProductDTO" id="prodAllResultMap">
+		<id property="memberNo" column="MEMBER_NO"></id>
+		<result property="sbNo" column="SB_NO"/>
+		<result property="sbName" column="SB_NAME"/>
+		<result property="sbPrice" column="SB_PRICE"/>
+		<result property="sbIventory" column="SB_INVENTORY"/>
+		<result property="sbStatus" column="SB_STATUS"/>
+		
+		<association property="prodCategory" resultMap="categoryResultMap"/>
+		<collection property="attachmentList" resultMap="fileResultMap"></collection>
+	</resultMap>
+	
+	<resultMap type="com.water.Mulbburi.file.FileDTO" id="fileResultMap">
+		<id property="fileNo" column="FILE_NO"/>
+		<result property="fileoriginalName" column="FILE_ORIGINAL_NAME"/>
+		<result property="filePath" column="FILE_PATH"/>
+		<result property="fileSize" column="FILE_SIZE"/>
+		<result property="fileSavedName" column="FILE_SAVED_NAME"/>
+		<result property="custom" column="CUSTOM"/>
+		<result property="sbNo" column="SB_NO"/>
+		<result property="memberNo" column="memberNo"/>
+		<result property="communityNo" column="COMMUNITY_NO"/>
+		<result property="reviewNo" column="REVIEW_NO"/>
+		<result property="bannerNo" column="BANNER_NO"/>
+		<result property="ytNo" column="YT_NO"/>
+	</resultMap>
+	
+	<resultMap type="com.water.Mulbburi.product.dto.CategoryDTO" id="categoryResultMap">
+		<id property="code" column="CATEGORY_CODE"/>
+		<result property="name" column="CATEGORY_NAME"/>
+	</resultMap>
+
+	<insert id="prodRegist">
+		INSERT
+		  INTO SHOPPINGBASCKET
+		(
+		  SB_NO
+		, SB_NAME
+		, SB_PRICE
+		, MEMBER_NO
+		, PROD_CATEGORY_NO
+		, SB_INVENTORY
+		, SB_STATUS
+		)
+		VALUES
+		(
+		  SEQ_SB_NO.NEXTVAL
+		, #{ sbName }
+		, #{ sbPrice }
+		, #{ memberNo }
+		, #{ prodCategory.code }
+		, #{ sbIventory }
+		, 'Y'
+<!-- 		, #{ sbStatus } -->
+		)
+	</insert>
+
+	<insert id="insertFile">
+		INSERT
+		INTO TBL_FILE F
+		(
+		  F.FILE_NO
+		, F.FILE_ORIGINAL_NAME
+		, F.FILE_PATH
+		, F.FILE_SAVED_NAME
+		, F.FILE_TYPE
+		, F.CUSTOM
+		, F.SB_NO
+		)
+		VALUES
+		(
+		SEQ_FILE_NO.NEXTVAL
+		, #{ fileoriginalName }
+		, #{ filePath }
+		, #{ fileSavedName }
+		, #{ fileType }
+		, '2'
+		, SEQ_SB_NO.CURRVAL
+		)
+	</insert>
+	
+	<select id="checkProdTotalCount" resultType="_int">
+		SELECT 
+		       COUNT(*)
+		  FROM SHOPPINGBASCKET
+		 <!-- WHERE MEMBER_NO = #{ memberNo } -->
+	</select>
+
+	<select id="checkAllproduct" resultMap="prodAllResultMap">
+		SELECT
+		      SB_NO
+		    , SB_NAME
+		    , SB_PRICE
+		    , MEMBER_NO
+		    , PROD_CATEGORY_NO
+		    , SB_INVENTORY
+		    , SB_STATUS
+		 FROM SHOPPINGBASCKET
+<!-- 		WHERE MEMBER_NO = #{ memberNo } -->
+		ORDER BY SB_NO DESC
+	</select>
+</mapper>

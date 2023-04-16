@@ -1,0 +1,351 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;  /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+.wrapper {
+    min-height: calc(100%-160px);
+    position: relative;
+} 
+
+.info {
+    font-size: 12px;
+    padding-bottom: 10px;
+    color: rgba(118, 141, 131);
+    /* float: none; */
+    /* display: inline-block; */
+    /* position: absolute; */
+}
+
+.copy {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(118, 141, 131);
+    display: block;
+}
+
+/* 배너 */
+.wrapper
+{
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.banner
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0px;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .banner {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes banner {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes banner {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
+.banner img
+{
+    width:1000px;
+    height:450px;
+    margin-top: 50px;
+}
+
+
+ /* New Product */
+ .newProduct{
+    text-align: center;
+    margin-top: 600px;
+    font-family: 'ONE-Mobile-POP';
+ }
+
+ .newProduct h1{
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+ }
+
+ .newProduct h4{
+    color: rgba(118, 141, 131);
+    opacity: 90%;
+    font-weight: 100;
+ }
+
+.newProductPicture{
+    font-family: 'ONE-Mobile-POP';
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+ .newProductPicture div{
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: inline-block;
+ }
+
+ .newProductPicture img{
+    width: 200px;
+    height: 250px;
+ }
+
+ .newProductPicture .s1
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 18px;
+ }
+
+ .newProductPicture .s2
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 16px;
+ }
+
+ .newProductPicture .s3
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 16px;
+    text-decoration: line-through;
+ }
+
+ .newProductPicture .s4
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 16px;
+ }
+
+ .newProductPicture .s5
+ {
+    color: rgba(118, 141, 131);
+    opacity: 90%;
+    font-weight: 100;
+    font-size: 16px;
+ }
+
+.profile {
+    width: 50px;
+    height: 50px;
+}
+
+.topInfo {
+    display: flex;
+    margin-left: 370px;
+    margin-top: 20px;
+}
+
+.id {
+    color: rgba(118, 141, 131);
+    font-weight: 400;
+    font-size: 30px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.text {
+    color: rgba(126, 113, 113);
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+    margin-top: 13px;
+}
+
+.page {
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+    margin: 30px 20%;
+    height: 840px;
+}
+
+table {
+    margin-left: 200px;
+    padding-top: 50px;
+    border-collapse: separate;
+	border-spacing: 0 30px;
+}
+
+tr {
+    text-align: right;
+    color :#474242;
+    opacity: 0.8;
+}
+
+label {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 50px;
+
+}
+
+.test1 {
+    text-align: left;
+}
+
+.nameBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.idBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.defPwdBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.chgPwdBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.telBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.emailBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 350px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.email {
+    width: 120px;
+    height: 30px;
+}
+
+.zipBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 340px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+#searchZipCode {
+    width: 150px;
+    height: 30px;
+    font-size: 13px;
+}
+
+.addressBar1 {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.addressBar2 {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 0px;
+    width: 500px;
+    height: 30px;
+    background: rgba(126, 113, 113, 0.1);
+}
+
+.pwdBtn {
+    margin-left: 420px;
+    margin-top: 100px;
+}
+
+.access {
+    background-color: #7E7171;
+    opacity: 0.6;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 80px;
+
+}
+
+.exit {
+    background-color: #7E7171;
+    opacity: 0.6;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 80px;
+    margin-left: 20px;
+ 
+}

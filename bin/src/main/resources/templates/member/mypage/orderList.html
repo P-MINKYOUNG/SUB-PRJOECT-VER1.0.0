@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orderList</title>
+    <link href="/css/member/mypage/orderList.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+   
+
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/pheader.html"></div> 
+
+    <div class="title">
+        <p>주문내역</p>
+    </div>
+    <div class="btn">
+        <a href="#none" class="delivery">배송 조회</a>
+        <a href="#none" class="check">상세 조회</a>
+    </div>
+    <div>
+        <hr>
+    </div>
+    
+    <div class="productPage">
+    <form>
+    <div class="product">
+        <input type="checkbox" class="checkbox">
+        <img src="/img/yeob01.png" class="photo">
+        <div class="productName">
+        <sapn class="prName">몰랑루즈</sapn><br>
+        <span class="prCode">주문번호 202313030</span>
+        </div>
+        <div class="productDate">
+        <span class="prName">2023-03-12 12:00PM</span>
+        </div>
+        <div class="productMon">
+        <span class="prMoney">20000원</span>
+        </div>
+    </div>    
+    </form>
+    </div>
+
+    <!-- paging-->
+    <div class="pagingBar">
+        <button class="paging" >&lt;&lt;</button>
+        <button class="paging">&lt;</button>
+        <button class="paging">1</button>
+        <button class="paging">2</button>
+        <button class="paging">3</button>
+        <button class="paging">&gt;&gt;</button>
+        <button class="paging">&gt;&gt;</button>
+    </div>
+    
+	<div th:replace="common/pfooter.html"></div> 
+
+    </div>
+</body>
+</html>

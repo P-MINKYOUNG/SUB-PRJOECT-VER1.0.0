@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/calculator/05. calculator.css" rel="stylesheet" style type="text/css">
+    <link href="/css/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/calculator/05. calculator.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 배경 -->
+    <div th:replace="/common/msellerLoginHeader.html"></div>
+        <<!-- div class="topground">
+            <div class="t1">정산 확인</div>
+            <div class="t2">판매량 확인</div>
+        </div> -->
+        <div class="bbgd">
+
+            <div class="background1">
+
+                <div class="store">
+                    <img src="/img/프로필.png">
+                    <br><br><br><br>
+                <div><span class="c1">어니스트 플라워</span></div>
+                <form id="exelForm" action="/excel" method="POST">
+            	<input type="hidden" id="calDate" name="calDate" th:value="${param.calDate}">
+            	
+                <div><button id="cbutton">정산하기</button></div></form>
+                </div>
+
+                <div class="cal">
+                    <div><span class="c3">어니스트 플라워</span><span class="c4">  님의 정산페이지</span></div>
+                    <div class="calendar">
+                        <div class="c7">정산일</div>
+                        <div class="month1">
+                            <select id="dateSelect" name="calDate">
+                                <option value="2023-01">2023.01</option>
+                                <option value="2023-02">2023.02</option>
+                                <option value="2023-03">2023.03</option>
+                                <option value="2023-04">2023.04</option>
+                                <option value="2023-05">2023.05</option>
+                                <option value="2023-06">2023.06</option>
+                                <option value="2023-07">2023.07</option>
+                                <option value="2023-08">2023.08</option>
+                                <option value="2023-09">2023.09</option>
+                                <option value="2023-10">2023.10</option>
+                                <option value="2023-11">2023.11</option>
+                                <option value="2023-12">2023.12</option>
+                            </select>
+                            <button class="submit">선택</button>
+                        </div>
+                    </div>
+            </div>
+            
+            
+        
+        </div>
+        
+       <div th:replace="/common/spfooter.html"></div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.member.dao.MyPageMapper">
+
+	<resultMap type="com.water.Mulbburi.member.dto.MemberOrderDTO" id="orderListResultMap">
+      <id property="orderNo" column="ORDER_NO"/>
+      <result property="orderDate" column="ORDER_DATE"/>
+      <result property="sbName" column="SB_NAME"/>
+      <result property="orderAmount" column="ORDER_AMOUNT"/>      
+      <result property="orderAmountMoney" column="ORDER_AMOUNT_MONEY"/>
+      <result property="memberNo" column="MEMBER_NO"/>
+      <result property="memberId" column="MEMBER_ID"/>                  
+    </resultMap>
+    
+    <resultMap type="com.water.Mulbburi.member.dto.MemberRefundDTO" id="refundMap">
+      <id property="refundNo" column="REFUND_NO"/>
+      <result property="orderNo" column="ORDER_NO"/>
+      <result property="refundReas" column="REFUND_REAS"/>
+      <result property="refundStatus" column="REFUND_STATUS"/>      
+      <result property="refundStartDate" column="REFUND_START_DATE"/>
+      <result property="refundComDate" column="REFUND_COM_DATE"/>
+      <result property="reasonNo" column="REASON_NO"/>         
+      <result property="reasonBank" column="REASON_BANK"/>         
+      <result property="reasonAccount" column="REASON_ACCOUNT"/>         
+    </resultMap>
+    
+    <resultMap type="com.water.Mulbburi.member.dto.MemberExchangeDTO" id="exchangeMap">
+      <id property="excNo" column="EXC_NO"/>
+      <result property="excReas" column="EXC_REAS"/>
+      <result property="excQty" column="EXC_QTY"/>
+      <result property="ereptDate" column="EREPT_DATE"/>      
+      <result property="sbNo" column="SB_NO"/>
+      <result property="orderNo" column="ORDER_NO"/>
+      <result property="reasonNo" column="REASON_NO"/>         
+      <result property="excStatus" column="EXC_STATUS"/>                  
+    </resultMap>
+    
+    <resultMap type="com.water.Mulbburi.member.dto.MemberDetailDTO" id="detailMap">      
+      <result property="sbNo" column="SB_NO"/>
+      <result property="orderNo" column="ORDER_NO"/>
+      <result property="dtOrderAmount" column="DT_ORDER_AMOUNT"/>                 
+    </resultMap>
+    
+	<select id="selectTotalCount" resultType="_int">
+	SELECT
+	       COUNT(*)
+	  FROM TBL_ORDER O     	
+    </select>
+    
+   <select id="selectOrderList" resultMap="orderListResultMap">
+	SELECT
+		   T.ORDER_NO
+		 , T.ORDER_DATE
+		 , S.SB_NAME
+		 , T.ORDER_AMOUNT
+		 , T.ORDER_AMOUNT_MONEY
+		 , T.MEMBER_NO
+	  FROM TBL_ORDER T 
+	  JOIN DETAIL_ORDER D ON (D.ORDER_NO = T.ORDER_NO)
+      JOIN SHOPPINGBASCKET S ON (S.SB_NO = D.SB_NO) 
+	  WHERE T.MEMBER_NO = #{memberNo}
+	</select>
+	
+	<select id="selectOrderDetail" resultMap="orderListResultMap">
+	SELECT
+		   T.ORDER_NO	
+		 , M.BUSINESS_NAME
+		 , S.SB_NAME
+		 , T.ORDER_AMOUNT
+		 , T.ORDER_AMOUNT_MONEY
+	  FROM TBL_ORDER T 
+	  JOIN DETAIL_ORDER D ON (D.ORDER_NO = T.ORDER_NO)
+      JOIN SHOPPINGBASCKET S ON (S.SB_NO = D.SB_NO) 
+      JOIN MEMBER M ON (T.MEMBER_NO = M.MEMBER_NO)
+	  WHERE T.ORDER_NO = #{orderNo}
+	</select>
+		   	
+	<insert id="insertRefund">
+		INSERT
+		  INTO TBL_REFUND
+		  (
+		    REFUND_NO
+		  , ORDER_NO
+		  , REFUND_REAS
+		  , REFUND_STATUS
+		  , REFUND_START_DATE
+		  , REASON_NO
+		  , REASON_BANK
+		  , REASON_ACCOUNT  
+		  )
+		  VALUES
+		  (
+		    SEQ_REFUND_NO.NEXTVAL
+		  , #{ orderNo }
+		  , #{ refundReas }
+		  , 'N'
+		  , SYSDATE
+		  , #{ reasonNo }
+		  , #{ reasonBank }
+		  , #{ reasonAccount }   
+		  )
+	</insert>
+	
+	<insert id="insertExchange">
+		INSERT
+		  INTO EXCHANGE
+		  (
+		    EXC_NO
+		  , EXC_REAS
+		  , EXC_QTY
+		  , EREPT_DATE
+		  , SB_NO
+		  , ORDER_NO
+		  , REASON_NO
+		  , EXC_STATUS  
+		  )
+		  VALUES
+		  (
+		    SEQ_EXC_NO.NEXTVAL
+		  , #{ excReas }
+		  , #{ excQty }
+		  , SYSDATE
+		  , #{ sbNo }
+		  , #{ orderNo }
+		  , #{ reasonNo }
+		  , 'N'   
+		  )
+	</insert>
+
+	<select id="selectSbNo" resultMap="exchangeMap" resultType="long">
+	SELECT
+		   D.SB_NO	
+	  FROM TBL_ORDER T 
+	  JOIN DETAIL_ORDER D ON (D.ORDER_NO = T.ORDER_NO)
+	  WHERE T.ORDER_NO = #{orderNo}
+	</select>
+	
+	<select id="selectDetailOrder" resultMap="detailMap">
+	SELECT
+		   D.SB_NO
+		 , D.ORDER_NO
+		 , D.DT_ORDER_AMOUNT  	
+	  FROM DETAIL_ORDER D 
+	  JOIN TBL_ORDER T ON (D.ORDER_NO = T.ORDER_NO)
+	  WHERE T.ORDER_NO = #{orderNo}
+	</select>
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.consumer.dao.ConsumerMapper">
+
+ <resultMap type="com.water.Mulbburi.consumer.dto.ConsumerDTO" id="orderAllResultMap">
+      <id property="announcementNo" column="ANNOUNCEMENT_NO"/>
+      <result property="announcementTitle" column="ANNOUNCEMENT_TITLE"/>
+      <result property="announcementSt" column="ANNOUNCEMENT_ST"/>
+      <result property="administratorNo" column="ADMINISTRATOR_NO"/>
+      <result property="anWriteTime" column="AN_WRITE_TIME"/>
+   </resultMap>
+
+
+
+<select id="selectTotalCount" resultType="_int">
+SELECT 
+    COUNT(*)
+    FROM ANNOUNCEMENT
+    WHERE AN_DELETE_TIME IS NULL
+
+</select>
+
+<!-- 게시물 목록 -->
+<select id="selectConsumerList" resultMap="orderAllResultMap">
+SELECT 
+ANNOUNCEMENT_NO
+	  , ANNOUNCEMENT_TITLE
+	  , ANNOUNCEMENT_ST
+	  , ADMINISTRATOR_NO
+	  , AN_WRITE_TIME
+FROM (SELECT
+    ROWNUM RNUM
+      ,		ANNOUNCEMENT_NO
+	  , ANNOUNCEMENT_TITLE
+	  , ANNOUNCEMENT_ST
+	  , ADMINISTRATOR_NO
+	  , AN_WRITE_TIME
+FROM
+
+(SELECT 
+		ANNOUNCEMENT_NO
+	  , ANNOUNCEMENT_TITLE
+	  , ANNOUNCEMENT_ST
+	  , ADMINISTRATOR_NO
+	  , AN_WRITE_TIME
+	
+	FROM ANNOUNCEMENT
+    WHERE AN_DELETE_TIME IS NULL
+    ORDER BY ANNOUNCEMENT_NO DESC)
+     <![CDATA[
+    WHERE ROWNUM <=  #{ endRow })
+    ]]>
+WHERE RNUM >= #{ startRow }
+	
+
+</select>
+
+
+</mapper>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quit</title>
+    <link rel="stylesheet" href="/css/member/mypage/quit.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/font.css" type="text/css">
+</head>
+<body>
+<div class="wraaper">
+    <div class="main">
+        <div class="left">
+        </div>
+        <div class="right">
+            <div class="rightTitle">물뿌리개</div>
+            <div class="rightSub">반갑습니다! 식물쇼핑몰 물뿌리개입니다</div>
+            <div class="loginTitle">회원 탈퇴</div>
+            <div>
+                <form id="loginForm" action="/member/login" method="post">
+                    <div class="idForm">
+                    <label>비밀번호</label><br>
+                    <input type="password" name="memberPwd" class="idBar"><br>
+                    </div>
+                    <div class="quitText">
+                        <span>정말 탈퇴하시겠습니까?</span>
+                    </div>
+                    <button type="submit" name="submit" class="submitBtn">확인</button>
+                </form>
+            </div>
+            <div class="copy">@Copyright 물뿌리개</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

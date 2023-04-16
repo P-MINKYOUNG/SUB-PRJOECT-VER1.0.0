@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+   <link rel="stylesheet" type="text/css" href="/css/comwrite.css">
+   <link rel="stylesheet" type="text/css" href="/css/font.css">
+    <script type="text/javascript" src="/js/write.js"></script>
+   
+</head>
+<body>
+
+   <div th:replace="common/header.html"></div>
+
+  
+
+    <form action="" method="get" class="form-example">
+
+        <div class="img-file">
+        <img id="user_image" src="#" alt="" >
+        <!-- onchange event 걸어주기  -->
+        <input class="banner-1" accept=".jpg" onchange="PreviewImage();" type="file" id="user_profile_img" />
+    </div>
+          
+
+
+        <div class="form-example1">
+          <label for="name">제목: </label>
+          <input type="text" name="name" id="textba1" required>
+        </div>
+        <div class="form-example2">
+          <label for="email" id="textba2-st">내용: </label>
+          <textarea id="textba2" name="text" rows="5"></textarea>
+        </div>
+        <div class="form-example3">
+          <input type="submit" value="올리기" class="submitbox">
+        </div>
+      </form>
+    
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.faq.dao.FaqMapper">
+
+
+ <resultMap type="com.water.Mulbburi.faq.dto.FaqDTO" id="faqAllResultMap">
+      <id property="faqNo" column="FAQ_NO"/>
+      <result property="faqCategory" column="FAQ_CATEGORY"/>
+      <result property="faqTitle" column="FAQ_TITLE"/>      
+      <result property="faqSt" column="FAQ_ST"/>
+      <result property="memberNo" column="MEMBER_NO"/>
+      <result property="faqWriteTime" column="FAQ_WRITE_TIME"/>
+   </resultMap>
+
+
+
+
+
+<select id="selectTotalCount" resultType="_int">
+SELECT 
+    COUNT(*)
+    FROM FAQ
+    WHERE FAQ_DELETE_TIME IS NULL
+
+</select>
+
+<!-- 게시물 목록 -->
+<select id="selectFaqList" resultMap="faqAllResultMap">
+SELECT 
+FAQ_NO
+	  , FAQ_TITLE
+	  , FAQ_CATEGORY
+	  , FAQ_ST
+	  , MEMBER_NO
+	  , FAQ_WRITE_TIME
+FROM (SELECT
+    ROWNUM RNUM
+      ,		FAQ_NO
+      , FAQ_TITLE
+	  , FAQ_CATEGORY
+	  , FAQ_ST
+	  , MEMBER_NO
+	  , FAQ_WRITE_TIME
+FROM
+
+(SELECT 
+		FAQ_NO
+	  , FAQ_TITLE
+	  , FAQ_CATEGORY
+	  , FAQ_ST
+	  , MEMBER_NO
+	  , FAQ_WRITE_TIME
+	
+	FROM FAQ
+    WHERE FAQ_DELETE_TIME IS NULL
+    ORDER BY FAQ_NO DESC)
+     <![CDATA[
+    WHERE ROWNUM <=  #{ endRow })
+    ]]>
+WHERE RNUM >= #{ startRow }
+</select>
+
+
+
+
+<select id="selectFaqDetail" resultMap="faqAllResultMap">
+        SELECT 
+            FAQ_NO
+      , FAQ_TITLE      
+	  , FAQ_CATEGORY
+	  , FAQ_ST
+	  , MEMBER_NO
+	  , FAQ_WRITE_TIME 
+        FROM FAQ
+       
+         WHERE FAQ_DELETE_TIME IS NULL
+          AND  FAQ_NO = #{ no }                      
+    </select>
+  
+   
+
+    <insert id="insertFaq">
+        INSERT 
+        INTO FAQ 
+        (	  FAQ_NO
+      , FAQ_TITLE
+	  , FAQ_CATEGORY
+	  , FAQ_ST
+	  , MEMBER_NO
+	  , FAQ_WRITE_TIME                         
+        )
+        VALUES
+        (
+        SEQ_FAQ_NO.NEXTVAL
+        , #{ faqTitle }
+        , #{ faqCategory }
+        , #{ faqSt }
+        , 1
+        , SYSDATE 
+        )
+    </insert>
+
+
+
+
+
+</mapper>

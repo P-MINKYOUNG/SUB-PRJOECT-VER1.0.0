@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8" />
+<script type="text/javascript" src="/js/event.js"></script>
+<script>
+	const message = '[[${message}]]';
+	message && alert(message);
+</script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1:1문의</title>
+
+    <link rel="icon" type="image/x-icon" href="../resource/images/icons8-화분에-심은-식물-48 (1).png">
+    <link href="https://unpkg.com/ress/dist/ress.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/font.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/consumer.css}">   
+
+
+</head>
+<body>
+    <div class="left">
+        <header>
+
+        </header>
+
+    </div>
+    <div class="right">
+        <div class="title" id="타이틀">물뿌리개</div>
+            <div class="subtitle" id="sub타이틀"><p>반갑습니다. 식물쇼핑몰 물뿌리개입니다.</p></div>
+        <nav>
+            <div class="midletitle" id="midletitle">
+                <h3 class="midle">1:1문의</h3>
+                <ul class="midletitle-choose">
+                    <div class="midletitle-choose-2-box"></div>
+                    <div class="midletitle-choose-3-box"></div>
+                     
+                    <li class="midletitle-choose-2"><a href="/consumer/detail">내 문의글 확인</a></li>
+                    <li class="midletitle-choose-3"><a href="/consumer/write">문의 글 작성</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="etc" id="카피라이트">@Copyright 물뿌리개</div>
+            
+
+    </div>
+
+    
+</body>
+</html>

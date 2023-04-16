@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>발송 대기</title>
+    <link href="../css/management/style.css" rel="stylesheet" style type="text/css">
+</head>
+<body>
+
+	<div th:replace="common/hheader.html"></div>
+
+    <div class="wrapper">
+
+        <!-- 메뉴바 -->
+
+        <ul class="menu-bar">
+            <li>
+                <a href="/management/orderAll">전체</a>
+            </li>
+            <li>
+                <a>결제</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitPay">결제 대기</a></li>
+                    <li><a href="/management/compPay">결제 완료</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>배송</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitSend">발송 대기</a></li>
+                    <li><a href="/management/compSend">발송 완료</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>환불</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitRef">환불 대기</a></li>
+                    <li><a href="/management/compRef">환불 완료</a></li>
+                </ul>            
+            </li>
+            <li>
+                <a>교환</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitExc">교환 대기</a></li>
+                    <li><a href="/management/compExc">교환 완료</a></li>
+                </ul>            
+            </li>
+        </ul>
+
+        <!-- 주문 관리 제목 -->
+
+        <div class="title">
+            <p>발송 대기</p>
+        </div>
+
+        <!-- 주문 관리 내용 -->
+
+        <div class="wrap">
+        
+            <table class="content">
+                <tr id="subject">
+                	<th></th>
+                    <th>주문번호</th>
+                    <th>주문날짜</th>
+                    <th>고객ID</th>
+                    <th>상품번호</th>
+                    <th>상품명</th>
+                    <th>총주문수량</th>
+                    <th>발송번호</th>
+                </tr>
+				<tr th:each="management : ${ waitSend }">
+					<td>
+						<input type="checkbox" id="check">
+						<label for="check"></label>
+					</td>
+					<td th:text="${ management.orderNo }"></td>
+					<td th:text="${ management.orderDate }"></td>
+					<td th:text="${ management.memberId }"></td>
+					<td th:text="${ management.sbNo }"></td>
+					<td th:text="${ management.sbName }"></td>
+ 					<td th:text="${ management.orderAmount }"></td>
+					<td th:text="${ management.delNo }"></td>
+				</tr>
+            </table>
+            
+            <div class="select">
+                <button class="comp">상품 발송</button>
+            </div>
+        </div>
+
+        <!-- 페이징 -->
+
+        <div class="paging">
+            <button>&lt;&lt;</button>
+            <button>이전</button>
+                
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+
+            <button>다음</button>
+            <button>&gt;&gt;</button>
+        </div>
+
+    </div>
+
+    <div th:replace="common/hfooter.html"></div>
+
+</body>
+</html>

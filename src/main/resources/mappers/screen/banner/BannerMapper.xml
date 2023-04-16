@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.screen.banner.BannerMapper">
+
+<resultMap id="bannerResultMap" type="com.water.Mulbburi.screen.banner.BannerDTO">
+	<id property="bannerNo" column="BANNNER_NO"/>
+	<result property="bannerGenDate" column="BANNER_GEN_DATE"/>
+	<result property="bannerDelDate" column="BANNER_DEL_DATE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="bannerPostDate" column="BANNER_POST_DATE"/>
+	<result property="bannerEndDate" column="BANNER_END_DATE"/>
+</resultMap>
+
+<resultMap id="fileResultMap" type="com.water.Mulbburi.file.FileDTO">
+	<id property="fileNo" column="FILE_NO"/>
+	<result property="fileoriginalName" column="FILE_ORIGINAL_NAME"/>
+	<result property="filePath" column="FILE_PATH"/>
+	<result property="fileSize" column="FILE_SIZE"/>
+	<result property="fileSavedName" column="FILE_SAVED_NAME"/>
+	<result property="custom" column="CUSTOM"/>
+	<result property="sbNo" column="SB_NO"/>
+	<result property="memberNo" column="memberNo"/>
+	<result property="communityNo" column="COMMUNITY_NO"/>
+	<result property="reviewNo" column="REVIEW_NO"/>
+	<result property="bannerNo" column="BANNER_NO"/>
+	<result property="ytNo" column="YT_NO"/>
+</resultMap>
+
+<insert id="insertBanner">
+	INSERT
+	      INTO BANNER
+	(
+		  BANNER_NO,
+		  BANNER_GEN_DATE,
+		  BANNER_DEL_DATE,
+		  MEMBER_NO,
+		  BANNER_POST_DATE,
+		  BANNER_END_DATE
+	)
+	VALUES
+	(
+		  SEQ_BANNER_NO.NEXTVAL,
+		  #{bannerGenDate},
+		  #{bannerDelDate},
+		  1,
+		  #{bannerPostDate},
+		  #{bannerEndDate}
+	)	
+</insert>
+
+<insert id="insertFile">
+	INSERT INTO TBL_FILE
+	(
+		   FILE_NO,
+		   FILE_ORIGINAL_NAME,
+		   FILE_PATH,
+		   FILE_SAVED_NAME,
+		   FILE_TYPE,
+		   CUSTOM,
+		   SB_NO,
+		   MEMBER_NO,
+		   COMMUNITY_NO,
+		   REVIEW_NO,
+		   BANNER_NO
+	)
+	VALUES
+	(
+		   SEQ_FILE_NO.NEXTVAL,
+		   #{fileoriginalName},
+		   #{filePath},
+		   #{fileSavedName},
+		   'BANNER',
+		   4,
+		   NULL,
+		   1,
+		   17,
+		   1,
+		   SEQ_BANNER_NO.CURRVAL   
+	)
+</insert>
+
+<select id="selectMyFile" parameterType="com.water.Mulbburi.file.FileDTO" resultMap="fileResultMap">
+	SELECT
+	       A.FILE_PATH
+	  FROM (SELECT
+	               ROWNUM RNUM,
+	               B.FILE_PATH
+	          FROM (SELECT
+	                       C.FILE_PATH
+	                   FROM TBL_FILE C
+	                   JOIN FILE_NO
+	                  ORDER BY C.FILE_NO) ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+	  JOIN BANNER USING (BANNER_NO)
+</select>
+
+<select id="selectAllBanner" parameterType="com.water.Mulbburi.screen.banner.BannerDTO" resultMap="bannerResultMap">
+	SELECT
+		  A.BANNER_NO,
+		  A.BANNER_GEN_DATE,
+		  A.BANNER_DEL_DATE,
+		  A.BANNER_POST_DATE,
+		  A.BANNER_END_DATE
+	 FROM (SELECT
+	    		  ROWNUM RNUM,
+	    		  B.BANNER_NO,
+		  		  B.BANNER_GEN_DATE,
+		  		  B.BANNER_DEL_DATE,
+		  		  B.BANNER_POST_DATE,
+		  		  B.BANNER_END_DATE
+	        FROM (SELECT
+	        		     C.BANNER_NO,
+		  				 C.BANNER_GEN_DATE,
+		  				 C.BANNER_DEL_DATE,
+		  				 C.BANNER_POST_DATE,
+		  				 C.BANNER_END_DATE
+	                FROM BANNER C
+	          ORDER BY C.BANNER_POST_DATE ASC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT 
+        	   COUNT(*)
+          FROM BANNER
+</select>
+
+
+
+
+
+
+
+
+
+</mapper>

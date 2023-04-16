@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 문의</title>
+    <link href="../css/store/inquiry.css" rel="stylesheet" style type="text/css">
+</head>
+<body>
+
+	<div th:replace="common/header.html"></div>
+
+    <div class="wrapper">
+
+        <div class="seller-id">
+            <span>어니스트 플라워</span>님의 스토어입니다.
+        </div>
+
+        <div class="wrap">
+            
+            <!-- 타이틀 -->
+
+            <div class="title">
+                <span>&lt; 상품 문의 &gt;</span>
+            </div>
+
+            <div class="answer">
+                <select>
+                    <option>전체</option>
+                    <option>답변완료</option>
+                    <option>미답변</option>
+                </select>
+            </div>
+
+            <div class="sub-title">
+                <ul>
+                    <li>상태</li>
+                    <li>제목</li>
+                    <li>작성자</li>
+                    <li>등록일</li>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- 페이징 -->
+
+        <div class="paging">
+            <button>&lt;&lt;</button>
+            <button>이전</button>
+                
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+
+            <button>다음</button>
+            <button>&gt;&gt;</button>
+        </div>
+
+    </div>
+
+    <div th:replace="common/footer.html"></div>
+
+</body>
+</html>

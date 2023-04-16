@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/screen/08-1. youtubeList.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/screen/08-2. youtubeControll.js"></script>
+    <title>Document</title>
+</head>
+<body>
+<div th:replace="/common/madminLoginHeader.html"></div>
+    
+        <div class="topground">
+            <div class="t1">저장하기</div>
+            <div class="t2">목록확인</div>
+        </div>
+        
+    <div class="totalbackground2">
+        <div class="totalstory3">
+            <div class="totalbase3">
+                <div class="category1">
+                    <div class="titlename"><span>Write Date</span>
+                    					   <span>Delete Date</span>
+                    					   <span>Post Date</span>
+                    					   <span>End Date</span></div>
+                </div>
+
+                        <div class="story" th:each="youtube: ${ youtubeList }">
+                            <div class="bannertitle2" th:text="${ youtube.ytName }"></div>
+                            <div class="path2" th:text="${ youtube.ytPath }"></div>
+                            <div class="writedate2" th:text="${ youtube.ytWriteDate }"></div>
+                            <div class="deletedate2" th:text="${ youtube.ytDeleteDate }"></div>
+                            <div class="postingdate2" th:text="${ youtube.ytPostDate }"></div>
+                            <div class="enddate2" th:text="${ youtube.ytEndDate }"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <!-- 페이징 바 -->
+		<div class="paging" align="center" style="margin-top: 20px;">
+		<th:block
+			th:if="${ paging.searchCondition == null || paging.searchCondition.isEmpty() || paging.searchValue == null || paging.searchValue.isEmpty()}">
+			<!-- 맨 앞으로 이동 -->
+			<button th:onclick="'location.href=\'/select/youtube?page=1\''">&lt;&lt;</button>
+​
+			<!-- 이전 페이지로 이동 -->
+			<button
+				th:onclick="'location.href=\'/select/youtube?page=' + @{${paging.page - 1}} + '\''"
+				th:disabled="${ paging.page <= 1 }">&lt;</button>
+​
+			<!-- 숫자 버튼 -->
+			<th:block
+				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+				<button
+					th:onclick="'location.href=\'/select/youtube?page=' + @{${page}} + '\''"
+					th:text="${ page }" th:disabled="${ paging.page eq page }">
+				</button>
+			</th:block>
+​
+			<!-- 다음 페이지로 이동 -->
+			<button
+				th:onclick="'location.href=\'/select/youtube?page=' + @{${paging.page + 1}} + '\''"
+				th:disabled="${ paging.page >= paging.maxPage }">></button>
+​
+			<!-- 맨 끝으로 이동 -->
+			<button
+				th:onclick="'location.href=\'/select/youtube?page=' + @{${paging.maxPage}} + '\''">>></button>
+		</th:block>
+		</div>
+
+    <div th:replace="/common/spfooter.html"></div>
+</body>
+</html>

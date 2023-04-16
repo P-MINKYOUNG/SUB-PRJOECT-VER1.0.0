@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SelMembership</title>
+    <link rel="stylesheet" href="/css/member/regist/SelMembership.css" type="text/css">
+</head>
+<body>
+    <haeder>
+    <div class="top">
+        <div class="title">
+            <h1>회원가입</h1>
+        </div>
+        <div class="titleinfo">
+            <p>이용약관과 개인정보처리방침에 대한 안내를 읽고 동의해주세요.</p>
+        </div>
+        <div class="sequence">
+            <span class = "step1">1.약관동의</span>
+            <span class = "arrow">></span>
+            <span class = "step2">2.회원가입</span>
+            <span class = "arrow">></span>
+            <span class = "step3">3.가입완료</span>
+        </div>
+    </div>
+    </div>
+</haeder>
+
+    <div>
+        <p class="registTitle">&lt; 회원인증 &gt;</p>
+    </div>
+    <hr class="line1">
+    <div class="registForm">
+    <form action="/member/regist/SelMembership" id="selform" method="post" enctype="multipart/form-data">
+        <table >
+            <tr class="memberName">
+            <td>
+                <label>사업명</label><br>
+                <input type="text" name="businessName" id="businessName" class="memberNameBar" placeholder="(사업명을 입력해주세요)" required>
+            </td>
+            </tr>
+            <td>
+                <label>사업자 번호</label><br>
+                <input type="text" name="businessNo" id="businessNo" class="memberNameBar" placeholder="(숫자를 포함한 10자의 사업자번호를 입력하세요)" required>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>아이디</label><br>
+                    <input type="text"  name="memberId" class="memberIdBar" id="memberId" placeholder="(한글 또는 영문, 숫자를 포함한 8자 ~ 16자의 아이디를 입력하세요)" required>
+                    <input type="button" value="중복확인" id="duplicationCheck">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>이름</label><br>
+                    <input type="text"  name="memberName" class="memberPwdBar" id="memberName"  required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>비밀번호</label><br>
+                    <input type="password" name="memberPwd" id="memberPwd" class="memberPwdBar" placeholder="(영문,숫자를 포함한 8자~16자의 비밀번호를 입력하세요)" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>비밀번호 확인</label><br>
+                    <input type="password" name="memberPwd2" id="memberRePwd" class="memberPwdBar2" placeholder="(영문,숫자를 포함한 8자~16자의 비밀번호를 입력하세요)" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>휴대전화</label><br>
+                    <input type="tel" name="phone" id="phone" class="memberPhoneBar" placeholder="('010'을 포함한 핸드폰 번호 11자리를 '-'빼고 입력해주세요)">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>이메일</label><br>
+                    <input type="text" name="emailId" id="emailId" class="memberEmailBar" placeholder="이메일을 입력해주세요"> @
+                    <select class="email" name="domain" id="domain">
+                        <option>선택</option>
+                        <option>naver.com</option>
+                        <option>gmail.com</option>
+                        <option>hanmail.com</option>
+                        <option>nate.com</option>
+                        <option>daum.net</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label>주소</label><br>
+                    <input type="text" name="postCode" id="postCode" class="zipBar" placeholder="우편번호" readonly>
+                    <input type="button" value="검색" id="searchZipCode">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="bsAddress" id="bsAddress" class="addressBar1" placeholder="기본주소" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="text" name="dtAddress" id="dtAddress" class="addressBar2" placeholder="(배송을 받을 주소를 자세히 입력해 주세요)">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="file" name="file" id="file" multiple="multiple">
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div class="base-button">
+            <a href="#none" class="btnExit">취소</a>
+             <button type="button" value="가입하기" class="btnSubmit" onclick="javascript:ValidationSel()">가입</button>
+        </div>
+    </form>
+</div>
+
+ <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+
+	const $searchZipCode = document.getElementById("searchZipCode");
+	
+	$searchZipCode.onclick = function() {
+		
+		/* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 인자로 전달한다. */
+	
+	
+
+    new daum.Postcode({
+        oncomplete: function(data) {
+            /* 팝업에서 검색결과 항목을 클릭 했을 시 실행할 코드를 작성하는 부분 */
+            document.getElementById("postCode").value = data.zonecode;
+            document.getElementById("bsAddress").value = data.address;
+            document.getElementById("dtAddress").focus();
+        }
+    }).open();
+		
+	};	
+	
+    const fileCheck = document.getElementById("file").value;
+    if(!fileCheck){
+        alert("파일을 첨부해 주세요");
+        
+    };
+
+	</script>
+
+        
+ <script type="text/javascript" src="/js/member/memberSel.js"></script>
+</body>
+</html>

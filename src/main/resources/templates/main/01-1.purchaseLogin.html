@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <link href="/css/main/01.purchaseMain.css" rel="stylesheet" style type="text/css">
+    <link href="/css/font.css" rel="stylesheet" style type="text/css">
+   	<script src="/js/main/01.purchaseMain.js" defer></script>
+</head>
+<body>
+
+<div th:replace="/common/mheaderLogin.html"></div>
+
+    <!-- banner -->
+    
+    <!-- <div>
+	<th:block th:if="${ file.fileType == 'BANNER'}" th:each="file : ${fileList}"><img th:src="${file.filePath}"  class="banner"></th:block>
+</div> -->
+    <div class="wrapper">
+            <div class="banner 1"><img src="/img/배너 1.png"></div>
+            <div class="banner 2"><img src="/img/배너 2.png"></div>
+            <div class="banner 3"><img src="/img/배너 3.png"></div>
+    </div>
+
+    <!-- new product -->
+    <div class="newProduct">
+        <h1>New Product</h1>
+        <h4>새로운 상품을 지금 바로 만나보세요.</h4>
+    </div>
+
+        <div class="pictures">
+    <div class="newProductPicture" th:each="prod:${prodList}">
+            <img src="/img/상품3.png"><br>
+            <div class="s1" th:text="|[${prod.memberName}]|"></div><br>
+            <div class="s2" th:text="${prod.sbName}"></div><br>
+            <div class="s5" th:text="${prod.sbPrice}"></div>
+        </div>
+    </div>
+
+    <div class="newPost">
+        <h1>Community</h1>
+        <h4>새로운 게시글</h4>
+    </div>
+
+    <div class="newPostPicture" >
+        <div class="p1" th:each="com : ${cmList}">
+            <div class="p1c">
+                <img src="/img/배너1.jpg">
+            </div>
+            <div class="p1t">
+                <div class="writer" th:text="${com.memberId}"></div><br><br>
+                <div class="story"  th:text="${com.communityTitle}"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Youtube -->
+    <div class="youtube">
+        <h1>YouTube</h1>
+        <h4>Find your favorite Video</h4>
+    </div>
+
+    <div class="youtubevideo">
+        <div class="y1" >
+            <div class="yv1">
+                <iframe th:each= "youtube: ${ youtubeList }" width="340" height="200" th:src='${youtube.ytPath}' title="YouTube video player" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 공지사항 -->
+    <div class="yell">
+        <div class="yelly">
+            <div class="all">
+            <h1>공지사항</h1>
+            <h4>Notice</h4>
+        
+            <div class="notice">
+                <div class="n1" th:each="notice : ${noticeList}" th:text="${notice.announcementTitle}"></div>
+            </div>
+            </div>
+    		
+    		
+            <div class="all">
+            <h1>자주 묻는 질문</h1>
+            <h4>FAQ</h4>
+            <div class="faq">
+            <div>
+                <div class="f1"  th:each="faq : ${faqList}" th:text="${faq.faqTitle}"></div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="/common/spfooter.html"></div>
+    
+</body>
+</html>

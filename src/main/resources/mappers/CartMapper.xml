@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.shoppingcart.DAO.CartMapper">
+<resultMap id="cartInfoMap" type="com.water.Mulbburi.shoppingcart.DTO.cartDTO">
+<id property="pcNo" column="PC_NO"/>
+<result property="memberNo" column="MEMBER_NO"/>
+<result property="sbNo" column="SB_NO"/>
+<result property="pcAmount" column="PC_AMOUNT"/>
+<result property="sbName" column="SB_NAME"/>
+<result property="sbPrice" column="SB_PRICE"/>
+<result property="sbInventory" column="SB_INVENTORY"/>
+<result property="sbStatus" column="SB_STATUS"/>
+</resultMap>
+<insert id="addCart">
+	INSERT
+	  INTO PURCHASE_BASCKET
+	  (
+	  PC_NO,
+	  MEMBER_NO,
+	  SB_NO,
+	  PC_AMOUNT
+	  )
+	  VALUES
+	  (
+	  SEQ_PC_NO.NEXTVAL,
+	  #{memberNo},
+	  #{sbNo},
+	  1
+	  )
+</insert>
+<delete id="deleteCart">
+	DELETE
+	  FROM PURCHASE_BASCKET
+	  WHERE PC_NO = #{pcNo}
+</delete>
+<update id="modifyCount">
+	UPDATE
+	 PURCHASE_BASCKET SET PC_AMOUNT = #{pcAmout}
+	 WHERE PC_NO = #{pcNo}
+</update>
+<select id="getCart" resultMap="cartInfoMap">
+	SELECT
+		A.PC_NO,
+		A.MEMBER_NO,
+		A.PC_AMOUNT,
+		A.SB_NO,
+		B.SB_NAME,
+		B.SB_PRICE
+		FROM PURCHASE_BASCKET A LEFT OUTER JOIN SHOPPINGBASCKET B ON A.SB_NO = B.SB_NO
+		WHERE A.MEMBER_NO = #{memberNo}
+</select>
+<select id="checkCart" resultType="com.water.Mulbburi.shoppingcart.DTO.cartDTO">
+	SELECT
+	*
+	FROM PURCHASE_BASCKET
+	WHERE MEMBER_NO = #{memberNo} and #{sbNo}
+</select>
+<select id="getSelectedCart" resultMap="cartInfoMap">
+    SELECT
+        A.PC_NO,
+        B.SB_NO,
+        B.SB_NAME,
+        A.MEMBER_NO,
+        B.SB_PRICE,
+        A.PC_AMOUNT
+    FROM PURCHASE_BASCKET A
+    LEFT OUTER JOIN SHOPPINGBASCKET B ON A.SB_NO = B.SB_NO
+    WHERE A.MEMBER_NO = #{memberNo}
+    <if test="selectedItems != null and selectedItems.size() > 0">
+        AND A.PC_NO IN
+        <foreach collection="selectedItems" item="selectedItem" open="(" separator="," close=")">
+            #{selectedItem}
+        </foreach>
+    </if>
+    GROUP BY A.PC_NO, B.SB_NO, B.SB_NAME, A.MEMBER_NO, B.SB_PRICE, A.PC_AMOUNT
+</select>
+
+</mapper>

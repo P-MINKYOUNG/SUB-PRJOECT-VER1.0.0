@@ -1,0 +1,141 @@
+/* 기본 설정 */
+
+*{padding:0;margin:0}
+
+a {
+    text-decoration: none;  
+    /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+li {
+    list-style:none;
+}
+
+body {
+    height: 100%;
+    background-color: white;
+}
+
+.wrapper {
+    width: 60vw;
+    /* width: 100%; */
+    margin: 30px auto;
+}
+
+.seller-id {
+    font-weight: 700;
+    color: rgba(118, 141, 131, 0.8);
+    background-color: rgba(218, 233, 231, 0.6);
+    padding: 10px 20px;
+    /* border: 2px solid blue; */
+}
+
+.wrap {
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+    margin: 30px 0;
+    /* height: 640px; */
+    padding: 20px 0;
+}
+
+.title {
+    padding: 20px 0;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    /* border: 2px solid blue; */
+    color: rgba(126, 113, 113, 0.6);
+}
+
+table {
+    border-top: 2px solid rgba(126, 113, 113, 0.2);
+    border-bottom: 2px solid rgba(126, 113, 113, 0.2);
+    margin: 0 auto;
+    padding: 20px 0;
+    text-align: right;
+}
+
+label {
+    color: rgba(126, 113, 113, 0.6);
+    font-size: 14px;
+    font-weight: 600;
+    padding-right: 20px;
+}
+
+td {
+    /* border: 2px solid red; */
+    padding: 10px 0;
+}
+
+.category {
+    width: 100%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px 0;
+    color: rgba(126, 113, 113, 0.8);
+    text-align: center;
+}
+
+input {
+    margin: 10px auto;
+    width: 100%;
+    border: none;
+    background: rgba(126, 113, 113, 0.1);
+    /* background-color: transparent; */
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 5px 0;
+    /* padding-left: 10px; */
+    color: rgba(126, 113, 113, 0.8);
+    text-align: center;
+    /* border: 2px solid blue; */
+}
+
+input[type=file] {
+    /* border: 2px solid black; */
+    text-align: center;
+}
+
+input[type=file]::file-selector-button {
+    border: none;
+    /* margin-left: 5px; */
+    /* text-align: center; */
+    /* border: 2px solid black; */
+    color: rgba(126, 113, 113, 0.8);
+    background-color: transparent;
+    /* background-color: rgba(255, 255, 255, 0.6); */
+}
+
+input:focus {
+    outline: none;
+}
+
+#nowidth input {
+    width: 10%;
+}
+
+.prod-btn {
+    /* margin: 20px 0; */
+    text-align: center;
+    padding: 20px 0;
+}
+
+.prod-btn button {
+    background-color: rgba(126, 113, 113, 0.3);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    padding: 10px 60px;
+    border-radius: 80px;
+}
+
+.prod-btn .delete {
+    background-color: rgba(255, 255, 255, 0.8);
+    color: rgba(126, 113, 113, 0.6);
+    border: 2px solid rgba(126, 113, 113, 0.2);
+    margin-right: 5px;
+}
+
+.prod-btn select option:hover {
+    background-color: red;
+}

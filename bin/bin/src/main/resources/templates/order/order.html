@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/font.css" rel="stylesheet" type="text/css">
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <link href="/css/order/order.css" rel="stylesheet" type="text/css">
+    <title>주문/결제</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+<body>
+    <div th:replace="/common/pheader.html"></div>
+    
+    <div class="formTitle">주문/결제</div>
+        <form class="formWarp">
+            <div class="formTitle">주문상품 정보</div>
+            <table class="protable">
+                <colgroup>
+                    <col width="150">
+                    <col width="*">
+                    <col width="200px">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td class="image">
+                            <img src="">
+                        </td>
+                        <td class="spec">
+                            <dl>
+                                <dt>
+                                    [ ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴㅁㅇㅁㄴㅇㄴㅁㅇㄴ]
+                                </dt>
+                                <dd>상품 가격 20,000원</dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="formTitle">주문자 정보</div><hr>
+        <div class="name_head">
+            * 이름
+        </div>
+        <div class="name_body">
+            <input class="input_name" name="order_name" type="text"><hr>
+            </div>
+        
+        <div class="phone_head">
+            * 휴대폰
+        </div>
+        <div class="phone_body">
+            <select class="select_default" name="order_phone1">
+                <option value="010">010</option>
+                <option value="011">011</option>
+                <option value="016">016</option>
+                <option value="017">017</option>
+                <option value="018">018</option>
+            </select>
+             - 
+             <input class="input_default phone" type="text" name="order_phone2">
+             - 
+             <input class="input_default phone" type="text" name="order_phone3">
+        </div>
+    
+        <hr>
+        <div class="email_head">
+            * 이메일 주소
+        </div>
+        <div class="email_body">
+            <input class="input_email" type="text" name="order_email" value="">
+            @
+            <input class="input_main2" type="text" name="order_email2" value="">
+            <select name='email_main' onChange="addDomain(this)">
+                <option value="">직접입력</option>
+                <option value="naver.com">naver.com</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="nate.com">nate.com</option>
+                <option value="daum.net">daum.net</option>
+            </select>
+            </div>
+        </form>
+            <script>
+                function addDomain(select){
+                    const inputEmail = document.querySelector('.input_main2');
+                    const domain = select.value;
+                    inputEmail.value = domain;
+                }
+            </script>
+           
+            <div class="formWarp">
+                <div class="formTitle_address">배송지정보</div><hr><br>
+                <div class="name_head">
+                    * 이름
+                </div>
+            <div class="address_body">
+                <input class="input_default_name" type="text" name="delivery_name">
+            </div><hr><br>
+                <div class="phone_head">
+                    * 휴대폰
+                </div>
+            <div class="order_phone_body">
+                <select class="select_default_phone" name="delivery_phone">
+                    <option value="010">010</option>
+                    <option value="011">011</option>
+                    <option value="016">016</option>
+                    <option value="017">017</option>
+                    <option value="018">018</option>
+                </select>
+                - 
+             <input class="input_default_phone1" type="text" name="delivery_phone2">
+             - 
+             <input class="input_default_phone2" type="text" name="delivery_phone3">
+            </div>
+            <div class="address_head">
+                * 우편번호
+            </div>
+            <input type="text" name="zipCode" id="zipCode" readonly>
+            <input type="button" value="검색" id="searchZipCode"><br>   
+                * 주소<br>
+            <input type="text" name="address1" id="address1" readonly><br>
+                * 상세주소<br>
+            <input type="text" name="address2" id="address2">
+            <div class="coment_head">
+                배송시 요청사항
+           </div>
+           <textarea name="coment_body"></textarea>
+                   </div>
+            <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+        <script>   	
+    	const $searchZipCode = document.getElementById("searchZipCode");
+    	
+    	$searchZipCode.onclick = function(){
+
+    	/* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 인자로 전달한다. */	
+    	new daum.Postcode({
+    		oncomplete: function(data){
+    			/* 팝업에서 검색결과 항목을 클릭 했을 시 실행할 코드를 작성하는 부분 */
+    			document.getElementById("zipCode").value = data.zonecode;
+    			document.getElementById("address1").value = data.address;
+    			document.getElementById("address2").focus();
+    		}
+    	}).open();
+    
+    };
+    </script>            
+            <div class="formWarp">
+                <div class="formTitle nolineBottom">결제수단선택</div>
+                <div class="payedType payMethodButtons">
+                    <div data-pay-method="vbank" data-is-escrow="N" onclick="selectPayMethod(this)">
+                        <span></span>
+                        <img src="/img/imgPay006.png" alt="무통장입금"><br>
+                        무통장입금
+                    </div>
+                    <div data-pay-method="card" data-is-escrow="N" onclick="selectPayMethod(this)">
+                        <span></span>
+                        <img src="/img/imgPay001.png" alt="카드"><br>
+                        카드
+                    </div>
+                    <div data-pay-method="trans" data-is-escrow="N" onclick="selectPayMethod(this)">
+                        <span></span>
+                        <img src="/img/imgPay007.png" alt="계좌이체"><br>
+                        계좌이체
+                    </div>
+                </div>
+            </div>
+            <script>
+              function selectPayMethod(selected) {
+                // 선택된 결제수단에 대한 처리를 여기에 구현
+                console.log('선택된 결제수단:', selected.dataset.payMethod);
+  
+                 // 이전에 선택된 요소의 클래스를 삭제
+                 const selectedEls = document.querySelectorAll('.payMethodButtons div.selected');
+                 selectedEls.forEach(el => el.classList.remove('selected'));
+  
+                // 새로 선택된 요소에 클래스를 추가
+                selected.classList.add('selected');
+                }  
+            </script>
+
+            <div class="right">
+                <table class="priceTable">
+                    <tbody>
+                        <tr>
+                            <th colspan="2">전체주문금액</th>
+                        </tr>
+                        <tr class="firstChild">
+                            <td>주문 상품 수</td>
+                            <td class="txtRight">
+                                <span class="quantity">1</span>
+                                개
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>총 상품금액</td>
+                            <td class="txtRight">
+                                <span class="orderAmountSum">2000</span>
+                                원
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>총 배송비</td>
+                            <td class="txtRight">
+                                <span class="deliveryAmountSum">+ 0</span>
+                                원
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="finalPrice">결제 예정 금액</td>
+                            <td class="txtRight finalPrice">
+                                <span class="payAmountSum">2000</span>
+                                원
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="grayBoxOder">
+                    위 주문의 상품, 가격, 할인, 배송정보를 확인하였으며,
+                    결제에 동의합니다. (필수)
+                
+                <div class="checkBox1" style="margin-top: 10px;">
+                    <input type="checkbox" name="orderAgreeCheckBox" id="orderagreechectbox">
+                    <label for="orderAgreeCheckBox" class="checkText tailCheck">동의합니다.</label>
+                </div>
+                </div>
+                <div>
+                    <button type="submit" class="payButton">결제하기</button><br>
+                    <button type="submit" class="cancelButton">취소하기</button>
+                </div>
+              </div>
+
+        <script>
+        	
+        </script>
+            
+       <div th:replace="/common/pfooter.html"></div>
+
+</body>
+</html>

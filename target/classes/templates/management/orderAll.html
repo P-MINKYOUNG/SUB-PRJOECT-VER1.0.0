@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 주문</title>
+    <link href="../css/management/style.css" rel="stylesheet" style type="text/css">
+</head>
+<body>
+
+	<div th:replace="common/msellerLoginHeader.html"></div>
+
+    <div class="wrapper">
+
+        <!-- 메뉴바 -->
+
+        <ul class="menu-bar">
+            <li>
+                <a href="/management/orderAll">전체</a>
+            </li>
+            <li>
+                <a>결제</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitPay">결제 대기</a></li>
+                    <li><a href="/management/compPay">결제 완료</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>배송</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitSend">발송 대기</a></li>
+                    <li><a href="/management/compSend">발송 완료</a></li>
+                </ul>
+            </li>
+            <li>
+                <a>환불</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitRef">환불 대기</a></li>
+                    <li><a href="/management/compRef">환불 완료</a></li>
+                </ul>            
+            </li>
+            <li>
+                <a>교환</a>
+                <ul class="sub-menu">
+                    <li><a href="/management/waitExc">교환 대기</a></li>
+                    <li><a href="/management/compExc">교환 완료</a></li>
+                </ul>            
+            </li>
+        </ul>
+
+        <!-- 주문 관리 제목 -->
+
+        <div class="title">
+            <p>전체 주문</p>
+        </div>
+
+        <!-- 주문 관리 내용 -->
+
+        <div class="wrap">
+            
+            <table class="content">
+				<tr id="subject">
+	            	<th>주문번호</th>
+	            	<th>주문날짜</th>
+	            	<th>고객ID</th>
+	            	<th>상품</th>
+	            	<th>주문금액</th>
+	            	<th>상세내용</th>
+				</tr>
+				<tr th:each="management : ${ orderAll }">
+					<td th:text="${ management.orderNo }"></td>
+					<td th:text="${ management.orderDate }"></td>
+					<td th:text="${ management.memberId }"></td>
+<!-- 					<td th:text="${ management.sbName }"></td> -->
+<!-- 					<td th:text="${ management.sbName[0] } + ' 외 ' + ${ management.orderAmount } + '건'"></td> -->
+					<td th:text="${ management.sbName } + ' 외 ' + ${ management.orderAmount-1 } + '건'"></td>
+<!-- 					<td th:text="${ management.orderAmount }"></td> -->
+					<td th:text="${ management.orderMoney } + '원'"></td>
+					<td><button class="press" 
+						th:onclick="|location.href='/management/orderDetail?orderNo=${ management.orderNo }'|">자세히</button></td>
+				</tr>
+            </table>
+            
+        </div>
+
+        <!-- 페이징 -->
+
+        <div class="paging">
+	​
+			<th:block
+				th:if="${ paging.searchCondition == null || paging.searchCondition.isEmpty() || paging.searchValue == null || paging.searchValue.isEmpty()}">
+				<!-- 맨 앞으로 이동 -->
+				<button th:onclick="'location.href=\'/management/orderAll?page=1\''">&lt;&lt;</button>
+	​
+				<!-- 이전 페이지로 이동 -->
+				<button
+					th:onclick="'location.href=\'/management/orderAll?page=' + @{${paging.page - 1}} + '\''"
+					th:disabled="${ paging.page <= 1 }">이전</button>
+	​
+				<!-- 숫자 버튼 -->
+				<th:block
+					th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+					<button
+						th:onclick="'location.href=\'/management/orderAll?page=' + @{${page}} + '\''"
+						th:text="${ page }" th:disabled="${ paging.page eq page }">
+					</button>
+				</th:block>
+	​
+				<!-- 다음 페이지로 이동 -->
+				<button
+					th:onclick="'location.href=\'/management/orderAll?page=' + @{${paging.page + 1}} + '\''"
+					th:disabled="${ paging.page >= paging.maxPage }">다음</button>
+	​
+				<!-- 맨 끝으로 이동 -->
+				<button
+					th:onclick="'location.href=\'/management/orderAll?page=' + @{${paging.maxPage}} + '\''">&gt;&gt;</button>
+			</th:block>
+        </div>
+
+    </div>
+    
+    <div th:replace="common/hfooter.html"></div>
+
+</body>
+</html>

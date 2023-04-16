@@ -1,0 +1,271 @@
+@charset "UTF-8"; /* 인코딩 문자 깨짐 방지*/
+
+html{
+    position: relative;
+width: 1930px;
+height: 1083px;
+}
+li{
+    text-transform: none;
+    list-style-type: none;
+    text-decoration: none;
+    
+
+    color: rgb(137, 187, 169);
+}
+a{
+    text-decoration: none;
+    color:  #FFFFFF;
+}
+
+
+
+.left{
+    position: absolute;
+left: 0%;
+right: 55.23%;
+top: 0%;
+bottom: 0%;
+
+background-image: url(/img/왼쪽배경.png);
+
+background-size: cover;
+}
+.right .title{
+    position: absolute;
+    left: 57.56%;
+    right: 15.11%;
+    top: 3.09%;
+    bottom: 89.73%;
+    font-family: 'HSBombaram21-Regular';
+   font-weight: normal;
+   font-size: 40px;
+    text-align: center;
+     
+    
+    color: rgba(169, 197, 185, 0.8);
+}
+
+.right .subtitle {
+    position: absolute;
+    left: 61.33%;
+right: 15.6%;
+top: 12.22%;
+bottom: 78.7%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 31px;
+
+
+    color:#7E7171;
+}
+
+.right .midletitle .midle{
+
+    position: absolute;
+left: 65.56%;
+right: 19.01%;
+top: 25.09%;
+bottom: 65.09%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 48px;
+text-align: center;
+    color: #474242;
+    
+
+}
+.midletitle-choose-1{
+    position: absolute;
+    left: 46.16%;
+    right: 43.01%;
+    top: 36.93%;
+    bottom: 59%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+text-align-last: center;
+text-decoration: none;
+background: rgba(118, 141, 131, 0.9);
+color: #FFFFFF;
+
+
+}
+.midletitle-choose-2{
+    position: absolute;
+    left: 46.16%;
+    right: 43.01%;
+    top: 43.93%;
+    bottom: 52.01%;
+    
+    background: rgba(118, 141, 131, 0.9);
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+    
+    color: black
+   
+    
+ 
+    
+}
+.midletitle-choose-3{
+
+    position: absolute;
+    left: 46.16%;
+    right: 43.01%;
+top: 51.25%;
+bottom: 43.99%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+text-align: center;
+
+color: black;
+background: rgba(118, 141, 131, 0.9);
+
+}
+.midletitle-choose-4{
+    position: absolute;
+    left: 57.41%;
+right: 15.49%;
+top: 53.98%;
+bottom: 41.94%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 30px;
+line-height: 36px;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.8);
+
+background: rgba(169, 197, 185, 0.8);
+border-radius: 30px;
+}
+
+
+
+.etc{
+    position: absolute;
+    left: 64.56%;
+right: 22.59%;
+top: 80.76%;
+bottom: 5.56%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+}
+
+.right-emp-1{
+
+position: absolute;
+left: 59.63%;
+right: 8.81%;
+top: 36.93%;
+bottom: 59%;
+font-size: 18pt;
+
+
+background: #D9D9D9;
+}
+
+.right-emp-2{
+
+    position: absolute;
+    left: 59.63%;
+    right: 8.81%;
+    top: 43.93%;
+    bottom: 52.01%;
+    font-size: 18pt;
+    
+    background: #D9D9D9;
+    }
+
+    .right-emp-3{
+
+        position: absolute;
+        left: 59.63%;
+        right: 8.81%;
+        top: 55.25%;
+        bottom: 19.97%;
+        
+        background: #D9D9D9;
+        }
+
+        #name{
+            position: absolute;
+left: 59.63%;
+right: 8.81%;
+top: 36.93%;
+bottom: 59%;
+font-size: 18pt;
+
+background: #D9D9D9;
+text-align: center;
+
+        }
+
+        #email{
+            position: absolute;
+            left: 59.63%;
+            right: 8.81%;
+            top: 43.93%;
+            bottom: 52.01%;
+            font-size: 18pt;
+            
+            background: #D9D9D9;
+            text-align: center;
+
+        }
+        
+
+        #content{
+
+            position: absolute;
+           
+            left: 59.63%;
+            right: 8.81%;
+            top: 51.25%;
+            bottom: 22.16%;
+            font-size: 17pt;
+background:#D9D9D9;
+        }
+
+        #subbutton{
+
+            position: absolute;
+    left: 79.07%;
+    right: 15.44%;
+    top: 79.78%;
+    bottom: 15.79%;
+
+    background: rgba(169, 197, 185, 0.8);
+        }
+        #ca-bt{
+            position: absolute;
+left: 85.6%;
+right: 8.91%;
+top: 79.78%;
+bottom: 15.79%;
+
+background: rgba(169, 197, 185, 0.8);
+
+        }

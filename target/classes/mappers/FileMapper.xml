@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mappers.FileMapper">
+	<resultMap id="fileResultMap" type="com.water.Mulbburi.file.FileDTO">
+		<id property="fileNo" column="FILE_NO"/>
+		<result property="fileoriginalName" column="FILE_ORIGINAL_NAME"/>
+		<result property="filePath" column="FILE_PATH"/>
+		<result property="fileSize" column="FILE_SIZE"/>
+		<result property="fileSavedName" column="FILE_SAVED_NAME"/>
+		<result property="custom" column="CUSTOM"/>
+		<result property="sbNo" column="SB_NO"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="communityNo" column="COMMUNITY_NO"/>
+		<result property="reviewNo" column="REVIEW_NO"/>
+		<result property="bannerNo" column="BANNER_NO"/>
+		<result property="ytNo" column="YT_NO"/>
+	</resultMap>
+	
+	<insert id="insertYoutube">
+        INSERT 
+        INTO TBL_FILE
+            (
+          FILE_NO,
+          FILE_ORIGINAL_NAME,
+          FILE_PATH,
+          FILE_SIZE,
+          FILE_SAVED_NAME,
+          CUSTOM,
+          SB_NO,
+          MEMBER_NO,
+          COMMUNITY_NO,
+          REVIEW_NO,
+          BANNER_NO,
+          YT_NO
+        )
+        VALUES
+        (
+        	SEQ_FILE_NO.NEXTVAL
+            , #{ fileoriginalName }
+            , #{ filePath }
+            , #{ fileSize }
+            , #{ fileSavedName }
+            , #{ custom }
+            , SEQ_SB_NO.CURRVAL
+            , SEQ_MEMBER_NO.CURRVAL
+            , SEQ_COMMUNITY_NO.CURRVAL
+            , SEQ_REVIEW_NO.CURRVAL
+            , SEQ_BANNER_NO.CURRVAL
+            , SEQ_YT_NO.CURRVAL
+        )
+    </insert>
+    
+    <select id="selectFile" resultMap="fileResultMap">
+        SELECT 
+          	   FILE_NO,
+         	   FILE_ORIGINAL_NAME,
+          	   FILE_PATH,
+          	   FILE_SIZE,
+          	   FILE_SAVED_NAME,
+          	   CUSTOM,
+          	   SB_NO,
+          	   MEMBER_NO,
+          	   COMMUNITY_NO,
+          	   REVIEW_NO,
+          	   BANNER_NO,
+          	   YT_NO
+          FROM TBL_FILE
+     </select>
+	
+</mapper>

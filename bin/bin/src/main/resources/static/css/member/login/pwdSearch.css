@@ -1,0 +1,168 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.left {
+    background-image: url("/img/왼쪽배경.png");
+    width: 864px;
+    height: 1083px;
+    display: block;
+   
+}
+
+.right {
+    width:40%;
+    width: 1064px;
+}
+
+.rightTitle {
+    text-align: center;
+    font-size: 60px;
+    margin-top: 150px;
+    font-family: 'HSBombaram21-Regular';
+    color: #a9c5b9;
+}
+
+.rightSub {
+    text-align: center;
+    font-size: 16px;
+    color :rgba(126, 113, 113, 0.6);
+    margin-top: 10px;
+}
+
+.loginTitle {
+    text-align: center;
+    font-size: 30px;
+    color :rgba(71, 66, 66, 0.6);
+    margin-top: 40px;
+    margin-bottom: 50px;
+    font-weight: 700;
+}
+
+.idForm {
+    margin-left: 300px;
+}
+
+.pwdForm {
+    margin-left: 300px;
+    margin-top: 30px;
+}
+
+
+.idBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 500px;
+    height: 30px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color :rgba(126, 113, 113, 0.6);
+}
+
+.pwdBar {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 300px;
+    height: 30px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    color :rgba(126, 113, 113, 0.6);
+}
+
+span {
+    font-size: 20px;
+    color :rgba(126, 113, 113, 0.6);
+}
+
+label {
+    font-size: 20px;
+    color :rgba(126, 113, 113, 0.6);
+}
+
+input:focus {outline:none;}
+
+.checkbox {
+    margin-left: 300px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 20px;
+    color :rgba(126, 113, 113, 0.6);
+}
+
+.searchId {
+    margin-left: 150px;
+}
+
+.submitBtn {
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    color: white;
+    padding: 15px 150px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 30px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 80px;
+    margin-left: 370px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+}
+
+.checkId {
+    margin-left: 400px;
+    margin-right: 50px; 
+}
+
+.copy {
+    margin-top: 150px;
+    margin-left: 80px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(118, 141, 131);
+    display: block;
+}
+
+.select {
+    width: 200px;
+    height: 30px;
+}
+
+.researchForm {
+    margin-left: 300px;
+}
+
+.research {
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    width: 500px;
+    height: 30px;
+}
+
+.pwdForm {
+    margin-bottom: 30px;
+}
+
+.emailBtn {
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    color: white;
+    padding: 15px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 80px;
+}

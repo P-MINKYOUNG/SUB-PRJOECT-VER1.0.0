@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8" />
+<script type="text/javascript" src="/js/event.js"></script>
+<script>
+	const message = '[[${message}]]';
+	message && alert(message);
+</script>
+</head>
+<body>
+	<div th:replace="common/header.html"></div>
+
+	<div align="center">
+
+		<h2>게시판</h2>
+
+		<table id="listArea" style="text-align: center">
+			<tr>
+				<th style="width: 100px">글번호</th>
+				<th style="width: 100px">카테고리</th>
+				<th style="width: 300px">글제목</th>
+				<th style="width: 100px">작성자</th>
+				<th style="width: 100px">조회수</th>
+				<th style="width: 150px">작성일</th>
+			</tr>
+			<tr th:each="board : ${ boardList }"
+				th:onclick="|location.href='/board/detail?no=${board.no}'|">
+				<td th:text="${ board.no }"></td>
+				<td th:text="${ board.category.name }"></td>
+				<td th:text="${ board.title }"></td>
+				<td th:text="${ board.writer.nickname }"></td>
+				<td th:text="${ board.count }"></td>
+				<td th:text="${ board.createdDate }"></td>
+			</tr>
+		</table>
+	</div>
+
+	<!-- 페이징 바 -->
+	<div id="paging" align="center" style="margin-top: 20px;">
+
+		<th:block
+			th:if="${ paging.searchCondition != null and paging.searchValue != null }">
+			<!-- 맨 앞으로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/main?page=1&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''">&lt;&lt;</button>
+
+			<!-- 이전 페이지로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/list?page=' + @{${paging.page - 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
+				th:disabled="${ paging.page <= 1 }">&lt;</button>
+
+			<!-- 숫자 버튼 -->
+			<th:block
+				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+				<button
+					th:onclick="'location.href=\'/community/main?page=' + @{${page}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
+					th:text="${ page }" th:disabled="${ paging.page eq page }">
+				</button>
+			</th:block>
+
+			<!-- 다음 페이지로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/list?page=' + @{${paging.page + 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''"
+				th:disabled="${ paging.page >= paging.maxPage }">></button>
+
+			<!-- 맨 끝으로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/list?page=' + @{${paging.maxPage}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''">>></button>
+
+		</th:block>
+
+		<th:block
+			th:if="${ paging.searchCondition == null || paging.searchCondition.isEmpty() || paging.searchValue == null || paging.searchValue.isEmpty()}">
+			<!-- 맨 앞으로 이동 -->
+			<button th:onclick="'location.href=\'/community/list?page=1\''">&lt;&lt;</button>
+
+			<!-- 이전 페이지로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/list?page=' + @{${paging.page - 1}} + '\''"
+				th:disabled="${ paging.page <= 1 }">&lt;</button>
+
+			<!-- 숫자 버튼 -->
+			<th:block
+				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+				<button
+					th:onclick="'location.href=\'/community/list?page=' + @{${page}} + '\''"
+					th:text="${ page }" th:disabled="${ paging.page eq page }">
+				</button>
+			</th:block>
+
+			<!-- 다음 페이지로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/list?page=' + @{${paging.page + 1}} + '\''"
+				th:disabled="${ paging.page >= paging.maxPage }">></button>
+
+			<!-- 맨 끝으로 이동 -->
+			<button
+				th:onclick="'location.href=\'/community/list?page=' + @{${paging.maxPage}} + '\''">>></button>
+		</th:block>
+
+	</div>
+
+
+	<div th:replace="common/footer.html"></div>
+</body>
+</html>
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>idSuccess</title>
+    <link rel="stylesheet" href="/css/member/login/idSuccess.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/font.css" type="text/css">
+</head>
+<body>
+    <div class="main">
+        <div class="left"></div>
+        <div class="right">
+            <div class="rightTitle">물뿌리개</div>
+            <div class="rightSub">반갑습니다! 식물쇼핑몰 물뿌리개입니다</div>
+            <div class="loginTitle">아이디찾기성공</div>
+            <div class="successText">
+                홍길동 회원님의 아이디는 아래와 같습니다
+            </div>
+            <div class="successId">
+                <p th:text="${ memberId }"></p>
+            </div>
+            <div>
+                <a href="#none">로그인</a>
+            </div>
+            <div class="copy">@Copyright 물뿌리개</div>
+        </div>
+    </div>    
+</body>
+</html>

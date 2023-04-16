@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.store.m.StoreMapper">
+
+<resultMap id="storeResultMap" type="com.water.Mulbburi.store.m.MStoreDTO">
+	<id property="sbNo" column="SB_NO"/>
+	<result property="sbName" column="SB_NAME"/>
+	<result property="sbPrice" column="SB_PRICE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="prodCategoryNo" column="PROD_CATEGORY_NO"/>
+	<result property="sbInventory" column="SB_INVENTORY"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+</resultMap>
+
+<select id="selectMyDayuk" parameterType="com.water.Mulbburi.store.m.MStoreDTO" resultMap="storeResultMap">
+	SELECT
+		  A.SB_NO,
+          A.SB_NAME,
+		  A.SB_PRICE,
+          A.MEMBER_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.SB_NO
+                 ,B.SB_NAME
+	    		 ,B.SB_PRICE
+                 ,B.MEMBER_NAME
+	        FROM (SELECT
+	                     C.SB_NO,
+                         C.SB_NAME,
+	                     C.SB_PRICE,
+	                     M.MEMBER_NAME
+	                FROM SHOPPINGBASCKET C
+					JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+                    WHERE PROD_CATEGORY_NO = 1
+                     AND SB_STATUS = '판매중'
+	                ORDER BY C.SB_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyFlower" parameterType="com.water.Mulbburi.store.m.MStoreDTO" resultMap="storeResultMap">
+	SELECT
+		  A.SB_NO,
+          A.SB_NAME,
+		  A.SB_PRICE,
+          A.MEMBER_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.SB_NO
+                 ,B.SB_NAME
+	    		 ,B.SB_PRICE
+                 ,B.MEMBER_NAME
+	        FROM (SELECT
+	                     C.SB_NO,
+                         C.SB_NAME,
+	                     C.SB_PRICE,
+	                     M.MEMBER_NAME
+	                FROM SHOPPINGBASCKET C
+					JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+                    WHERE PROD_CATEGORY_NO = 4
+                     AND SB_STATUS = '판매중'
+	                ORDER BY C.SB_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyTerrarium" parameterType="com.water.Mulbburi.store.m.MStoreDTO" resultMap="storeResultMap">
+	SELECT
+		  A.SB_NO,
+          A.SB_NAME,
+		  A.SB_PRICE,
+          A.MEMBER_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.SB_NO
+                 ,B.SB_NAME
+	    		 ,B.SB_PRICE
+                 ,B.MEMBER_NAME
+	        FROM (SELECT
+	                     C.SB_NO,
+                         C.SB_NAME,
+	                     C.SB_PRICE,
+	                     M.MEMBER_NAME
+	                FROM SHOPPINGBASCKET C
+					JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+                    WHERE PROD_CATEGORY_NO = 3
+                     AND SB_STATUS = '판매중'
+	                ORDER BY C.SB_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyHerb" parameterType="com.water.Mulbburi.store.m.MStoreDTO" resultMap="storeResultMap">
+	SELECT
+		  A.SB_NO,
+          A.SB_NAME,
+		  A.SB_PRICE,
+          A.MEMBER_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.SB_NO
+                 ,B.SB_NAME
+	    		 ,B.SB_PRICE
+                 ,B.MEMBER_NAME
+	        FROM (SELECT
+	                     C.SB_NO,
+                         C.SB_NAME,
+	                     C.SB_PRICE,
+	                     M.MEMBER_NAME
+	                FROM SHOPPINGBASCKET C
+					JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+                    WHERE PROD_CATEGORY_NO = 2
+                      AND SB_STATUS = '판매중'
+	                ORDER BY C.SB_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyETC" parameterType="com.water.Mulbburi.store.m.MStoreDTO" resultMap="storeResultMap">
+	SELECT
+		  A.SB_NO,
+          A.SB_NAME,
+		  A.SB_PRICE,
+          A.MEMBER_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.SB_NO
+                 ,B.SB_NAME
+	    		 ,B.SB_PRICE
+                 ,B.MEMBER_NAME
+	        FROM (SELECT
+	                     C.SB_NO,
+                         C.SB_NAME,
+	                     C.SB_PRICE,
+	                     M.MEMBER_NAME
+	                FROM SHOPPINGBASCKET C
+					JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+                    WHERE PROD_CATEGORY_NO = 5
+                      AND SB_STATUS = '판매중'
+	                ORDER BY C.SB_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT 
+        	   COUNT(*)
+          FROM SHOPPINGBASCKET
+</select>
+
+</mapper>

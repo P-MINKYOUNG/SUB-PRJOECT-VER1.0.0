@@ -1,0 +1,218 @@
+@charset "UTF-8"; /* 인코딩 문자 깨짐 방지*/
+
+html{
+    position: relative;
+width: 1930px;
+height: 1083px;
+}
+li{
+    text-transform: none;
+    list-style-type: none;
+    text-decoration: none;
+    
+
+    color: rgb(137, 187, 169);
+}
+a{
+    text-decoration: none;
+    color:  #FFFFFF;
+}
+
+
+
+.left{
+    position: absolute;
+left: 0%;
+right: 55.23%;
+top: 0%;
+bottom: 0%;
+
+background-image: url(/img/왼쪽배경.png);
+
+background-size: cover;
+}
+.right .title{
+    position: absolute;
+    left: 57.56%;
+    right: 15.11%;
+    top: 3.09%;
+    bottom: 89.73%;
+    font-family: 'HSBombaram21-Regular';
+   font-weight: normal;
+   font-size: 60px;
+    text-align: center;
+     
+    
+    color: rgba(169, 197, 185, 0.8);
+}
+
+.right .subtitle {
+    position: absolute;
+    left: 61.33%;
+right: 15.6%;
+top: 12.22%;
+bottom: 78.7%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 22px;
+line-height: 31px;
+
+
+    color:#7E7171;
+}
+
+.right .midletitle .midle{
+
+    position: absolute;
+left: 57.56%;
+right: 16.01%;
+top: 25.09%;
+bottom: 65.09%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 34px;
+line-height: 48px;
+text-align: center;
+   color: rgba(71, 66, 66, 0.6);
+    
+
+}
+.midletitle-choose-1{
+    position: absolute;
+    left: 57.56%;
+    right: 16.01%;
+    top: 32.93%;
+    bottom: 63%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 26px;
+line-height: 36px;
+text-align: center;
+text-decoration: none;
+border-radius: 30px;
+
+}
+.midletitle-choose-2{
+    position: absolute;
+    left: 57.61%;
+    right: 15.73%;
+    top: 39.93%;
+    bottom: 56%;
+    
+    border-radius: 30px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 36px;
+    text-align: center;
+    
+    color: rgba(255, 255, 255, 0.8);
+   
+    
+ 
+    
+}
+.midletitle-choose-3{
+
+    position: absolute;
+left: 57.61%;
+right: 15.73%;
+top: 46.85%;
+bottom: 48.97%;
+border-radius: 30px;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 26px;
+line-height: 36px;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.8);
+}
+.midletitle-choose-4{
+    position: absolute;
+    left: 57.41%;
+right: 15.49%;
+top: 53.98%;
+bottom: 41.94%;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 26px;
+line-height: 36px;
+text-align: center;
+
+color: rgba(255, 255, 255, 0.8);
+
+background: rgba(169, 197, 185, 0.8);
+border-radius: 30px;
+}
+
+
+
+.etc{
+    position: absolute;
+    left: 64.56%;
+right: 22.59%;
+top: 80.76%;
+bottom: 5.56%;
+
+font-family: 'Inter';
+font-style: normal;
+font-weight: 400;
+font-size: 24px;
+line-height: 29px;
+
+}
+.midletitle-choose-1-box{
+    position: absolute;
+    left: 57.56%;
+    right: 16.01%;
+    top: 32.13%;
+    bottom: 63%;
+    background: rgba(169, 197, 185, 0.8);
+border-radius: 30px;
+
+
+}
+
+.midletitle-choose-2-box{
+    position: absolute;
+    left: 57.61%;
+    right: 15.73%;
+    top: 39.13%;
+    bottom: 56%;
+    
+    background: rgba(169, 197, 185, 0.8);
+    border-radius: 30px;
+
+
+}
+.midletitle-choose-3-box{
+    position: absolute;
+    left: 57.61%;
+    right: 15.73%;
+    top: 46.13%;
+    bottom: 48.97%;
+    background: rgba(169, 197, 185, 0.8);
+    border-radius: 30px;
+
+
+}
+.midletitle-choose-4-box{
+    position: absolute;
+    left: 57.41%;
+right: 15.49%;
+top: 53.98%;
+bottom: 41.94%;
+    background: rgba(169, 197, 185, 0.8);
+border-radius: 30px;
+
+
+}

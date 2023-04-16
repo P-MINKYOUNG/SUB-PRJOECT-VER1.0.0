@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orderDetail</title>
+    <link href="/css/member/mypage/orderDetail.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/pheader.html"></div> 
+
+    <div class="title">
+        <p>주문조회</p>
+    </div>
+    <div class="prCode">
+        <span>주문번호 20231B419</span>
+    </div>
+     
+    <form>
+    <div class="flex">
+        <div class="page1">
+            <span><input type="checkbox" class="check"></span>
+            <span><img src="/img/yeob01.png" class="prImg"></span>
+            <span class="slName">[판매자이름]</span>
+            <span class="prName">상품명</span>
+            <span class="prCount">수량</span>
+            <span class="prPrice">20000원</span>
+        </div>
+        <div class="page2">
+            <span class="orPrice">결제금액</span>
+            <span class="orCount">20000원</span>
+        </div>
+    </div> 
+    <div class="pwdBtn">
+        <button type="submit" class="access">환불 신청</button>
+        <a href="#none" class="exit">교환 신청</a>
+    </div>
+    </form>
+
+	<div th:replace="common/pfooter.html"></div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypageMain</title>
+   <!--  <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script> -->
+    <link href="/css/member/mypage/mypageMain.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    
+</head>
+<body>
+
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+	
+  	<div th:replace="common/spheader.html"></div> 
+  
+    <div class="mypageMenu">
+            <div class="img1"><img src="/img/프로필.png" class="profile"></div>
+            <div>
+                <div class="mypageName"><p class="userName">user01234</p><p class="greet">님 환영합니다.</p></div>
+                <nav class="mypageMenu">
+                    <a href="/member/mypage/orderList">
+                    <img src="/img/sell.png" class="sell">
+                    </a>
+                    <a href="/member/mypage/infoModifyJoin">
+                    <img src="/img/myinfo.png" class="myInfo">
+                    </a>
+                    <a href="#none">
+                    <img src="/img/heart.png" class="heart">
+                    </a>
+                    <a href="#none">
+                    <img src="/img/comunity.png" class="comunity">
+                    </a>
+                </nav>
+                <div class="menuName">
+                    <p class="sellP">구매</p>
+                    <p class="infoP">내 정보 수정</p>
+                    <p class="likeP">좋아요</p>
+                    <p class="textP">게시글</p>
+                </div>
+            </div>
+
+    </div>
+
+    <div th:replace="common/spfooter.html"></div> 
+
+</body>
+</html>

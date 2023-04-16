@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ</title>
+    <link href="../resource/css/gongidetail.css" rel="stylesheet" type="text/css">
+    <link rel="icon" type="image/x-icon" href="../resource/images/icons8-화분에-심은-식물-48 (1).png">
+    <link href="https://unpkg.com/ress/dist/ress.min.css" rel="stylesheet" type="text/css">
+    <link href="../resource/css/font.css" rel="stylesheet" type="text/css">
+ <link rel="stylesheet" type="text/css" th:href="@{/css/font.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/gongidetail.css}">   
+
+
+</head>
+<body>
+  
+
+    <div th:replace="common/mheaderLogin.html"></div>
+    
+
+    <div class= wrapper>
+    	<div class="title-left"><p th:text="${ consumer.announcementTitle }"></div>
+		    
+		    <div class="title-list">
+		     <table>
+		     <hr>
+		 
+				
+			
+			
+				<tr>
+					<td></td>
+					<td colspan="3" ><br th:text="${ consumer.announcementSt }"></br></td>
+				</tr>
+			</table>
+		            <hr>
+		            
+		            
+		            
+		            
+		    </div>
+	</div>		    
+<div th:replace="common/j.footer2.html"></div>
+    
+</body>
+</html>

@@ -1,0 +1,244 @@
+.contentsWrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.detailView .goodsInfo {
+    display: flex;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.detailLeft {
+    width: 600px;
+    margin-right: 50px;
+}
+
+.goodsPic img {
+    box-sizing: border-box;
+    width: 600px;
+    height: 600px;
+}
+
+.detailRight {
+    flex: 1;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.reviewTXT {
+    font-size: 24px;
+    color: #222;
+    font-weight: bold;
+}
+
+.startBox {
+    font-size: 14px;
+}
+.startBox span {
+    margin: 5px 10px 0 0;
+}
+
+.shopInfo {
+    margin: 10px 0;
+    width: 100%;
+    font-size: 16px;
+}
+
+tbody{
+    display: table-row-group;
+    vertical-align: middle;
+}
+
+
+.shopInfo th {
+    width: 110px;
+    padding: 3px;
+    text-align: left;
+}
+
+.shopInfo td {
+    padding: 4px;
+    text-align: left;
+}
+
+.totalPriceNum div{
+    padding: 15px 0;
+    display: inline-block;
+    width: 250px;
+}
+
+div.total span {
+    font-size: 27px;
+    margin-left: 0;
+    padding: 0;
+}
+
+div.total{
+    text-align: right;
+    font-size: 30px;
+    width: 100%;
+}
+
+.button.full {
+    width: 100%;
+}
+
+.button.greenLine {
+    color: green;
+    border: solid 1px #67c779;
+    background-color: #ffffff;
+}
+
+.button.default {
+    display: inline-block;
+    height: 60px;
+    line-height: 58px;
+    font-size: 18px;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.button.green{
+    color: #ffffff;
+    background-color: rgba(126, 113, 113, 0.8);
+}
+
+.halfFullButton {
+    font-size:0;
+}
+.halfFullButton .halfCell {
+    display:inline-block;
+    width:50%;
+    box-sizing: border-box;
+    padding-top: 20px;
+}
+.halfFullButton .halfCell:first-child {
+    padding-right:5px;
+}
+.halfFullButton .halfCell:last-child {
+    padding-left:5px;
+}
+
+.tabButtonWrap.style2 {
+    display:inline-block;
+    width:100%; 
+    font-size:0; 
+    text-align:center; 
+    margin-bottom:70px;
+}
+.tabButtonWrap.style2 .tab {
+	display:inline-block;
+	width:20%;
+	height:60px;
+	line-height:58px;
+	font-size:18px;
+	color:#555555;
+	text-align:center;
+	vertical-align: middle;
+	box-sizing: border-box;
+	border:solid 1px #e6e5e3;
+	border-left:0;
+	cursor:pointer;
+	background-color:#ffffff;
+}
+.tabButtonWrap.style2 .tab span {
+    color:#18c682; 
+    font-family: NotoSansM;
+}
+.tabButtonWrap.style2 .tab:first-child {
+    border-left:solid 1px #e6e5e3;
+}
+.tabButtonWrap.style2 .tab.on {
+    background-color:#e6e5e3;
+}
+
+.pageTitle {
+    font-size:28px; 
+    color:#323232; 
+    text-align:center; 
+    margin-bottom:45px;
+}
+
+.detailView {
+    padding: 10px 20px;
+    text-align: left;
+}
+
+table.infoBox {
+    width: 100%;
+    border-top: solid 1px #ddd;
+}
+
+table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-spacing: 2px;
+
+}
+
+.formTitle {
+    margin: 60px 0 0 0;
+    font-size: 20px;
+    color: #222;
+    padding-bottom: 15px;
+}
+
+table.infoBox tr th {
+    padding: 10px 20px;
+    text-align: left;
+}
+
+table.infoBox tr td {
+    width: 190px;
+    padding: 10px 20px;
+    text-align: left;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+}
+
+.description {
+    font-size: 12px;
+    padding: 10px 0;
+    line-height: 24px;
+    margin: 0 0 70px 0;
+}
+
+ol {
+    margin: 0;
+}
+
+.startBox {
+    padding: 10px 0;
+    border-bottom: solid 1px #e6e6e6;
+}
+
+.shopInfo{
+    border-bottom: solid 1px #e6e6e6;
+}
+
+a{
+    text-decoration: none;
+}
+
+.greenColor {
+    color: green;
+}
+
+.reviewStarpoint {
+    font-size: 27px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.detailView .marginB10 {
+    margin-bottom: 10px;
+}
+

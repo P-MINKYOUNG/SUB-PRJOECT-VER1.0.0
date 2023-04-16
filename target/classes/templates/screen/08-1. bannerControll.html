@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/screen/08. screenControll.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/screen/08-1. bannerControll.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<div th:replace="/common/madminLoginHeader.html"></div>
+
+	<div class="topground">
+            <div class="t1">저장하기</div>
+            <div class="t2">목록확인</div>
+    </div>
+    <div class="totalbackground2">
+        <div class="totalstory">
+            <div class="totalbase">
+                <div class="category1">
+                    <div class="titlename"><span>배너</span></div>
+                    <div class="arrow">▼</div>
+                    <div class="bannername">BANNER</div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="mydropdown">
+                        <div class="category2">
+                        	<div>파일</div>
+                            <div>작성일</div>
+                            <div>삭제일</div>
+                            <div>게시일</div>
+                            <div>종료일</div>
+                        </div>
+						<form class="story" method="post" action="regist/banner" enctype="multipart/form-data">
+                        	<input type="file" class="file" name="attachImage">
+                            <input type="date" class="writedate" name="bannerGenDate">
+                            <input type="date" class="deletedate" name="bannerDelDate">
+                            <input type="date" class="postingdate" name="bannerPostDate">
+                            <input type="date" class="enddate" name="bannerEndDate">
+                            <input type="submit" id="submit">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     <div th:replace="/common/spfooter.html"></div>
+</body>
+</html>

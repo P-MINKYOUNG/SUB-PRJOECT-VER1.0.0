@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기</title>
+	<link rel="icon" type="image/x-icon" href="../resource/images/icons8-화분에-심은-식물-48 (1).png">
+    <link href="https://unpkg.com/ress/dist/ress.min.css" rel="stylesheet" type="text/css">
+    <link href="../resource/css/font.css" rel="stylesheet" type="text/css">
+     <link href="../resource/css/ct.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" type="text/css" th:href="@{/css/font.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ct.css}">   
+     
+
+
+</head>
+<body>
+    <div class="left">
+        <header>
+
+        </header>
+
+    </div>
+    <div class="right">
+        <div class="title" id="타이틀"><h1>물뿌리개</h1></div>
+            <div class="subtitle" id="sub타이틀"><p>반갑습니다. 식물쇼핑몰 물뿌리개입니다.</p></div>
+        <nav>
+            <div class="midletitle" id="midletitle">
+                <h3 class="midle">1:1문의</h3>
+                <ul class="midletitle-choose">
+                    <li class="midletitle-choose-1"><a><select name="mun">
+                        <option value="mun1">문의유형</option>
+                        <option value="mun2">배송지연불만</option>
+                        <option value="mun3">반품문의</option>
+                        <option value="mun4">주문결제문의</option>
+                        <option value="mun5">회원정보문의</option>
+                        <option value="mun6">취소문의</option>
+                        <option value="mun7">교환문의</option>
+                        <option value="mun8">상품정보문의</option>
+                        <option value="mun9">기타문의</option>
+                    </select></a></li>
+                    <li class="midletitle-choose-2"><a>이메일</a></li>
+                    <li class="midletitle-choose-3"><a>문의 내용</a></li>
+                </ul>
+            </div>
+        </nav>
+        <form action="{getform-endpoint}" method="POST">
+
+            <input type="text" id="name" placeholder="제목을 입력하세요">
+            <input type="email" id="email" placeholder="이메일을 입력하세요">
+            <textarea id="content" maxlength="100"></textarea>
+            <button type="submit" onclick="location.href='1대1문의.html' " id="subbutton"><a href="/consumer/list">제출</a></button>
+            <button id= ca-bt type="button" onclick="location.href='common/header' "><a>취소</a></button>
+          
+          </form>
+     
+            
+
+    </div>
+
+    
+</body>
+</html>

@@ -1,0 +1,256 @@
+.contentsWrap {
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.pageTitle {
+	font-size: 28px;
+	color: #7e7171;
+	text-align: center;
+	margin-top: 45px;
+	margin-bottom: 45px;
+}
+
+.wishList {
+	margin-bottom: 100px;
+}
+
+.wishList i {
+	font-size: 32px;
+}
+
+.wishList .wishListDivision {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.wishList .wishListDivision .left {
+	width: 790px;
+	margin-right: 25px;
+}
+
+.wishList .wishListDivision .right {
+	flex: 1;
+	box-sizing: border-box;
+}
+
+.wishList .wishListDivision .wishBoxArea {
+	box-sizing: border-box;
+}
+
+.wishList .wishListDivision .wishBoxArea {
+	width: 100%;
+	padding: 0 10px 0 20px;
+}
+
+.wishList .wishListDivision .wishBoxArea .imgBox {
+	display: inline-block;
+	width: 100px;
+	padding: 20px 20px 10px 0;
+	vertical-align: top;
+}
+
+.wishList .wishListDivision .wishBoxArea .imgBox img {
+	width: 100px;
+	height: 100px;
+}
+
+.wishList .wishListDivision .wishBoxArea .con {
+	display: inline-block;
+	width: 570px;
+	word-break: break-all;
+	padding: 20px 0 0 0;
+	font-size: 16px;
+}
+
+.wishList .wishListDivision .wishBoxArea span {
+	display: inline-block;
+	vertical-align: top;
+	padding: 5px 0;
+	font-size: 12px;
+}
+
+.wishList .wishListDivision .resultDiv>table.resultBox {
+	background: #f6f6f6;
+	width: 100%;
+	margin: 0 0 10px;
+	padding: 0;
+	border-collapse: collapse;
+}
+
+.wishList .wishListDivision .resultDiv>table.resultBox tr td {
+	padding: 10px;
+}
+
+.wishList .wishListDivision .resultDiv>table.resultBox tr th:last-child
+	{
+	padding: 0 20px 0;
+	text-align: right;
+	font-size: 18px;
+	line-height: 18px;
+	color: #000;
+	border-bottom: 0;
+}
+
+.wishList .wishListDivision table.basketT {
+	border: solid 1px #e7e7e7;
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0 0 10px 0;
+}
+
+.wishList .wishListDivision table.basketT tr th {
+	background: #f6f6f6;
+	padding: 5px 0;
+	border-bottom: solid 1px #ddd;
+	width: 100%;
+	text-align: center;
+	height: 40px;
+	font-size: 17px;
+}
+
+.wishList .wishListDivision table.basketT tr td {
+	position: relative;
+	box-sizing: border-box;
+}
+
+.wishList .wishListDivision table.basketT tr td.contents {
+	padding: 0 25px 0 25px;
+}
+
+.wishList .wishListDivision table.basketT tr td span.chkbox {
+	position: absolute;
+	left: 20px;
+	top: 20px;
+}
+
+.wishList .wishListDivision table.basketT tr td span.close {
+	position: absolute;
+	right: 10px;
+	top: 10px;
+}
+
+.wishList .wishListDivision table.priceTable {
+	background: #fff;
+	width: 100%;
+	border: solid 1px #e7e7e7;
+	border-collapse: collapse;
+	margin-bottom: 10px;
+}
+
+.wishList .wishListDivision table.priceTable tr th {
+	background: #f6f6f6;
+	padding: 5px;
+	font-size: 18px;
+	border: solid 1px #e7e7e7;
+	color: #222222;
+	height: 40px;
+}
+
+.wishList .wishListDivision table.priceTable tr.firstChild td {
+	padding-top: 30px;
+}
+
+.wishList .wishListDivision table.priceTable tr.lastChild td {
+	padding-bottom: 30px;
+}
+
+.wishList .wishListDivision table.priceTable .txtRight {
+	text-align: right;
+}
+
+.wishList .wishListDivision table.priceTable tr td {
+	padding: 10px 30px;
+	font-size: 18px;
+	font-size: 16px;
+}
+
+.wishList .wishListDivision table.priceTable tr td span {
+	color: #000;
+}
+
+.wishList .wishListDivision table.priceTable tr td.finalPrice {
+	border-top: solid 1px #e7e7e7;
+	padding: 15px 20px 40px 20px;
+	font-size: 16px;
+	font-family: NotoSansM;
+	color: #49b95c;
+}
+
+.wishList .wishListDivision table.priceTable tr td.finalPrice span {
+	font-size: 28px;
+	color: #49b95c
+}
+
+.wishList .wishListDivision .emptyCart {
+	border-top: 1px solid #e2e2e2;
+	border-bottom: 1px solid #e2e2e2;
+	padding: 25px 0;
+	font-size: 16px;
+	color: #666666;
+	text-align: center;
+}
+
+.wishList .wishListDivision .emptyCart i {
+	font-size: 3em;
+	color: #999999;
+}
+
+.wishList .wishListDivision .emptyCart span.text {
+	display: block;
+	margin-top: 15px;
+	font-size: 16px;
+	color: #666666;
+}
+
+.formTitle {
+	padding-bottom: 20px;
+}
+
+.xi-close-min-reClose::before {
+	content: "\00d7";
+	color: black;
+	font-size: 28px;
+}
+
+.priceSum {
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.button {
+	display: inline-block;
+	height: 60px;
+	line-height: 58px;
+	font-size: 18px;
+	text-align: center;
+	background-color: rgba(126, 113, 113, 0.8);
+	color: white;
+	width: 100%;
+	text-decoration-line: none;
+}
+
+.button:hover {
+	text-decoration-line: none;
+}
+
+.tetRight {
+	text-align: right;
+}
+
+li {
+	list-style-type: none;
+}
+
+.quantity_input {
+	width: 30px;
+}
+
+.quantity_modify_btn{
+	border: 1px solid #d0d0d0;
+	background-color: rgba(126, 113, 113, 0.8);
+	color: white;
+}
+
+

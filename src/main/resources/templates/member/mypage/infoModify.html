@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>infoModify</title>
+    <link href="/css/member/mypage/infoModify.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/spheader.html"></div>
+
+    <div class="topInfo">
+        <img src="/img/프로필.png" class="profile">
+        <p class="id">user012</p>
+        <p class="text">님 안녕하세요</p>
+    </div>
+	
+	
+    <div class="page">
+        <form action="/member/mypage/infoModify" method="post">
+            <table>
+                <tr>
+                    <td>
+                    <label>이름</label>
+                    </td>
+                    <td>
+                    <input type="text" name="memberName" id="memberName" th:value="${ #authentication.principal.memberName}" class="nameBar">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label>아이디</label>
+                    </td>
+                    <td>
+                    <input type="text" name="memberId" id="memberId" class="idBar" th:value="${ #authentication.principal.memberId}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label>휴대전화</label>
+                    </td>
+                    <td>
+                    <input type="text" name="phone" th:value="${ #authentication.principal.phone}" class="telBar">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label>이메일</label>
+                    </td>
+                    <td>
+                    <input type="text" name="emailId" id="emailId" class="emailBar" placeholder="이메일을 입력해주세요"> @
+                    <select class="email" name="domain" id="domain">
+                        <option>선택</option>
+                        <option>naver.com</option>
+                        <option>gmail.com</option>
+                        <option>hanmail.com</option>
+                        <option>nate.com</option>
+                        <option>daum.net</option>
+                    </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label>주소</label>
+                    </td>
+                    <td>
+                    <input type="text" name="postCode" id="postCode" class="zipBar" th:value="${ #authentication.principal.postCode}" placeholder="우편번호" readonly>
+                    <input type="button" value="검색" id="searchZipCode">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                    <label></label>
+                    </td>
+                    <td>
+                    <input type="text" name="bsAddress" id="bsAddress" class="addressBar1" th:value="${ #authentication.principal.bsAddress}" placeholder="기본주소" readonly>
+                    </td>
+                </tr>
+                    <td>
+                    <label></label>
+                    </td>
+                    <td>
+                    <input type="text" name="dtAddress" id="dtAddress" class="addressBar2" th:value="${ #authentication.principal.dtAddress}" placeholder="상세주소">
+                    </td>
+                </tr>
+            </table>
+                <div class="pwdBtn">
+                    <button type="submit" class="access">수정 완료</button>
+                    <a href="#none" class="exit">회원 탈퇴</a>
+                </div>
+        </form>
+    </div>
+
+	<div th:replace="common/spfooter.html"></div>
+	
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+
+	const $searchZipCode = document.getElementById("searchZipCode");
+	
+	$searchZipCode.onclick = function() {
+		
+		/* 다음 우편번호 검색 창을 오픈하면서 동작할 콜백 메소드를 포함한 객체를 인자로 전달한다. */
+	
+	
+
+    new daum.Postcode({
+        oncomplete: function(data) {
+            /* 팝업에서 검색결과 항목을 클릭 했을 시 실행할 코드를 작성하는 부분 */
+            document.getElementById("postCode").value = data.zonecode;
+            document.getElementById("bsAddress").value = data.address;
+            document.getElementById("dtAddress").focus();
+        }
+    }).open();
+		
+	};		
+	</script> 
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/screen/08. screenControll.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/screen/08-1. bannerControll.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="totalbackground2">
+        <div class="totaltitle2">물뿌리개</div>
+        <div class="totalstory">
+            <div class="totalbase">
+                <div class="category1">
+                    <div class="titlename"><span>배너</span></div>
+                    <div class="arrow">▼</div>
+                    <div class="bannername">배너명.jpg</div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="mydropdown">
+                        <div class="category2">
+                            <div>배너명</div>
+                            <div>작성일</div>
+                            <div>삭제일</div>
+                            <div>게시일</div>
+                            <div>종료일</div>
+                        </div>
+                        <div class="story">
+                            <div class="bannertitle">배너명.jpg</div>
+                            <div class="writedate">작성일</div>
+                            <div class="deletedate">삭제일</div>
+                            <div class="postingdate">게시일</div>
+                            <div class="enddate">종료일</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- 페이징 -->
+     <div class="paging">
+        <button>&lt;&lt;</button>
+        <button>이전</button>
+            
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+
+        <button>다음</button>
+        <button>&gt;&gt;</button>
+    </div>
+    
+     <div th:replace="/common/pfooter.html"></div>
+</body>
+</html>

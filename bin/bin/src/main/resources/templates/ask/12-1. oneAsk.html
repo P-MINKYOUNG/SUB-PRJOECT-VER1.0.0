@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/ask/12. askControll.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/ask/12-1. oneAskControll.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+	<div th:replace="/common/pheader.html"></div>
+	
+    <div class="totalbackground2">
+        <div class="totalstory">
+            <div class="totalbase">
+                <div class="category1">
+                    <div class="titlename"><span>미답변</span></div>
+                    <div class="arrow">▼</div>
+                    <div class="bannername">배송이 안오는데 답변도 없어요ㅜㅜ</div>
+                </div>
+
+                <div class="dropdown">
+                    <div class="mydropdown">
+                        <div class="category2">
+                            <div>제목</div>
+                            <div>작성자</div>
+                            <div>이메일</div>
+                            <div>문의유형</div>
+                            <div>문의내용</div>
+                        </div>
+                        <div class="story">
+                            <div class="bannertitle">배송이 안오는데 답변도 없어요ㅜㅜ</div>
+                            <div class="writedate">winter0123</div>
+                            <div class="deletedate">winter0123@gmail.com</div>
+                            <div class="postingdate">상품문의</div>
+                            <div class="enddate">배송이 안와서 문의글도 남겼는데 답변이 안왔어요ㅠㅠ<br>어떻게 해야 하나요??</div>
+                        </div>
+                        <div class="answerd">답변하기</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 페이징 -->
+     <div class="paging">
+        <button>&lt;&lt;</button>
+        <button>이전</button>
+            
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+
+        <button>다음</button>
+        <button>&gt;&gt;</button>
+    </div>
+    </div>
+    
+    <div th:replace="/common/pfooter.html"></div>
+</body>
+</html>

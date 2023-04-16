@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orderDetail</title>
+    <link href="/css/member/mypage/orderDetail.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+   <!--  <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script> -->
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/spheader.html"></div> 
+
+    <div class="title">
+        <p>주문조회</p>
+    </div>
+    <div class="prCode">
+        <span th:text="|주문번호 ${ order.orderNo }|">주문번호 20231B419</span>
+    </div>
+     
+    <form name="form" id="" method="get">
+    <div class="flex">
+        <div class="page1">
+        	<table >
+        	<tr>
+        		<th class="menu1">선택</th>
+        		<th class="menu2">판매업체명</th>
+        		<th class="menu3">상품명</th>
+        		<th class="menu4">주문수량</th>
+        		<th class="menu5">주문금액</th>
+        	</tr>
+        	<tr>
+        	<td>
+            <span><input type="checkbox" class="omenu1" name="orderNo" th:value="${ order.orderNo }"></span>
+            </td>
+            <td>
+            <span class="omenu2" th:text="${ order.businessName }">[판매자이름]</span>
+            </td>
+            <td>
+            <span class="omenu3" th:text="${ order.sbName }">상품명</span>
+            </td>
+            <td>
+            <span class="omenu4" th:text="${ order.orderAmount }">수량</span>
+            </td>
+            <td>
+            <span class="omenu5" th:text="${ order.orderAmountMoney }">20000원</span>
+            </td>
+            </tr>
+            </table>
+        </div>
+        <div class="page2">
+            <span class="orPrice">결제금액</span>
+            <span class="orCount" th:text="${ order.orderAmountMoney }">20000원</span>
+        </div>
+    </div> 
+    <div class="pwdBtn">
+        <button type="submit" class="refund" id="refund" value="환불 신청" onclick="javascript: form.action='/member/mypage/refund';">환불 신청</button>   
+        <button type="submit" class="exchange" id="exchange" value="교환 신청" onclick="javascript: form.action='/member/mypage/exchange';">교환 신청</butoon>
+    </div>
+    </form>
+
+	<div th:replace="common/spfooter.html"></div>
+
+    </div>
+    
+</body>
+</html>

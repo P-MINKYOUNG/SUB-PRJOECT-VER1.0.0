@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.main.MainMapper">
+
+<resultMap id="youtubeResultMap" type="com.water.Mulbburi.screen.youtube.YoutubeDTO">
+	<id property="ytNo" column="YT_NO"/>
+	<result property="ytWriteDate" column="YT_WRITE_DATE"/>
+	<result property="ytDeleteDate" column="YT_DELETE_DATE"/>
+	<result property="ytPostDate" column="YT_POST_DATE"/>
+	<result property="ytEndDate" column="YT_END_DATE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="ytPath" column="YT_PATH"/>
+	<result property="ytName" column="YT_NAME"/>
+</resultMap>
+
+<resultMap id="fileResultMap" type="com.water.Mulbburi.file.FileDTO">
+	<id property="fileNo" column="FILE_NO"/>
+	<result property="fileoriginalName" column="FILE_ORIGINAL_NAME"/>
+	<result property="filePath" column="FILE_PATH"/>
+	<result property="fileSize" column="FILE_SIZE"/>
+	<result property="fileSavedName" column="FILE_SAVED_NAME"/>
+	<result property="custom" column="CUSTOM"/>
+	<result property="sbNo" column="SB_NO"/>
+	<result property="memberNo" column="memberNo"/>
+	<result property="communityNo" column="COMMUNITY_NO"/>
+	<result property="reviewNo" column="REVIEW_NO"/>
+	<result property="bannerNo" column="BANNER_NO"/>
+	<result property="ytNo" column="YT_NO"/>
+	<result property="fileType" column="FILE_TYPE"/>
+</resultMap>
+
+<resultMap id="cartInfoMap" type="com.water.Mulbburi.shoppingcart.DTO.cartDTO">
+	<id property="pcNo" column="PC_NO"/>
+	<result property="memberNo" column="MEMBER_NO"/>	
+	<result property="sbNo" column="SB_NO"/>
+	<result property="pcAmount" column="PC_AMOUNT"/>
+	<result property="sbName" column="SB_NAME"/>
+	<result property="sbPrice" column="SB_PRICE"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+</resultMap>
+
+<resultMap type="com.water.Mulbburi.community.dto.CommunityDTO" id="communityAllResultMap">
+      <id property="communityNo" column="COMMUNITY_NO"/>
+      <result property="communityTitle" column="COMMUNITY_TITLE"/>
+      <result property="communityStory" column="COMMUNITY_STORY"/>
+      <result property="communityWriteDate" column="COMMUNITY_WRITE_DATE"/>
+      <result property="communityUpdateDate" column="COMMUNITY_UPDATE_DATE"/>
+      <result property="communityDeleteDate" column="COMMUNITY_DELETE_DATE"/>
+      <result property="memberNo" column="MEMBER_NO"/>
+      <result property="custom" column="CUSTOM"/>
+      <result property="memberId" column="MEMBER_ID"/>
+</resultMap>
+
+<resultMap type="com.water.Mulbburi.faq.dto.FaqDTO" id="faqResultMap">
+	<id property="faqNo" column="FAQ_NO"/>
+	<result property="faqCategory" column="FAQ_CATEGORY"/>
+	<result property="faqTitle" column="FAQ_TITLE"/>
+	<result property="faqSt" column="FAQ_ST"/>
+	<result property="faqWriteTime" column="FAQ_WRITE_TIME"/>
+	<result property="memberId" column="MEMBER_ID"/>
+</resultMap>
+
+<resultMap type="com.water.Mulbburi.consumer.dto.ConsumerDTO" id="noticeResultMap">
+	<id property="announcementNo" column="ANNOUNCEMENT_NO"/>
+	<result property="announcementTitle" column="ANNOUNCEMENT_TITLE"/>	
+	<result property="announcementSt" column="ANNOUNCEMENT_ST"/>	
+	<result property="administratorNo" column="ADMINISTRATOR_NO"/>	
+	<result property="anWriteTime" column="AN_WRITE_TIME"/>	
+	<result property="memberId" column="MEMBER_ID"/>	
+</resultMap>
+
+<select id="selectMyNotice" parameterType="com.water.Mulbburi.consumer.dto.ConsumerDTO" resultMap="noticeResultMap">
+	SELECT
+	       A.ANNOUNCEMENT_TITLE,
+	       A.MEMBER_ID
+	  FROM (SELECT
+	  			   ROWNUM RNUM,
+	  			   B.ANNOUNCEMENT_TITLE,
+	  			   B.MEMBER_ID
+	  		  FROM (SELECT
+	  		  			  C.ANNOUNCEMENT_TITLE,
+	  		  			  M.MEMBER_ID
+	  		  		 FROM ANNOUNCEMENT C
+	  		  		 JOIN MEMBER M ON (M.MEMBER_NO = C.ADMINISTRATOR_NO)
+	  		  		ORDER BY C.ADMINISTRATOR_NO) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyFAQ" parameterType="com.water.Mulbburi.faq.dto.FaqDTO" resultMap="faqResultMap">
+	SELECT
+	       A.FAQ_TITLE,
+	       A.MEMBER_ID
+	  FROM (SELECT
+	  			   ROWNUM RNUM,
+	  			   B.FAQ_TITLE,
+	  			   B.MEMBER_ID
+	  	      FROM (SELECT
+	  	                  C.FAQ_TITLE,
+	  	                  M.MEMBER_ID
+	  	             FROM FAQ C
+	  	             JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+	  	            ORDER BY C.FAQ_NO) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyCom" parameterType="com.water.Mulbburi.community.dto.CommunityDTO" resultMap="communityAllResultMap">
+SELECT
+	 	   A.COMMUNITY_TITLE,
+	 	   A.MEMBER_ID
+	 FROM (SELECT
+	 			  ROWNUM RNUM,
+	 			  B.COMMUNITY_TITLE,
+	 			  B.MEMBER_ID
+	 	     FROM (SELECT
+	 	     			  C.COMMUNITY_TITLE,
+	 	     			  M.MEMBER_ID
+	 	     	     FROM COMMUNITY C
+	 	     	     JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+	 	     	    ORDER BY C.COMMUNITY_NO) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectMyProd" parameterType="com.water.Mulbburi.shoppingcart.DTO.cartDTO" resultMap="cartInfoMap">
+	SELECT
+	 	   A.SB_NAME,
+	 	   A.SB_NO,
+	 	   A.MEMBER_NAME,
+	 	   A.SB_PRICE
+	 FROM (SELECT
+	 			  ROWNUM RNUM,
+	 			  B.SB_NAME,
+	 			  B.SB_NO,
+	 			  B.MEMBER_NAME,
+	 			  B.SB_PRICE
+	 	     FROM (SELECT
+	 	     			  C.SB_NAME,
+	 	     			  M.MEMBER_NAME,
+	 	     			  C.SB_NO,
+	 	     			  C.SB_PRICE
+	 	     	     FROM SHOPPINGBASCKET C
+	 	     	     JOIN MEMBER M ON (M.MEMBER_NO = C.MEMBER_NO)
+	 	     	    ORDER BY C.SB_NO) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+</select>
+
+
+<select id="selectMyYoutube" parameterType="com.water.Mulbburi.screen.youtube.YoutubeDTO" resultMap="youtubeResultMap">
+	SELECT
+		  A.YT_NO,
+		  A.YT_WRITE_DATE,
+		  A.YT_DELETE_DATE,
+		  A.YT_POST_DATE,
+		  A.YT_END_DATE,
+		  A.YT_PATH,
+		  A.YT_NAME
+	 FROM (SELECT
+	    		  ROWNUM RNUM
+	    		 ,B.YT_NO
+	    		 ,B.YT_WRITE_DATE
+	    		 ,B.YT_DELETE_DATE
+	    		 ,B.YT_POST_DATE
+	    		 ,B.YT_END_DATE
+	    		 ,B.YT_PATH
+	    		 ,B.YT_NAME
+	        FROM (SELECT
+	                     C.YT_NO,
+	                     C.YT_WRITE_DATE,
+	                     C.YT_DELETE_DATE,
+	                     C.YT_POST_DATE,
+	                     C.YT_END_DATE,
+	                     C.YT_PATH,
+	                     C.YT_NAME
+	                FROM YOUTUBE C
+	         ORDER BY C.YT_NO ASC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+	      AND TO_CHAR(YT_POST_DATE) >= TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+	      AND TO_CHAR(YT_END_DATE) <![CDATA[>=]]> TO_CHAR(SYSDATE, 'yyyy-MM-dd')
+        ORDER BY 1 ASC
+</select>
+
+<select id="selectTotalCount" resultType="_int" parameterType="hashmap">
+        SELECT 
+        	   COUNT(*)
+          FROM YOUTUBE
+</select>
+
+<delete id="deleteYoutube">
+	DELETE
+	  FROM YOUTUBE
+     WHERE YT_DELETE_DATE = SYSDATE;
+</delete>
+
+<select id="selectMyFile" parameterType="com.water.Mulbburi.file.FileDTO" resultMap="fileResultMap">
+	SELECT
+		  A.FILE_NO,
+		  A.FILE_PATH,
+		  A.FILE_TYPE
+	 FROM (SELECT
+	    		  ROWNUM RNUM,
+		  		  B.FILE_NO,
+		  		  B.FILE_PATH,
+		  		  B.FILE_TYPE
+	        FROM (SELECT
+		  				 C.FILE_NO,
+		  				 C.FILE_PATH,
+		  				 C.FILE_TYPE
+	                FROM TBL_FILE C
+	          ORDER BY C.FILE_NO DESC
+        ) B
+        <![CDATA[
+                  WHERE ROWNUM <= #{ endRow }
+                  ]]>
+	    )A
+	    WHERE A.RNUM >= #{ startRow }
+        ORDER BY 1 ASC
+	         
+</select>
+
+</mapper>

@@ -1,0 +1,141 @@
+.right {
+    float: right;
+    position: relative;
+    margin-right: 50px;
+    bottom: 334px;
+}
+
+
+
+.formTitle {
+    margin-top: 20px;   
+}
+  
+.formWarp {
+    margin-bottom: 20px;
+  }
+  
+.formMember, .formWarp {
+    margin-bottom: 10px;
+  }
+  
+  .input_default, .input_default_phone1, .input_default_phone2, .input_default_name, .input_email, .input_main2, select {
+    margin-bottom: 10px;
+}
+.formWarp {
+    margin: 30px auto;
+    padding: 30px;
+    width: 40%;
+    border: 1px solid #ddd;
+  }
+  
+  .formTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+.formTitle_address {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+  
+  .formMember {
+    margin-bottom: 20px;
+  }
+  
+  input[type=text], select, textarea {
+    width: 30%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+ }
+
+
+  
+
+.coment_head {
+    margin-top: 5px;
+}
+  
+.pay_menu {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.priceTable {
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.priceTable th {
+    background-color: #A9C5B9;
+    padding: 10px;
+    width: 400px;
+    text-align: center;
+}
+
+.priceTable td {
+    padding: 10px;
+    text-align: left;
+}
+
+.priceTable td.txtRight {
+    text-align: right;
+}
+
+.priceTable tr:nth-child(odd) {
+    background-color: #A9C5B9;
+}
+
+.priceTable .finalPrice {
+    font-weight: bold;
+}
+
+.priceTable .quantity {
+    font-weight: bold;
+}
+
+.priceTable span {
+    margin-right: 5px;
+}
+
+.orderButton {
+    display: block;
+    width: 432px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 0px;
+}
+
+.orderButton {
+    background-color: green;
+}
+
+.pageTitle {
+    text-align: center;
+    margin-top: 18px;
+    font-size: 28px;
+    color:  #7E7171;
+}
+
+.qttyInputBox {
+    width: 50%;
+}
+
+li {
+    list-style-type: none;
+}

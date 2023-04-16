@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/css/store/04. store.css" rel="stylesheet" style type="text/css">
+    <link href="/css/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="/js/store/04. store.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+<div th:replace="/common/mheaderLogin.html"></div>
+    <!-- 배너(베스트 상품) -->
+    <div class="wrapper">
+        <div class="banner 1"><img src="/img/배너 1.png"></div>
+        <div class="banner 2"><img src="/img/배너 2.png"></div>
+        <div class="banner 3"><img src="/img/배너 3.png"></div>
+    </div>
+
+     <!-- 카테고리 -->
+     <div class="category">
+        <h1>Category</h1>
+        <h4>Find Your Plant</h4>
+    </div>
+
+    <div class="categorypicture">
+        <div class="ct">
+            <div class="ctp1">
+                <img src="/img/다육.png">
+            </div>
+            <div class="ctt">
+                다육이
+            </div>
+        </div>
+
+        <div class="ct">
+            <div class="ctp2">
+                <img src="/img/생화.png">
+            </div>
+            <div class="ctt">
+                생화
+            </div>
+        </div>
+
+        <div class="ct">
+            <div class="ctp3">
+                <img src="/img/테라리움.png">
+            </div>
+            <div class="ctt">
+                테라리움
+            </div>
+        </div>
+
+        <div class="ct">
+            <div class="ctp4">
+                <img src="/img/허브.png">
+            </div>
+            <div class="ctt">
+                허브
+            </div>
+        </div>
+
+        <div class="ct">
+            <div class="ctp5">
+                <img src="/img/기타.png">
+            </div>
+            <div class="ctt">
+                기타
+            </div>
+        </div>
+    </div>
+        <div class="detailpage1">
+            <div class="dtp"  th:each="dayuk : ${storeList}">
+            <div class="arrow">
+                <div class="dtpp" >
+                    <img src="/img/상품3.png">
+                </div>
+                <div class="dtt" >
+                    [<span class="storename" th:text="${dayuk.memberName}"
+                    th:onclick="|location.href='/product/productPage?sbNo=${dayuk.sbNo}'|"></span>]
+                    <span class="productname" th:text="${dayuk.sbName}"></span><br>
+                    <span class="price" th:text="${dayuk.sbPrice}"></span>
+                </div>
+            </div>
+          </div>
+          </div>
+          
+          
+          
+          <div class="detailpage2">
+            <div class="dtp"  th:each="flower : ${storeList2}"
+            th:onclick="|location.href='/product/productPage?sbNo=${flower.sbNo}'|">
+                <div class="dtpp" >
+                    <img src="/img/생화상품.png">
+                </div>
+                <div class="dtt" >
+                    [<span class="storename" th:text="${flower.memberName}"></span>]
+                    <span class="productname" th:text="${flower.sbName}"></span><br>
+                    <span class="price" th:text="${flower.sbPrice}"></span>
+                </div>
+            </div>
+          </div>
+          
+          <div class="detailpage3">
+            <div class="dtp"  th:each="terrarium : ${storeList3}"
+            th:onclick="|location.href='/product/productPage?sbNo=${terrarium.sbNo}'|">
+                <div class="dtpp" >
+                    <img src="/img/테라리움상품.png">
+                </div>
+                <div class="dtt" >
+                    [<span class="storename" th:text="${terrarium.memberName}"></span>]
+                    <span class="productname" th:text="${terrarium.sbName}"></span><br>
+                    <span class="price" th:text="${terrarium.sbPrice}"></span>
+                </div>
+            </div>
+          </div>
+          
+          <div class="detailpage4">
+            <div class="dtp"  th:each="herb : ${storeList4}"
+            th:onclick="|location.href='/product/productPage?sbNo=${herb.sbNo}'|">
+                <div class="dtpp" >
+                    <img src="/img/허브상품.png">
+                </div>
+                <div class="dtt" >
+                    [<span class="storename" th:text="${herb.memberName}"></span>]
+                    <span class="productname" th:text="${herb.sbName}"></span><br>
+                    <span class="price" th:text="${herb.sbPrice}"></span>
+                </div>
+            </div>
+          </div>
+          
+          <div class="detailpage5">
+            <div class="dtp"  th:each="etc : ${storeList5}"
+            th:onclick="|location.href='/product/productPage?sbNo=${etc.sbNo}'|">
+                <div class="dtpp" >
+                    <img src="/img/기타상품.png">
+                </div>
+                <div class="dtt" >
+                    [<span class="storename" th:text="${etc.memberName}"></span>]
+                    <span class="productname" th:text="${etc.sbName}"></span><br>
+                    <span class="price" th:text="${etc.sbPrice}"></span>
+                </div>
+            </div>
+          </div>
+
+        <!-- 페이징 바 -->
+		<!-- <div class="paging" align="center" style="margin-top: 20px;">
+		<th:block
+			th:if="${ paging.searchCondition == null || paging.searchCondition.isEmpty() || paging.searchValue == null || paging.searchValue.isEmpty()}">
+			맨 앞으로 이동
+			<button
+					th:onclick="|location.href='/select/${category}?page=1'|">&lt;&lt;</button>
+​
+			이전 페이지로 이동
+			<button
+				
+				th:onclick="location.href=\'/select/category}?page=' + @{${paging.page - 1}} + '\''"
+				th:disabled="${ paging.page <= 1 }">&lt;</button>
+​
+			숫자 버튼
+			<th:block
+				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+				<button
+					th:onclick="'location.href=\'/select/${category}?page=' + @{${page}} + '\''"
+					th:text="${ page }" th:disabled="${ paging.page eq page }">
+				</button>
+			</th:block>
+​
+			다음 페이지로 이동
+			<button
+				th:onclick="'location.href=\'/select/${category}?page=' + @{${paging.page + 1}} + '\''"
+				th:disabled="${ paging.page >= paging.maxPage }">></button>
+​
+			맨 끝으로 이동
+			<button
+				th:onclick="'location.href=\'/select/${category}?page=' + @{${paging.maxPage}} + '\''">>></button>
+		</th:block>
+		
+		
+		</div> -->
+        
+    
+       <div th:replace="/common/spfooter.html"></div>
+</body>
+</html>

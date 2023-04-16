@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.order.DAO.OrderMapper">
+	<resultMap id="orderInfoMap" type="com.water.Mulbburi.order.DTO.OrderDTO">
+	<id property="orderNo" column="ORDER_NO"/>
+	<result property="orderDate" column="ORDER_DATE"/>
+	<result property="orderAmount" column="ORDER_AMOUNT"/>
+	<result property="orderAbleStatus" column="ORDERALBE_STATUS"/>
+	<result property="orderAmountMoney" column="ORDER_AMOUNT_MONEY"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="phone" column="ORDER_PHONE"/>
+	<result property="orderPostCode" column="ORDER_POST_CODE"/>
+	<result property="bsAddress" column="ORDER_BS_ADDRESS"/>
+	<result property="dtAddress" column="ORDER_DT_ADDRESS"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="sbName" column="SB_NAME"/>
+	<result property="sbNo" column="SB_NO"/>
+	</resultMap>
+	
+	<insert id="savedOrder">
+		INSERT
+		 INTO TBL_ORDER
+		 (
+		 ORDER_NO,
+		 ORDER_DATE,
+		 ORDER_AMOUNT,
+		 ORDERABLE_STATUS,
+		 ORDER_AMOUNT_MONEY,
+		 ORDER_NAME,
+		 ORDER_PHONE,
+		 ORDER_POST_CODE,
+		 ORDER_BS_ADDRESS,
+		 ORDER_DT_ADDRESS,
+		 MEMBER_NO
+		 )
+		 VALUES
+		 (
+		 #{orderNo},
+		 #{orderDate},
+		 #{orderAmount},
+		 #{orderAbleStatus},
+		 #{orderAmountMoney},
+		 #{memberName},
+		 #{phone},
+		 #{orderPostCode},
+		 #{bsAddress},
+		 #{dtAddress},
+		 #{memberNo}
+		 )
+	</insert>
+	<insert id="savedOrderdetail">
+	INSERT
+	  INTO DETAIL_ORDER
+	  (
+	  SB_NO,
+	  ORDER_NO,
+	  DT_ORDER_AMOUNT
+	  )
+	  VALUES
+	  (
+	  #{sbNo},
+	  #{orderNo},
+	  #{sbCount}
+	  )
+	</insert>
+	<delete id="deleteCart">
+		DELETE
+	  FROM PURCHASE_BASCKET
+	  WHERE MEMBER_NO = #{memberNo}
+	</delete>
+</mapper>

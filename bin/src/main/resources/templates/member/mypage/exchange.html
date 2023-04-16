@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exchange</title>
+    <link href="/css/member/mypage/exchange.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/pheader.html"></div> 
+
+    <div class="title">
+        <p>교환신청</p>
+    </div>
+    <div class="prCode">
+        <span class="orCode">주문번호 20231B419</span>
+    </div>
+     
+<form>
+    <div>
+        <div class="test1">
+            <div class="page1">
+                <span><input type="checkbox" class="check"></span>
+                <span><img src="/img/yeob01.png" class="prImg"></span>
+                <span class="slName">[판매자이름]</span>
+                <span class="prName">상품명</span>
+                <span class="prCount">
+                    <select>
+                        <option>수량선택</option>
+                        <option value="1">1개</option>
+                        <option value="2">2개</option>
+                        <option value="3">3개</option>
+                        <option value="4">4개</option>
+                        <option value="5">5개</option>
+                        <option value="6">6개</option>
+                        <option value="7">7개</option>
+                        <option value="8">8개</option>
+                        <option value="9">9개</option>
+                        <option>대량구매</option>
+                    </select>
+                </span>
+                <span class="prPrice">20000원</span>
+            </div>
+        </div>
+        <div class="test2">
+            <div class="test3">
+                <div class="page2">
+                    <span class="refundCon">교환 사유</span>
+                    <span class="refundCon2">
+                        <select>
+                            <option>단순변심</option>
+                            <option>배송불량</option>
+                            <option>상품불량</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="page3">
+                    <span class="refundCon3">상세 사유 작성</span><br><br>
+                    <!-- <span class="refundCon4"><input text="text" id="refundText"></span> -->
+                    <input text="text" id="refundText">
+                </div>
+            </div>
+            <div class="test4">
+                <div class="sp">
+                    <span class="tit1">상품 금액</span>
+                    <span class="con1">2개</span>
+                    <span class="con2">20000원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit2">할인 금액</span>
+                    <span class="con3">0원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit3">쿠폰 할인</span>
+                    <span class="con4">0원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit4">적립금</span>
+                    <span class="con5">0원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit5">배송비</span>
+                    <span class="con6">0원</span>
+                </div>
+                <hr>
+                <div class="sp">
+                    <span class="tit6">총 환불 금액</span>
+                    <span class="con7">100000원</span>
+                </div>
+                <div>
+                    <span class="con8">* 교환 기간은 각 스토어의 사정에 따라 소요 기간이 달라질 수 있습니다</span><br>
+                </div>
+                <div class="btn">
+                    <button type="submit" class="actBtn">환불신청</button>
+                    <a href="#none" class="extBtn">이전으로</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    
+	<div th:replace="common/pfooter.html"></div> 
+
+    </div>
+</body>
+</html>

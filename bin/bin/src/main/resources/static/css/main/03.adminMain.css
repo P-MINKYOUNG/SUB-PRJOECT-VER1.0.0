@@ -1,0 +1,60 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;  /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+/* 배너 */
+.wrapper
+{
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    margin-top: 30px;
+}
+
+.banner
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0px;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .banner {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes banner {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes banner {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
+.banner img
+{
+    width:1000px;
+    height:450px;
+    margin-top: 60px;
+}
+
+ 

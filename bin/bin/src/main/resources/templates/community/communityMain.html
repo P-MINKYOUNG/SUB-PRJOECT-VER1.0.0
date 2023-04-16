@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="/css/community.css">   
+        <link rel="stylesheet" type="text/css" href="/css/font.css">   
+    <script type="text/javascript" defer src="../resources/javascript/04. 스토어.js"></script>
+    <title>Document</title>
+</head>
+<body>
+	
+<div th:replace="common/header.html"></div>
+
+
+    <!-- 배너(베스트 상품) -->
+    <div class="wrapper">
+        <div class="banner 1"><img src="/img/배너1.png"></div>
+        <div class="banner 2"><img src="/img/배너2.png"></div>
+        <div class="banner 3"><img src="/img/배너3.png"></div>
+        
+    </div>
+
+     <!-- 카테고리 -->
+     <div id="line1"></div>
+     <div class="category">
+        <h1>최근 게시물</h1>
+       
+    </div>
+
+    <div class="categorypicture">
+        <div class="ct">
+            <div class="ctp">
+                <img src="../resources/images/전체.png">
+            </div>
+            <div class="ctt">
+                전체
+            </div>
+        </div>
+
+
+        <div class="ct">
+            <div class="ctp">
+                <img src="../resources/images/기타.png">
+            </div>
+            <div class="ctt">
+                기타
+            </div>
+        </div>
+    </div>
+
+    <div id="line"></div>
+
+    <!-- 상세 페이지 -->
+    <div class="detail">
+        <div class="detailcategory">
+            홈 > 커뮤니티 <span id="dtcate">전체</span>
+        </div>
+        
+        <div class="number">
+            <div class="searchnumber">
+                전체 검색 결과 <span id="scnum"></span>
+            </div>
+            <div class="sort">
+             <div type="button" id="sorting" onclick="location.href='regist'">글 쓰기</div>
+            </div>
+        </div>
+
+        <div class="detailpage1">
+            <div class="dtp">
+                <div class="dtpp">
+                    <img src="../resources/images/상품3.png">
+                </div>
+                <div class="dtt">
+                    [<span class="storename">일랑일랑</span>]
+                    <span class="productname">호멜로라니아</span><br>
+                    <span class="price">8000</span>
+                </div>
+            </div>
+
+          
+          
+           
+
+            <div class="dtp">
+                <div class="dtpp">
+                    <img src="../resources/images/기타상품.png">
+                </div>
+                <div class="dtt">
+                    [<span class="storename">일랑일랑</span>]
+                    <span class="productname">호멜로라니아</span><br>
+                    <span class="price">8000</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   
+    
+    
+    <div th:replace="common/footer.html"></div>
+</body>
+</html>

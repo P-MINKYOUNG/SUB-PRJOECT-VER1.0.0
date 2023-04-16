@@ -1,0 +1,269 @@
+.contentWrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.pageTitle {
+    font-size:28px; 
+    color:#323232; 
+    text-align:center; 
+    margin-bottom:45px;
+}
+
+.orderMember .left {
+    width: 790px;
+    margin-right: 25px;
+}
+
+
+.formTitle{
+    font-size:20px; 
+    color:#222; 
+    padding-bottom:15px; 
+    background:white;
+}
+
+.orderMember table.proTable {
+    width:100%; 
+    border-collapse: collapse;
+}
+.orderMember table.proTable .textCenter{
+    text-align:center;
+}
+.orderMember table.proTable tr{
+    border:solid 0; padding:20px;
+}
+.orderMember table.proTable tr td {
+    padding:20px; 
+    border:solid 1px #e7e7e7;
+}
+.orderMember table.proTable tr td.image {
+    vertical-align:top; 
+    border-right:0 !important; 
+    padding-right:10px;
+}
+.orderMember table.proTable tr td.image img {
+    width:100%;
+}
+.orderMember table.proTable tr td.spec {
+    vertical-align:top; 
+    border-left:0 !important; 
+    padding-left:10px;
+}
+.orderMember table.proTable tr td.totalPrice{
+    background:#f6f6f6; 
+    text-align:center; 
+}
+.orderMember table.proTable tr td.totalPrice img{
+    vertical-align:-4px;
+}
+.orderMember table.proTable tr td dl img{
+    padding-right:20px; 
+    width:100px; 
+    height:100px; 
+    float:left;}
+.orderMember table.proTable tr td dt{
+    font-size:16px; 
+    font-weight:bold;}
+.orderMember table.proTable tr td dd{
+    line-height:22px;
+}
+.orderMember table .priceBlack{
+    font-size:18px; 
+    color:#000; 
+    margin-bottom:5px;
+}
+
+.orderMember .division {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.orderMember .division .formWrap {
+    margin-top: 50px;
+}
+
+.formRow {
+    box-sizing: border-box;
+    border-bottom: solid 1px #e7e7e7;
+}
+
+.formWrap {margin-bottom:30px;}
+.formWrap .formTitle {font-size:20px; color:#222222; padding-bottom:15px; border-bottom:solid 1px #e7e7e7;}
+.formWrap .formRow {font-size:0; box-sizing: border-box; border-bottom:solid 1px #e7e7e7;}
+.formWrap .formRow .formCol {display:inline-block; vertical-align: top; box-sizing: border-box;}
+.formWrap .formRow .formCol.head {width:170px; font-size:16px; color:#333333; padding-top:17px; padding-left:28px;}
+.formWrap .formRow .formCol.head.require {padding-left:15px;}
+.formWrap .formRow .formCol.head.require::before {content:"* "; font-size:18px; color:#49b95c; vertical-align:middle;}
+.formWrap .formRow .formCol.body {width:calc(100% - 170px);font-size:14px;color:#333333;padding-top:10px;padding-bottom:10px;padding-right:15px;}
+.formWrap .formRow .formCol.body .betweenText {padding:0 5px;}
+.formWrap .formRow .formCol.body .tailCheck {margin-left:10px; vertical-align: middle;}
+.formWrap .formRow .formCol.body label.checkText {font-size:14px; color:#333333;}
+.formWrap .formRow .formCol.body .bodyInnerCol {margin-bottom:10px;}
+.formWrap .formRow .formCol.body .bodyInnerCol:last-child {margin-bottom:0;}
+
+/* 폼 요소 */
+textarea, input[type=text], input[type=number], select {outline:none;}
+
+.select.mini {width:100px;}
+.select.small {width:120px;}
+.select.medium {width:200px;}
+.select.large {width:340px;}
+.select.full {width:100%;}
+
+/* 버튼 */
+.button.default {
+	display:inline-block;
+	height:60px;
+	line-height:58px;
+	font-size:18px;
+	font-family:NotoSansM;
+	text-align:center;
+	vertical-align:middle;
+	box-sizing:border-box;
+	cursor:pointer;
+}
+
+.input.default {
+    font-size: 14px;
+    color: #888888;
+    padding: 11px;
+    box-sizing: border-box;
+    border: solid 1px #dbdbdb;
+    background-color: #ffffff;
+    vertical-align: middle;
+}
+
+.select.default {
+    font-size: 14px;
+    color: #888888;
+    padding: 10px;
+    padding-right: 30px;
+    box-sizing: border-box;
+    border: solid 1px #bdbdbd;
+    vertical-align: middle;
+}
+
+.formWrap .formRow .formCol.body {
+    width: calc(100% -170px);
+    font-size: 14px;
+    color: #333333;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+}
+
+.input.large {
+    width: 340px;
+}
+
+.input.medium {
+    width: 200px;
+}
+
+.input.extraLarge1 {
+    width: 545px;
+}
+
+textarea {
+    width: 100%;
+    font-size: 14px;
+    color: #888888;
+    padding: 11px;
+    box-sizing: border-box;
+    border: solid 1px #dbdbdb;
+    resize: none;
+    background-color: #ffffff;
+}
+
+.payedType {
+    display: flex;
+}
+
+.payedType div {
+    flex: 1;
+    text-align: center;
+    border: solid 1px #ddd;
+    padding: 15px 0;
+    margin-left: -1px;
+    position: relative;
+}
+
+.payedType div.selected span{
+    border:solid 1px #49b95c; 
+    height:100%; 
+    width:100%; 
+    left:0; 
+    top:0; 
+    z-index:2; 
+    margin:-1px 0 0 0; 
+    position: absolute; 
+    display:inline-block;
+}
+
+.orderMember .right {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+.right table.priceTable{
+    width: 100%;
+    border: solid 1px #e7e7e7;
+    border-collapse: collapse;
+}
+
+.right table.priceTable {
+    margin: 45px 0 10px 0;
+}
+
+.orderMember .right table.priceTable{margin:45px 0 10px 0;}
+.orderMember .right table.priceTable{width:100%; border:solid 1px #e7e7e7; border-collapse:collapse;}
+.orderMember .right table.priceTable th{background:#f6f6f6; padding:5px; font-size:18px; border:solid 1px #e7e7e7; color:#222222; height:40px;}
+.orderMember .right table.priceTable tr.firstChild td{padding-top:30px;}
+.orderMember .right table.priceTable tr.lastChild td{padding-bottom:30px;}
+.orderMember .right table.priceTable .txtRight{text-align:right; }
+.orderMember .right table.priceTable td{padding:10px 30px; font-size:18px; font-size:16px;}
+.orderMember .right table.priceTable td span{color:#000; font-family:SCDream5;}
+.orderMember .right table.priceTable td.finalPrice{border-top:solid 1px #e7e7e7; padding:15px 20px 40px 20px; font-size:16px;  font-family:NotoSansM; color:#49b95c;}
+.orderMember .right table.priceTable td.finalPrice span{font-size:28px;  font-family:SCDream5; line-height:30px; padding-bottom:10px; color:#49b95c;}
+.orderMember .grayBoxOder{padding:15px; background: #f1f1f1; margin:20px 0 10px 0; border:solid 1px #ddd; font-size:14px;}
+.orderMember .grayBoxOder span{display: inline-block; vertical-align: top;}
+.orderMember .grayBoxOder span:first-child{font-family:NotoSansM;}
+.orderMember .grayBoxOder span:last-child{margin:0 0 0 40px;}
+.orderMember .marginB10{margin-bottom:10px;}
+.orderMember .description {margin-top:10px;}
+
+.button {
+	display: inline-block;
+	height: 60px;
+	line-height: 58px;
+	font-size: 18px;
+	text-align: center;
+	background-color: rgba(126, 113, 113, 0.8);
+	color: white;
+	width: 100%;
+	text-decoration-line: none;
+}
+
+.button:hover {
+	text-decoration-line: none;
+}
+
+.select.default {
+    padding: 10px;
+}
+
+#searchZipCode {
+    background-color: #A9C5B9; /* 버튼 배경색 */
+    border: none; /* 테두리 제거 */
+    color: white; /* 버튼 글자색 */
+    padding: 10px 20px; /* 내부 패딩 */
+    text-align: center; /* 글자 정렬 */
+    text-decoration: none; /* 글자에 밑줄 제거 */
+    display: inline-block;
+    font-size: 16px; /* 글자 크기 */
+    margin: 4px 2px;
+    cursor: pointer; /* 마우스 커서 모양 */
+    border-radius: 61px; /* 버튼 모서리 둥글게 */
+}

@@ -1,0 +1,128 @@
+*{padding:0;margin:0}
+
+.topground{
+    background: rgba(169, 197, 185, 0.2);
+    height: 100px;
+    margin: 30px 20%;
+    text-align: center;
+}
+
+.t1{
+    margin-top: 40px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 20px;
+    margin-right: 500px;
+    color: rgba(118, 141, 131, 0.7);
+    display: inline-block;
+}
+
+.t2{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 20px;
+    color: rgba(118, 141, 131, 0.7);
+    display: inline-block;
+}
+
+.t1:hover,
+.t2:hover{
+    color: rgba(126, 113, 113);
+}
+
+.totalbackground2{
+	margin: 0 20%;
+}
+
+.bannertitle2,
+.writedate2,
+.deletedate2,
+.postingdate2,
+.enddate2,
+.path2{
+	margin-bottom: 3.7%;
+    margin-left: 3%;
+    margin-top: 3%;
+    border: none;
+    height: 30px;
+    width: 300px;
+}
+
+.totalstory3{
+	background-color: rgba(126, 113, 113, 0.1);
+    height: 57vh;
+    border-radius: 30px;
+    margin-top: 3%;
+}
+
+.totalbase3{
+	width: 90%;
+    height: 90%;
+    margin-left: 5%;
+}
+
+.story{
+   font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(126, 113, 113);
+    padding-top: 1%;
+    /* margin-left: 2%; */
+    width: 80%;
+    width: 95%;
+    display: flex;
+    /* margin-right: 2%;*/
+}
+
+.story div{
+	width: 30%;
+}
+
+.titlename{
+    background-color: rgba(118, 141, 131);
+    height: 30px;
+    width: 100%;
+    /* margin-right: 4%; */
+    color: white;
+    padding-top: 1%;
+    display: flex;
+}
+
+.titlename span{
+	text-align: center;
+}
+
+.bannername{
+    margin-left: 4%;
+    padding-top: 1%;
+}
+
+.category1{
+   font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 18px;
+    color: rgba(126, 113, 113);
+    text-align: center;
+    padding-top: 2%;
+    display: flex;
+}
+
+.category1 span{
+    margin-right: -1%;
+    margin-left: 8%;
+}
+
+/* 페이징 */
+.paging {
+    text-align: center;
+    margin: 30px;
+}
+
+.paging button {
+    margin: 0 10px;
+    border: 0;
+    background-color: transparent;
+    color: rgba(118, 141, 131, 0.8);
+    font-size: 12px;
+    font-weight: 700;
+}

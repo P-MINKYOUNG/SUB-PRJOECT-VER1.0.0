@@ -1,0 +1,268 @@
+/* 기본 설정 */
+
+*{padding:0;margin:0}
+
+a {
+    text-decoration: none;  
+    /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+li {
+    list-style:none;
+}
+
+body {
+    height: 100%;
+    background-color: white;
+}
+
+.wrapper {
+    width: 60vw;
+    /* width: 100%; */
+    margin: 30px auto;
+}
+
+
+/* 메뉴바 */
+
+.menu-bar {
+    /* width: 60%; */
+    /* margin: 30px 20%; */
+    display: flex;
+    justify-content: space-around;
+    /* justify-content: center; */
+    position: relative;
+    background-color: rgba(218, 233, 231, 0.7);
+    /* border: 2px solid blue; */
+    text-align: center;
+}
+
+.menu-bar > li {
+    /* float: left; */
+    position: relative;
+    /* border: 2px solid red; */
+    width: 20%
+}
+
+.menu-bar > li > a {
+    font-size: 14px;
+    font-weight: 700;
+    color: rgba(118, 141, 131, 0.6);
+    display: block;
+    /* border: 1px solid red; */
+    padding: 10px;
+}
+
+.sub-menu {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(218, 233, 231);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s ease-in;
+}
+
+.sub-menu > li {
+    /* border-bottom: 1px solid rgba(118, 141, 131, 0.2); */
+    /* border: solid orange 2px; */
+    text-align: center;
+    padding: 10px;
+}
+
+.sub-menu > li > a {
+    font-size: 14px;
+    font-weight: 700;
+    /* color: rgba(225, 225, 225, 0.8); */
+    color: rgba(118, 141, 131, 0.6);
+    /* border: solid 1px red; */
+}
+
+.menu-bar > li:hover .sub-menu {
+    opacity: 1;
+    visibility: visible;
+    /* background-color: rgba(118, 141, 131, 0.8); */
+    /* background-color: rgba(118, 141, 131, 0.4); */
+    /* color: rgba(126, 113, 113, 0.8); */
+}
+
+.menu-bar > a:hover {
+    text-decoration: underline;
+    color: rgba(126, 113, 113, 0.8);
+}
+
+.sub-menu > li > a:hover {
+    text-decoration: underline;
+    color: rgba(126, 113, 113, 0.8);
+}
+
+/* 주문 관리 제목 */
+
+.title p {
+    color: rgba(118, 141, 131, 0.7);
+    text-align: center;
+    font-size: 16px;
+    font-weight: 700;
+    margin: 30px;
+}
+
+/* 주문 관리 내용 */
+
+.wrap {
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+    /* margin: 0 20%; */
+}
+
+.box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left {
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+/* 	border: 2px solid blue; */
+	width: 38%;
+/* 	padding: 20px; */
+}
+
+.right {
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+/* 	border: 2px solid red; */
+	width: 60%;
+/* 	padding: 20px; */
+}
+
+/* .type ul {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding: 20px 0;
+    margin: 0 10%;
+    border-bottom: solid 2px rgba(126, 113, 113, 0.1);
+}
+
+.type li {
+    list-style-type: none;
+    color: rgba(118, 141, 131, 0.6);
+    font-size: 14px;
+    font-weight: 700;
+} */
+
+.content {
+	width: 90%;
+/* 	flex: display;
+	justify-content: center; */
+	text-align: center;
+	margin: 0 auto;
+	border-collapse : collapse;
+}
+
+#subject {
+	border-bottom: solid 2px rgba(126, 113, 113, 0.1);
+	color: rgba(118, 141, 131, 0.6);
+	font-weight: 700;
+	width: 100%;
+	text-align: center;
+/* 	border: 2px solid blue; */
+}
+
+.content th {
+	padding: 20px 0;
+    color: rgba(118, 141, 131, 0.6);
+    font-size: 14px;
+    font-weight: 700;	
+/* 	border: 2px solid red; */
+	margin: 0 auto;
+}
+
+.content td {
+	padding: 20px 0;
+    color: rgba(118, 141, 131, 0.6);
+    font-size: 14px;
+    font-weight: 700;	
+}
+
+/* 페이징 */
+
+.paging {
+    text-align: center;
+    margin: 30px;
+}
+
+.paging button {
+    margin: 0 10px;
+    border: 0;
+    background-color: transparent;
+    color: rgba(118, 141, 131, 0.8);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* 완료 버튼 */
+
+.select {
+    text-align: right;
+}
+
+.comp {
+    color: rgba(126, 113, 113, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px;
+    margin: 20px;
+}
+
+.press {
+	color: rgba(126, 113, 113, 0.6);
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 0;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px;
+}
+
+.list {
+	border-collapse : collapse;
+}
+
+.list tr {
+/*	display: flex;*/
+	border: 1px solid red;
+}
+
+.list td {
+/*	display: flex;*/
+/*	border: 1px solid blue;*/
+}
+
+.check input[type="checkbox"] {
+	display: none; 
+}
+
+.check input[type="checkbox"] + label:before {
+	content: "✔";
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	color: rgba(118, 141, 131, 0.2);
+	background-color: rgba(118, 141, 131, 0.2);
+	cursor: pointer;
+	border-radius: 6px;
+	font-size: 10px;
+}
+
+.check input[type="checkbox"]:checked + label:before {
+	content: "✔";
+	background-color: rgba(118, 141, 131, 0.6);
+	color: rgba(255, 255, 255, 0.8);
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	font-size: 10px;
+}

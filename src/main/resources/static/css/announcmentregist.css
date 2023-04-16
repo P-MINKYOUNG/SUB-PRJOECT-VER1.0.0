@@ -1,0 +1,69 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;  /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+
+
+
+.form-example1{
+    margin: 40px 25%;
+    width: 1020px;
+    
+}
+.form-example2{
+
+    margin: 30px 25%;
+    width: 1020px;
+    
+
+    
+}
+.form-example3{
+
+    margin: 40px 70%;
+    
+  
+
+
+    
+}
+
+#textba1{
+    width:75%;
+    height:50px;
+    font-size:20px;
+    
+}
+
+#textba2{
+
+    width:75%;
+    height:90px;
+    font-size:20px;
+    vertical-align: middle;
+}
+.submitbox{
+border-radius: 10px;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(118, 141, 131, 0.7);
+    font-weight: 600;
+    opacity: 80%;
+    font-size: 14px;
+	height: 30px;
+	
+	}
+
+.img-file{
+   margin: 10% 35%;
+    
+}
+
+
+/* 위 | 오른쪽 | 아래 | 왼쪽 */

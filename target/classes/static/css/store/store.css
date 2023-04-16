@@ -1,0 +1,172 @@
+/* 기본 설정 */
+
+*{padding:0;margin:0}
+
+a {
+    text-decoration: none;  
+    /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+body {
+    height: 100%;
+    background-color: white;
+}
+
+/* 내용 */
+
+.wrapper {
+    width: 60vw;
+    /* width: 100%; */
+    margin: 30px auto;
+    /* border: 2px solid blue; */
+}
+
+.seller-id {
+    font-weight: 700;
+    color: rgba(118, 141, 131, 0.8);
+    background-color: rgba(218, 233, 231, 0.6);
+    padding: 10px 20px;
+    /* border: 2px solid blue; */
+}
+
+.wrap {
+    background: rgba(126, 113, 113, 0.1);
+    margin: 30px 0;
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    border-radius: 20px;
+    justify-content: space-evenly;
+}
+
+.wrap img {
+    /* width: 200px;
+    height: 200px; */
+    width: 20%;
+    /* border: 2px solid blue; */
+}
+
+.my-shop {
+    /* border: 2px solid aqua; */
+    position: relative;
+    width: 70%;
+    font-size: 14px;
+}
+
+#name {
+    /* border: 2px solid blue; */
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(126, 113, 113, 0.8);
+}
+
+.briefing {
+    background-color: rgba(255, 255, 255, 0.8);
+    height: 80%;
+    /* border: 2px solid red; */
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.briefing li {
+    color: rgba(126, 113, 113, 0.8);
+    font-size: 12px;
+    font-weight: 700;
+    list-style-type: none;
+    margin: 10px 0;
+    padding: 10px 0 0 10px;
+}
+
+/* 메뉴바 */
+
+.sub-menu {
+    font-size: 18px;
+    font-weight: 700;
+    color: rgba(118, 141, 131, 0.8);
+    /* background-color: rgba(218, 233, 231, 0.6); */
+    padding: 10px 20px;
+    justify-content: space-between;
+    border-bottom: 2px solid rgba(126, 113, 113, 0.4);
+    display: flex;
+}
+
+.sub-menu a {
+    color: rgba(126, 113, 113, 0.8);
+    font-size: 14px;    
+	padding: 2px;
+/*    border: 2px solid rgba(126, 113, 113, 0.4);*/
+}
+
+/* 내 상품 */
+
+.prod-list {
+    width: 100%;
+    /* border: 2px solid blue; */
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.prod-list li {
+    justify-content: center;
+    /* border: 2px solid red; */
+    /* margin-right: 10px; */
+    list-style-type: none;
+    /* width: calc(25% - 18.75px); */
+    width: calc(23% - 18.75px);
+}
+
+.my-prod img {
+    width: 20%;
+}
+
+.data {
+    text-align: center;
+}
+
+.data span {
+    font-size: 14px;
+    font-weight: 700;
+    /* border: 2px solid blue; */
+    color: rgba(126, 113, 113, 0.8);
+}
+
+.data .price {
+    font-size: 16px;
+    font-weight: 700;
+    /* border: 2px solid blue; */
+    color: rgba(118, 141, 131, 0.8);
+    margin-left: 4px;
+}
+
+.prod-up {
+    margin-top: 10px;
+    /* border: 2px solid blue; */
+    text-align: center;
+    padding: 4px;
+    background-color: rgba(218, 233, 231, 0.8);
+}
+
+.prod-up button {
+    background-color: transparent;
+    border: 0;
+    color: rgba(118, 141, 131, 0.6);
+    font-weight: 700;
+    /* color: white; */
+}
+
+/* 페이징 */
+
+.paging {
+    text-align: center;
+    margin: 30px;
+}
+
+.paging button {
+    margin: 0 10px;
+    border: 0;
+    background-color: transparent;
+    color: rgba(118, 141, 131, 0.8);
+    font-size: 12px;
+    font-weight: 700;
+}

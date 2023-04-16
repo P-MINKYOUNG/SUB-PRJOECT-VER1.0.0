@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="/css/font.css" rel="stylesheet" type="text/css">    
+    <link href="/css/shoppingcart/shoppingcart.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+   	<div th:replace="/common/pheader.html"></div>
+    <div class="pageTitle">장바구니</div>
+    <form class="formWarp">
+        <div class="formTitle">
+            <span class="checkbox">
+                <input type="checkbox" id="allCheck">
+                <label for="allCheck" class="chkTitle20 checkText tailCheck"></label>
+            </span>
+            <span class="titleRL">전체선택</span>
+            / 총 상품
+            <span class="greenColor">1</span>
+            개
+        </div>
+        <div class="cartList">
+            <div class="left">
+                <table class="basketT">
+                    <tbody>
+                        <tr>
+                            <th>일렁일렁</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="basketT cartCell">
+                    <tbody>
+                        <tr>
+                            <td class="contents">
+                                <span class="checkbox">
+                                    <input type="checkbox" id="" name="cartCheckbox" value="">
+                                    <label for="" class=""></label>
+                                </span>
+                                <span class="close deleteProduceButton" data-produce-id="">
+                                    <i class="xi-close-min reClose">
+                                        
+                                    </i>
+                                </span>
+                                <div class="wishBoxArea">
+                                    <div class="imgBox"></div>
+                                </div>
+                                <div class="grayBox optionSet" data-id="" data>
+                                    <div class="closeButton">
+                                        <i class="xi-close">
+
+                                        </i>
+                                    </div>
+                                    <div class="quantityPrice">
+                                        <ul class="changeNum">
+                                            <li>
+                                                수량변경 : 
+                                                <select class="qttyInputBox" name="qttyInputBox">
+                                                    <option value="1" selected>1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                    <option value="6">6</option>
+                                                    <option value="7">7</option>
+                                                    <option value="8">8</option>
+                                                    <option value="9">9</option>
+                                                    <option value="10">10</option>
+                                                    <option value="11">11</option>
+                                                    <option value="12">12</option>
+                                                    <option value="13">13</option>
+                                                    <option value="14">14</option>
+                                                    <option value="15">15</option>
+                                                    <option value="16">16</option>
+                                                </select>
+                                            </li>
+                                        </ul>
+                                        <div class="priceSum">
+                                            <span>2억</span>
+                                            원
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </form>
+    <div class="right">
+        <table class="priceTable">
+            <tbody>
+                <tr>
+                    <th colspan="2">전체주문금액</th>
+                </tr>
+                <tr class="firstChild">
+                    <td>선택 상품 수</td>
+                    <td class="txtRight">
+                        <span class="quantity">0</span>
+                        개
+                    </td>
+                </tr>
+                <tr>
+                    <td>총 상품금액</td>
+                    <td class="txtRight">
+                        <span class="orderAmountSum">0</span>
+                        원
+                    </td>
+                </tr>
+                <tr>
+                    <td>배송비</td>
+                    <td class="txtRight">
+                        <span class="deliveryAmountSum">0</span>
+                        원
+                    </td>
+                </tr>
+                <td class="finalPrice fl">결제 예정 금액</td>
+                <td class="txtRight finalPrice">
+                    <span class="payAmountSum">0</span>
+                    원
+                </td>
+            </tbody>
+        </table>
+        <a href="/order/order" class="orderButton">주문하기</a>
+    </div>
+    <div th:replace="/common/pfooter.html"></div>
+</body>
+
+</html>

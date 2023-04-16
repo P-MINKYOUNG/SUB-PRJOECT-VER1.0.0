@@ -1,0 +1,264 @@
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;  /* 모든 하이퍼링크 밑줄 삭제 */
+}
+
+.wrapper {
+    min-height: calc(100%-160px);
+    position: relative;
+} 
+
+.info {
+    font-size: 12px;
+    padding-bottom: 10px;
+    color: rgba(118, 141, 131);
+    /* float: none; */
+    /* display: inline-block; */
+    /* position: absolute; */
+}
+
+.copy {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(118, 141, 131);
+    display: block;
+}
+
+/* 배너 */
+.wrapper
+{
+    max-width: 1000px;
+    position: relative;
+    margin: 0 20%;
+}
+
+.banner
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0px;
+    flex-shrink: 0;
+    transition: left 0.15s;
+}
+  
+  .active {
+    background-color: #717171;
+  }
+  
+  /* Fading animation */
+  .banner {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 1.5s;
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
+  
+  @-webkit-keyframes banner {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+  
+  @keyframes banner {
+    from {opacity: .4} 
+    to {opacity: 1}
+  }
+
+.banner img
+{
+    width:1000px;
+    height:450px;
+    margin-top: 50px;
+}
+
+
+ /* New Product */
+ .newProduct{
+    text-align: center;
+    margin-top: 600px;
+    font-family: 'ONE-Mobile-POP';
+ }
+
+ .newProduct h1{
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+ }
+
+ .newProduct h4{
+    color: rgba(118, 141, 131);
+    opacity: 90%;
+    font-weight: 100;
+ }
+
+.newProductPicture{
+    font-family: 'ONE-Mobile-POP';
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+ .newProductPicture div{
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 30px;
+    display: inline-block;
+ }
+
+ .newProductPicture img{
+    width: 200px;
+    height: 250px;
+ }
+
+ .newProductPicture .s1
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 18px;
+ }
+
+ .newProductPicture .s2
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 16px;
+ }
+
+ .newProductPicture .s3
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 16px;
+    text-decoration: line-through;
+ }
+
+ .newProductPicture .s4
+ {
+    color: rgba(126, 113, 113);
+    opacity: 80%;
+    font-size: 16px;
+ }
+
+ .newProductPicture .s5
+ {
+    color: rgba(118, 141, 131);
+    opacity: 90%;
+    font-weight: 100;
+    font-size: 16px;
+ }
+
+ .title {
+    color: #7e7171;
+    opacity: 0.7;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 50px;
+ }
+
+.btn {
+    margin-left: 63%;
+}
+
+hr {
+    width: 63%;
+    margin-left : 20%;
+    margin-top : 1%;
+    margin-bottom : 3%;
+}
+.delivery {
+    background-color: #7E7171;
+    opacity: 0.6;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 80px;
+    margin-left: 20px;
+}
+
+.check {
+    background-color: #7E7171;
+    opacity: 0.6;
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 80px;
+    margin-left: 20px;
+}
+
+.product {
+    display: flex;
+    margin-left: 18%;
+    
+}
+
+.photo {
+    margin-left: 2%;
+    width: 80px;
+}
+
+.prName {
+    margin-left: 2%;
+}
+
+.prCode {
+    margin-left: 2%;
+}
+
+.prDate {
+    margin-left: 10%;
+}
+
+.prMoney {
+    margin-left: 10%;
+}
+
+.productName {
+    width: 200px;
+    margin-left: 4%;
+    margin-top: 1%;
+}
+
+.productDate {
+    width: 200px;
+    margin-left: 30%;
+    margin-top: 2%;
+}
+
+.productMon {
+    width: 200px;
+    margin-left: 4%;
+    margin-top: 2%;
+}
+
+.productPage {
+    height: 840px;
+}
+
+.paging {
+    border: none;
+    background-color: white;
+    font-size: 18px;
+}
+
+.checkbox {
+    accent-color: #768D83;
+}

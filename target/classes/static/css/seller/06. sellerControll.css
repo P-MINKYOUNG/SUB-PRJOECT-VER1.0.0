@@ -1,0 +1,412 @@
+/* 판매자 관리 메인 */
+*{padding:0;margin:0}
+
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.totalbackground{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.totalbackground img{
+    width: 100%;
+    height: 100vh;
+}
+
+.totaltitle{
+    text-align: center;
+    font-family: 'HSBombaram21-Regular';
+    font-weight: normal; 
+    color: rgba(118, 141, 131, 0.9);
+    font-size: 60px;
+    margin-top: 20%;
+    margin-bottom: -15%;
+}
+
+.tt1{
+    margin-top: 20%;
+    text-align: center;
+}
+
+.tt1 button{
+    width: 300px;
+    height: 40px;
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+}
+
+.tt1 button:hover,
+.tt2 button:hover{
+    color: white;
+}
+
+.tt2{
+    text-align: center;
+    margin-top: 3%;
+}
+
+.tt2 button{
+    width: 300px;
+    height: 40px;
+    background-color: rgba(169, 197, 185, 0.8);
+    border: none;
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+    text-align: center;
+}
+
+.text{
+    background: rgba(169, 197, 185, 0.1);
+    height: 100%;
+    width: 100%;
+}
+
+
+/* 판매자 관리 메인 */
+
+.topground{
+    background: rgba(169, 197, 185, 0.2);
+    height: 100px;
+    margin: 30px 20%;
+    text-align: center;
+}
+
+.t1{
+    margin-top: 40px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 20px;
+    margin-right: 500px;
+    color: rgba(118, 141, 131, 0.7);
+    display: inline-block;
+}
+
+.t1:hover,
+.t2:hover{
+    color: rgba(126, 113, 113);
+}
+
+.t2{
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 20px;
+    color: rgba(118, 141, 131, 0.7);
+    display: inline-block;
+}
+
+/* 배경 */
+.bbgd{
+    height: 500px;
+    overflow: hidden;
+    margin: 30px 20% 30px 20%;
+}
+
+.background1{
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+    height: 500px;
+}
+
+.background2{
+    background: rgba(126, 113, 113, 0.1);
+    border-radius: 30px;
+    height: 500px;
+}
+
+.category{
+    display: flex;
+    margin-left: 180px;
+}
+
+.category div{
+    margin-right: 120px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 18px;
+    color: rgba(118, 141, 131);
+    margin-top: 20px;
+}
+
+.story{
+    display: flex;
+    margin-left: 25px;
+}
+
+.story span{
+    margin-right: 100px;
+    margin-top: 10px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: rgba(126, 113, 113);
+}
+
+.div1{
+    margin-right: 130px;
+}
+
+/* 자세히 */
+/* 배경 */
+.storename{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color:white;
+    width: 70px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 30px;
+}
+
+.id{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color:white;
+    width: 77px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 23px;
+}
+
+.title{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color:white;
+    width: 77px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 23px;
+}
+
+.story2{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color:white;
+    width: 77px;
+    height: 20px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 23px;
+}
+
+.imgback{
+    background:white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.categoryname{
+    width: 80%;
+    height: 350px;
+    margin-left: 10%;
+    padding-top: 5%;
+}
+
+.dbbase{
+   	font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(126, 113, 113);
+    padding-top: 5%;
+    width: 80%;
+    height: 100%;
+    margin-left: -24%;
+}
+
+.dbbase div{
+    margin-bottom: 18.5%;
+  	margin-right: 7%;
+}
+
+/* 승인 반려 버튼 */
+.accept{
+    margin-top: 400px;
+    float: right;
+    margin-right: 3%;
+}
+
+#detaily{
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: white;
+    background-color: rgba(169, 197, 185);
+}
+
+.ok,
+.no{
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: white;
+    background-color: rgba(126, 113, 113);
+}
+
+.topground2{
+    background: rgba(169, 197, 185);
+    height: 60px;
+    width: 100%;
+}
+
+.topground3{
+    background: rgba(169, 197, 185);
+    height: 70px;
+    width: 100%;
+}
+
+/* 입점업체 승인 */
+.div3{
+    margin-right: 15%;
+}
+
+#detaily2{
+    border-radius: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size : 14px;
+    color: white;
+    background-color: rgba(169, 197, 185);
+}
+
+.storenumber{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 95px;
+    height: 30px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 25px;
+}
+
+.account{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 95px;
+    height: 30px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 25px;
+}
+
+.storesafe{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 110px;
+    height: 30px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 10px;
+}
+
+.storecompany{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 105px;
+    height: 30px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 15px;
+}
+
+.storeinternet{
+    display: flex;
+    margin-bottom: 30px;
+    font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    width: 110px;
+    height: 30px;
+    padding-top: 8px;
+    background-color: rgba(169, 197, 185);
+    padding-left: 10px;
+}
+
+.categoryname2{
+    width: 80%;
+    height: 350px;
+    margin-left: 10%;
+    margin-top: 3%;
+}
+
+.imgback2{
+    background:white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.dbbase2{
+   font-family: 'TAEBAEKmilkyway';
+    font-weight: bold;
+    font-size: 14px;
+    color: rgba(126, 113, 113);
+    padding-top: 5%;
+    width: 80%;
+    height: 100%;
+    margin-left: -24%;
+}
+
+.dbbase2 div{
+  margin-bottom: 18.5%;
+  margin-right: 7%;
+}
+
+/* 페이징 */
+.paging {
+    text-align: center;
+    margin: 30px;
+}
+
+.paging button {
+    margin: 0 10px;
+    border: 0;
+    background-color: transparent;
+    color: rgba(118, 141, 131, 0.8);
+    font-size: 12px;
+    font-weight: 700;
+}

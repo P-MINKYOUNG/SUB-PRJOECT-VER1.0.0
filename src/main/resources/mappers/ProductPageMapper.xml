@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.productpage.DAO.ProductPageMapper">
+<resultMap id="productMap" type="com.water.Mulbburi.productpage.DTO.ProductPageDTO">
+<id property="sbNo" column="SB_NO"/>
+<result property="sbName" column="SB_NAME"/>
+<result property="sbPrice" column="SB_PRICE"/>
+<result property="prodCategoryNo" column="PROD_CATEGORY_NO"/>
+<result property="sbStatus" column="SB_STATUS"/>
+<result property="memberNo" column="MEMBER_NO"/>
+<result property="sellerName" column="BUSINESS_NAME"/>
+<result property="memberName" column="MEMBER_NAME"/>
+<result property="phone" column="PHONE"/>
+<result property="postCode" column="POSTCODE"/>
+<result property="dtAddress" column="DT_ADDRESS"/>
+<result property="bsAddress" column="BS_ADDRESS"/>
+<result property="businessNo" column="BUSINESS_NO"/>
+<result property="email" column="EMAIL"/>
+</resultMap>
+<resultMap type="com.water.Mulbburi.file.FileDTO" id="fileResultMap">
+<id property="fileNo" column="FILE_NO"/>
+<result property="fileoriginalName" column="FILE_ORIGINAL_NAME"/>
+<result property="filePath" column="FILE_PATH"/>
+<result property="fileSize" column="FILE_SIZE"/>
+<result property="fileSavedName" column="FILE_SAVED_NAME"/>
+<result property="custom" column="CUSTOM"/>
+<result property="sbNo" column="SB_NO"/>
+<result property="memberNo" column="memberNo"/>
+<result property="communityNo" column="COMMUNITY_NO"/>
+<result property="reviewNo" column="REVIEW_NO"/>
+<result property="bannerNo" column="BANNER_NO"/>
+<result property="ytNo" column="YT_NO"/>
+<result property="fileType" column="FILE_TYPE"/>
+</resultMap>
+<select id="selectProductPageDetail" resultMap="productMap">
+SELECT
+	A.SB_NO,
+	A.SB_NAME,
+	A.SB_PRICE,
+	B.BUSINESS_NAME,
+	B.MEMBER_NAME,
+	B.PHONE,
+	B.POSTCODE,
+	B.DT_ADDRESS,
+	B.BS_ADDRESS,
+	B.BUSINESS_NO,
+	EMAIL
+	FROM SHOPPINGBASCKET A
+	JOIN MEMBER B ON(A.MEMBER_NO = B.MEMBER_NO)
+	WHERE A.SB_NO = #{sbNo}
+</select>
+<select id="selectProductPageList" resultMap="productMap">
+
+SELECT
+	A.SB_NO,
+	A.SB_NAME,
+	A.SB_PRICE
+	FROM SHOPPINGBASCKET A
+	WHERE SB_NO = 1
+</select>
+<select id="checkAllFile" parameterType="com.water.Mulbburi.file.FileDTO" resultMap="fileResultMap">
+SELECT
+FILE_NO
+,FILE_PATH
+,FILE_TYPE
+FROM TBL_FILE
+WHERE SB_NO = #{sbNo}
+ORDER BY FILE_NO DESC
+</select>
+</mapper>

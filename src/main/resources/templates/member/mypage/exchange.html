@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exchange</title>
+    <link href="/css/member/mypage/exchange.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <!-- <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script> -->
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/spheader.html"></div> 
+
+    <div class="title">
+        <p>교환신청</p>
+    </div>
+    <div class="prCode">
+        <span class="orCode">주문번호 20231B419</span>
+    </div>
+     
+<form method="post">
+	<input type="hidden" name="orderNo" th:value="${ order.orderNo }">
+	<input type="hidden" name="sbNo" th:value="${ detail.sbNo}">
+    <div>
+        <div class="test1">
+            <div class="page1">
+                <span><img src="/img/yeob01.png" class="prImg"></span>
+                <span class="slName" th:text="${ order.businessName }">[판매자이름]</span>
+                <span class="prName" th:text="${ order.sbName }">상품명</span>
+                <span class="prCount" th:text="${ order.orderAmount }"></span>
+                <span class="prPrice" th:text="${ order.orderAmountMoney }">20000원</span>
+            </div>
+        </div>
+        <div class="test2">
+            <div class="test3">
+                <div class="page2">
+                    <span class="refundCon">교환 사유</span>
+                    <span class="refundCon2">
+                        <select name="reasonNo">
+                            <option value="1">단순변심</option>
+                            <option value="2">배송불량</option>
+                            <option value="3">상품불량</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="page3">
+                    <span class="refundCon3">상세 사유 작성</span><br><br>
+                    <!-- <span class="refundCon4"><input text="text" id="refundText"></span> -->
+                    <input text="text" id="refundText" name="excReas">
+                </div>
+            </div>
+            <div class="test4">
+                <div class="sp">
+                    <span class="tit1">상품 금액</span>
+                    <span class="con1" th:text="${ order.orderAmount }">2개</span>
+                    <span class="con2" th:text="${ order.orderAmountMoney }">20000원</span>
+                </div>
+                <div class="sp">
+                    <span class="tit2"></span>
+                    <span class="con3"></span>
+                </div>
+                <div class="sp">
+                    <span class="tit3"></span>
+                    <span class="con4"></span>
+                </div>
+                <div class="sp">
+                    <span class="tit4"></span>
+                    <span class="con5"></span>
+                </div>
+                <div class="sp">
+                    <span class="tit5"></span>
+                    <span class="con6"></span>
+                </div>
+                <hr>
+                <div class="spsp">
+                    <span class="refundCon" >상품 수량</span>
+                    <span class="excQty">
+                        <select name="excQty">
+                            <option value="1개">1개</option>
+                            <option value="2개">2개</option>
+                            <option value="3개">3개</option>
+                            <option value="4개">4개</option>
+                            <option value="5개">5개</option>
+                            <option value="6개">6개</option>
+                            <option value="7개">7개</option>
+                            <option value="8개">8개</option>
+                            <option value="9개">9개</option>
+                            <option value="10개">대량구매</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span class="con8">* 교환 기간은 각 스토어의 사정에 따라 소요 기간이 달라질 수 있습니다</span><br>
+                </div>
+                <div class="btn">
+                    <button type="submit" class="actBtn">교환신청</button>
+                    <a href="#none" class="extBtn">이전으로</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+    
+	<div th:replace="common/spfooter.html"></div> 
+
+    </div>
+</body>
+</html>

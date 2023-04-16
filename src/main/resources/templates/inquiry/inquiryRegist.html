@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>문의하기</title>
+	<link rel="icon" type="image/x-icon" href="../resource/images/icons8-화분에-심은-식물-48 (1).png">
+    <link href="https://unpkg.com/ress/dist/ress.min.css" rel="stylesheet" type="text/css">
+    <link href="../resource/css/font.css" rel="stylesheet" type="text/css">
+     <link href="../resource/css/ct.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" type="text/css" th:href="@{/css/font.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/ct.css}">   
+     
+
+
+</head>
+<body>
+    <div class="left">
+        <header>
+
+        </header>
+
+    </div>
+    <div class="right">
+        <div class="title" id="타이틀"><h1>물뿌리개</h1></div>
+            <div class="subtitle" id="sub타이틀"><p>반갑습니다. 식물쇼핑몰 물뿌리개입니다.</p></div>
+        </div>
+       
+     <div class="midletitle" id="midletitle">
+                <h3 class="midle">1:1문의</h3>
+
+
+    </div>
+
+<form class="form-example1" action="/inquiry/regist" method="post">
+				<table style="margin: auto;">
+					
+					<tr>
+						
+						<td colspan="3"><input type="text" id="name" name="inquiryTitle"
+						placeholder="제목을 입력하세요"></td>
+					</tr>
+						<tr>
+						<td class="midletitle-choose-2">이메일</td>
+						<td><input type="email" name="email" id="email" placeholder="이메일을 입력하세요"></td>
+					
+					
+					<tr>
+						<td class="midletitle-choose-3" >내용</td>
+						<td colspan="3"><textarea id="content" name="content" cols="60" rows="15"
+								style="resize: none;" maxlength="100" ></textarea></td>
+					</tr>
+					
+					<li class="midletitle-choose-1"><a><select name="inquiryCategory">      		
+                        		<option value="1">분야</option>
+                        		<option>배송지연불만</option>
+								<option>반품문의</option>
+								<option>주문결제문의</option>
+								<option>회원정보문의</option>
+								<option>취소문의</option>
+								<option>교환문의</option>
+								<option>상품정보문의</option>
+								<option>기타문의</option>
+                    </select></a>
+                    
+				</table>
+				
+				
+				<br>
+				<div align="center">
+					<button id= ca-bt type="button" th:onclick="'location.href=\'/inquiry/main\''">
+						돌아가기</button>
+					
+				<input id="subbutton" type="submit" value="등록하기">
+				</div>
+			</form>
+
+
+    
+</body>
+</html>

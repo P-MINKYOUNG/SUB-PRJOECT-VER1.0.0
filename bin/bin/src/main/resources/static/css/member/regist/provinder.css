@@ -1,0 +1,172 @@
+body {
+    width: 100%;
+}
+
+.title {
+    text-align : center;
+    font-size: 20px;
+    margin-top: 3%;
+    color : #474242;
+    opacity: 0.8;
+}
+
+.titleinfo {
+    text-align : center;
+    margin-bottom: 50px;
+    color : #474242;
+    opacity: 0.6;
+}
+
+.sequence {
+    text-align : center;
+    margin-bottom: 50px;
+}
+
+.step1 {
+    margin-right: 30px;
+    font-size: 20px;
+    color : #474242;
+    opacity: 0.9;
+}
+
+.step2 {
+
+    font-size: 20px;
+    color : #474242;
+    opacity: 0.9;
+}
+
+.step3 {
+
+    font-size: 20px;
+    color : #474242;
+    opacity: 0.9;
+}
+
+.arrow {
+    margin-left : 30px;
+    margin-right: 30px;
+    font-size: 20px;
+    color : #474242;
+    opacity: 0.9;
+}
+
+.btnExit {
+    /* color : black;
+    background-color: white;
+    font-size: 2em; */
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border: solid black 1px;
+    
+}
+
+.btnSubmit {
+    /* color : white;
+    background-color : black; */
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.base-button {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.textarea1 {
+   text-align: center;
+   margin-top: 30px;
+   margin-bottom: 30px;
+}
+
+.textarea2 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+ }
+
+.textarea3 {
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+ }
+
+iframe {
+    
+    width : 980px;
+    height : 230px;
+    margin-left: 10px;
+    background-color: rgba(126, 113, 113, 0.1);
+    resize : none;
+    
+}
+
+body {
+    background-color: rgba(254, 254, 254, 0.8);
+}
+
+.provision1 {
+    position: absolute;
+}
+
+#provision1 {
+    margin-left: 470px;
+    accent-color: #768D83;
+}
+
+#provision2 {
+    margin-left: 470px;
+    accent-color: #768D83;
+}
+
+#provision3 {
+    margin-left: 470px;
+    accent-color: #768D83;
+}
+
+#provision4 {
+    margin-left: 470px;
+    accent-color: #768D83;
+}
+
+.registName {
+    width: 1200px;
+    height: 20px;
+}
+
+.line1 {
+    width: 1000px;
+   
+}
+
+.registTitle {
+    margin-left: 350px;
+    padding-bottom: 15px;
+    width: 70%;
+    border-bottom: 1px solid black;
+}
+
+.registForm {
+   align-items: center;
+}
+
+table {
+    margin: 0 auto;
+}
+

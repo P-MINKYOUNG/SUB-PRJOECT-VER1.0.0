@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="/css/member/login/login.css" type="text/css">
+    <link rel="stylesheet" href="/css/common/font.css" type="text/css">
+</head>
+<body>
+        <div class="main">
+            <div class="left"></div>
+            <div class="right">
+                <div class="rightTitle">물뿌리개</div>
+                <div class="rightSub">반갑습니다! 식물쇼핑몰 물뿌리개입니다</div>
+                <div class="loginTitle">관리자 회원 로그인</div>
+                <div>
+                    <form id="loginForm" action="/member/login/login" method="post">
+                        <div class="idForm">
+                        <label>User name or Email</label><br>
+                        <input type="text" name="memberId" class="idBar"><br>
+                        </div>
+                        <div class="pwdForm">
+                        <label>Password</label><br>
+                        <input type="password" name="memberPwd" class="pwdBar"><br>
+                        </div>
+                        <input type="checkbox" name="idRemeber" class="checkbox">
+                        <span class="saveId" for="remember">아이디저장</span>
+                        <a href="/member/login/idSearch" class="searchId">아이디찾기</a>
+                        <span>/</span>
+                        <a href="/member/login/pwdSearch">비밀번호찾기</a><br>
+                        <button type="submit" name="submit" class="submitBtn">sign in</button>
+                    </form>
+                </div>
+                <div>
+                    <span class="checkId">계정이 없으신가요?</span>
+                    <span><a href="/member/regist/registOpen">회원가입</a></span>
+                </div>
+                <div class="copy">@Copyright 물뿌리개</div>
+            </div>
+        </div>
+    
+        
+    </body>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <link href="/css/main/03.adminMain.css" rel="stylesheet" style type="text/css">
+    <link href="/css/font.css" rel="stylesheet" style type="text/css">
+    <script src="/js/main/03.adminMain.js" defer></script>
+</head>
+<body>
+	
+	<div th:replace="/common/madminheader.html"></div>
+	
+    <!-- banner -->
+    <div class="wrapper">
+            <div class="banner 1"><img src="/img/배너 1.png"></div>
+            <div class="banner 2"><img src="/img/배너 2.png"></div>
+            <div class="banner 3"><img src="/img/배너 3.png"></div>
+    </div>    
+    
+    <div th:replace="/common/spfooter.html"></div>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8" />
+<link href="/css/font.css" rel="stylesheet" style type="text/css">
+<link href="/css/community/communitydetail.css" rel="stylesheet" style type="text/css">
+  
+        <link rel="stylesheet" type="text/css" href="/css/font.css">   
+ 
+</head>
+<body>
+	
+	<div th:replace="common/mheaderLogin.html"></div>
+
+	<div style="margin-top: 20px;">
+
+		  <div class="name-ba">
+	    		<div class="name-img"><img src="/img/icons8-화분에-심은-식물-48 (1).png"></div>
+			   <div class="name" colspan="5" width="900" th:text="${ thumbnail.communityTitle }"></div>			  
+		  </div>
+		  
+		
+		  <div class="wrapper">
+		<table align="center">
+		
+			<tr>
+				<td></td>
+				<td colspan="5">
+					<div id="titleImgArea" align="center" margin="0 auto">
+						<th:block th:if="${ thumbnail.attachmentList[0].thumbnailPath != null }">
+							<img 
+								width="1000" 
+								height="800"
+							    th:src="${ thumbnail.attachmentList[0].thumbnailPath }"
+							>
+							<br>
+							<a 
+								th:href="${ thumbnail.attachmentList[0].savePath + thumbnail.attachmentList[0].savedName }" 
+								th:download="${ thumbnail.attachmentList[0].originalName }"
+							>
+								<span th:text="${ thumbnail.attachmentList[0].originalName }"></span>
+							</a>
+						</th:block>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td colspan="5">
+					<p id="contentArea" th:text="${ thumbnail.communityStory }"></p>
+				</td>
+			</tr>
+		</table>
+
+		<table class="detail" align="center">
+			<tr>
+				<th:block 
+					th:if="${ thumbnail.attachmentList.size() > 1}"
+				    th:each="index : ${ #numbers.sequence(1, thumbnail.attachmentList.size() - 1 ) }" 
+				>
+					<td>
+						<div class="detailImgArea">
+							<img 
+								class="detailImg" 
+								width="250" 
+								height="180"
+							    th:src="${ thumbnail.attachmentList[index].savePath + thumbnail.attachmentList[index].savedName }"
+							><br>
+								<a 
+									th:href="${ thumbnail.attachmentList[index].savePath + thumbnail.attachmentList[index].savedName }" 
+								    th:download="${ thumbnail.attachmentList[index].originalName }"
+								>
+									<span th:text="${ thumbnail.attachmentList[index].originalName }"></span>
+								</a>
+						</div>
+					</td>
+				</th:block>
+			</tr>
+		</table>
+		</div>
+		</div>
+
+	
+		<table id="replyWrite" style="margin: auto;">
+
+				<tr>
+					<td>댓글</td>
+					<td><textarea cols="40" rows="3" id="replyBody"
+							style="resize: none;"></textarea></td>
+					<td><button type="button" id="registReply">작성하기</button></td>
+				</tr>
+			</table>
+
+			<!-- 댓글 내용 출력용 table -->
+			<table id="replyResult" style="margin: auto;">
+				<tr th:each="reply : ${ thumbnail.replyList }">
+					<td th:text="${ reply.body }"></td>
+					<td th:text="${ reply.memberNo }"></td>
+					<td th:text="${ reply.createdDate }"></td>
+			
+						
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	<script>
+		/* 비동기 통신 예제 */
+		
+		/* 1. 댓글 작성 */
+		if(document.getElementById("registReply")) {
+			
+			const $registReply = document.getElementById("registReply");
+			const $replyBody = document.getElementById("replyBody");
+			
+			$registReply.onclick = function(){
+				
+				if(!$replyBody.value.trim()) {
+					alert("댓글을 입력해주세요");
+					return;
+				}
+				
+			 	const communityNo = '[[${thumbnail.communityNo}]]'; 
+				const replyBody = $replyBody.value;
+				
+				fetch("/thumbnail/registReply", {
+					method : 'POST',
+					headers : {
+						'Content-Type' : 'application/json;charset=UTF-8'
+					},
+					body : JSON.stringify({
+						refBoardNo: communityNo,
+						body: replyBody
+					})
+				})
+				.then(data => {
+					console.log(data);
+					$replyBody.value = '';	    //댓글 입력 창 비우기
+					loadReply();				//댓글 다시 로드하기
+				})
+				.catch(error => console.log(error));
+				
+			};
+		}
+	
+		/* 2. 최신 댓글 조회 */
+		function loadReply() {
+			
+			const communityNo = '[[${thumbnail.communityNo}]]';
+			
+			fetch("/thumbnail/loadReply?refBoardNo=" + communityNo)
+			.then(result => result.json())
+			.then(data => {
+				console.log(data);
+				makeReplyTable(data);
+			})
+			.catch(error => console.log(error));
+			
+		}
+		
+		/* 댓글 데이터를 테이블화하는 함수 */
+		function makeReplyTable(replyList) {
+			
+			const $table = document.querySelector("#replyResult");
+			$table.innerHTML = '';
+			
+			replyList.forEach(reply => {
+				
+				const $tr = document.createElement('tr');
+				const $replyBodyTd = document.createElement('td');
+				const $memberNoTd = document.createElement('td');
+				const $createdDateTd = document.createElement('td');
+				const $buttonTd = document.createElement('td');
+				
+				$replyBodyTd.textContent = reply.body;
+				$nicknameTd.textContent = reply.writer.nickname;
+				$createdDateTd.textContent = reply.createdDate;
+				
+				
+				
+				$tr.append($replyBodyTd, $nicknameTd, $createdDateTd, $buttonTd);
+				$table.append($tr);
+				
+			});
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</script>
+	
+	
+	
+
+	
+	
+	
+	
+</body>
+</html>

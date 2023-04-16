@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>infoModifyJoin</title>
+    <link href="/css/member/mypage/infoModifyJoin.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/spheader.html"></div>
+	
+    <div class="mypageMenu">
+            <div class="img1"><img src="/img/프로필.png" class="profile"></div>
+            <div>
+                <div class="mypageName"><p class="userName">user01234</p><p class="greet">님 환영합니다.</p></div>
+                <form>
+                <div class="pwdForm">
+                <label>비밀번호</label><br>
+                <input type="password" name="modifyPwd" id = "modifyPwd" class="pwdBar">
+                </div>
+                <div class="pwdBtn">
+                    <button type="submit" class="access">확인</button>
+                    <a href="/member/mypage/mypageMain" class="exit">취소</a>
+                </div>
+                </form>
+            </div>
+
+    </div>
+
+	<div th:replace="common/spfooter.html"></div> 
+	
+	<script>
+		const msg = '${msg}'
+		if(msg === '비밀번호를 다시 확인해주세요') {
+			alert("비밀번호를 다시 확인해주세요");
+		}
+	</script>
+	
+</body>
+</html>

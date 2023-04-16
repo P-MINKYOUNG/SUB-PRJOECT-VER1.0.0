@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>orderList</title>
+    <link href="/css/member/mypage/orderList.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <!-- <script type="text/javascript" defer src="/js/member/mypage.js"></script> -->
+</head>
+<body>  
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+	<div th:replace="common/spheader.html"></div> 
+    <div class="title">
+        <p>주문내역</p>
+    </div>
+    <form name="form" method="post">
+    <div class="btn">
+        <button type="submit" class="delivery" id="delivery" value="배송 조회" onclick="javascript: form.action='/member/mypage/delivery';">배송 조회</button>   
+        <button type="submit" class="check" id="check" value="상세 조회" onclick="javascript: form.action='/member/mypage/orderDetail';">상세 조회</butoon>
+    </div>
+    <div>
+        <hr>
+    </div> 
+      
+		<div class="productPage">
+        <table class="productMenu">
+        	<tr>
+        		<th class="menu1">선택</th>
+        		<th class="menu2">상품명</th>
+        		<th class="menu3">주문번호</th>
+        		<th class="menu4">주문수량</th>
+        		<th class="menu5">주문날짜</th>
+        		<th class="menu6">주문금액</th>
+	        </tr>
+            <tr th:each="order : ${ orderList }" class="orderMenu">
+                <td class="omenu1">
+                    <span><input type="checkbox" class="checkbox" name="orderNo" th:value="${ order.orderNo }"></input></span>
+                </td>
+                <td>    
+                    <span class="omenu2" th:text="${ order.sbName}"></span>
+                </td>
+                <td>    
+                    <span class="omenu3" th:text="${ order.orderNo}"></span>
+                </td>
+                <td>    
+                    <span class="omenu4" th:text="${ order.orderAmount}"></span>
+                </td>
+                <td>    
+                    <span class="omenu5" th:text="${ order.orderDate }"></span>
+                </td>
+                <td>    
+                    <span class="omenu6" th:text="${ order.orderAmountMoney}"></span>
+                </td>
+            </tr>
+        </table>    
+        </form>
+        </div>
+    
+   <!-- 페이징 바 -->
+	<div id="paging" align="center" class="paging" style="margin-top: 20px;">
+		<th:block
+			th:if="${ paging.searchCondition != null and paging.searchValue != null }">	
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=1&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''">&lt;&lt;</button>	
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${paging.page - 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
+				th:disabled="${ paging.page <= 1 }">&lt;</button>
+			<th:block
+				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+				<button
+					th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${page}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${paging.searchValue}} + '\''"
+					th:text="${ page }" th:disabled="${ paging.page eq page }">
+				</button>
+			</th:block>
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${paging.page + 1}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''"
+				th:disabled="${ paging.page >= paging.maxPage }"></button>	
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${paging.maxPage}} + '&searchCondition=' + @{${paging.searchCondition}} + '&searchValue=' + @{${searchValue}} + '\''">>></button>
+
+		</th:block>
+		<th:block
+			th:if="${ paging.searchCondition == null || paging.searchCondition.isEmpty() || paging.searchValue == null || paging.searchValue.isEmpty()}">
+			<button th:onclick="'location.href=\'/member/mypage/orderList/list?page=1\''">&lt;&lt;</button>			
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${paging.page - 1}} + '\''"
+				th:disabled="${ paging.page <= 1 }">&lt;</button>
+			<th:block
+				th:each="page : ${ #numbers.sequence(paging.startPage, paging.endPage)}">
+				<button
+					th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${page}} + '\''"
+					th:text="${ page }" th:disabled="${ paging.page eq page }">
+				</button>
+			</th:block>
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${paging.page + 1}} + '\''"
+				th:disabled="${ paging.page >= paging.maxPage }">></button>
+			<button
+				th:onclick="'location.href=\'/member/mypage/orderList/list?page=' + @{${paging.maxPage}} + '\''">>></button>
+		</th:block>
+	</div> 
+	<div th:replace="common/spfooter.html"></div> 
+    </div>
+    
+    <script>
+    if(document.getElementById("orderDetail")) {
+        
+        const form = document.getElementById('orderDetail');
+
+       form.addEventListener('submit', (e) => {
+         e.preventDefault();
+
+         const formData = new FormData(form);
+
+         fetch('/member/mypage/orderDetail', {
+           method: 'POST',
+           headers: {
+             'Content-Type': 'application/json;charset=UTF-8'
+           },
+           body: formData,
+         })
+         .then(res => res.json())
+         .then(data => console.log(data));
+       })
+       
+       
+    };   
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+@charset "UTF-8"; /* 인코딩 문자 깨짐 방지*/
+
+html{
+    position: relative;
+/* width: 1930px;
+height: 1083px; */
+}
+
+body{
+	
+	width:100%;
+	
+}
+
+.wrapper {
+	border: 2px ;
+	width: 60vw;
+	margin: 40px auto;
+	
+	
+}
+
+
+li{
+    list-style-type: none;
+    text-transform: none;
+    font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 29px;
+   color: rgba(71, 66, 66, 0.6);
+margin: 50px 40px;
+
+/*     position: absolute; */
+
+}
+
+.wrap{
+	display:flex; 
+}
+.title-left{
+
+  margin: 100px;
+  
+    
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;    
+    color: rgba(71, 66, 66, 0.6);
+
+}
+
+.title-list{
+	
+	font-style: normal;
+font-weight: 700;
+font-size: 24px;
+line-height: 80px;
+   color: rgba(71, 66, 66, 0.6);
+margin: 50px 40px;
+
+}

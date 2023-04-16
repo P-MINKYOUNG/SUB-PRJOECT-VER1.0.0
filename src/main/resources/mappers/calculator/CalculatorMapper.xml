@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.water.Mulbburi.calculator.CalculatorMapper">
+
+	<resultMap id="calResultMap" type="com.water.Mulbburi.calculator.CalculatorDTO">
+		<id property="calNo" column="CAL_NO"/>
+		<result property="calDate" column="CAL_DATE"/>
+		<result property="calMoney" column="CAL_MONEY"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="calCharge" column="CAL_CHARGE"/>
+		<result property="allMoney" column="allMoney"/>	
+		<result property="calMoney2" column="calMoney2"/>	
+		<result property="calCharge2" column="calCharge2"/>	
+	</resultMap>
+
+	<select id="selectAllCal" parameterType="com.water.Mulbburi.calculator.CalculatorDTO" resultMap="calResultMap">
+	select 
+		sum(d.dt_order_amount * s.sb_price) allMoney,
+		sum(d.dt_order_amount * s.sb_price)*0.1 calCharge2,
+		sum(d.dt_order_amount * s.sb_price) - sum(d.dt_order_amount * s.sb_price)*0.1 calMoney2
+		from member m
+		join shoppingbascket s on (m.member_no = s.member_no)
+		join detail_order d on (d.sb_no = s.sb_no)
+		join tbl_order t on (t.order_no = d.order_no)
+		where substr(to_char(t.order_date, 'yyyyMM'),5,6) = substr(#{calDate}, 6,7)
+		group by m.member_no
+	</select>
+</mapper>

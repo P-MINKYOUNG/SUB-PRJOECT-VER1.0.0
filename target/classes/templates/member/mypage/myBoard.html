@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myBoard</title>
+    <link href="/css/member/mypage/myBoard.css" rel="stylesheet" style type="text/css">
+    <link href="/css/common/font.css" rel="stylesheet" style type="text/css">
+    <script type="text/javascript" defer src="../../resources/js/mypageMain.js"></script>
+</head>
+<body>
+    <div class="wraaper">
+    <nav class="sub-menu">
+        <div class="sub"></div>
+    </nav>
+
+	<div th:replace="common/spheader.html"></div> 
+
+    <div class="title">
+        <p>작성한 게시글</p>
+    </div>
+    <div>
+        <hr>
+    </div>
+    
+    <div class="productPage">
+        <div class="div1">
+                <span class="ti1">게시글 번호</span>
+                <span class="ti2">제목</span>
+                <span class="ti3">작성자</span>
+                <span class="ti4">게시일</span>
+        </div>
+        <div class="div2">    
+                <span class="tt1">20333555</span>
+                <span class="tt2">꽃이 참 예쁘네요</span>
+                <span class="tt3">user012</span>
+                <span class="tt4">2023-03-15 03:12 PM</span>
+        </div>
+    </div>
+
+	<div th:replace="common/spfooter.html"></div> 
+
+    </div>
+</body>
+</html>

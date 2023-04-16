@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품 등록</title>
+    <link href="../css/store/product.css" rel="stylesheet" style type="text/css">
+</head>
+<body>
+
+	<div th:replace="common/header.html"></div>
+
+    <div class="wrapper">
+
+        <div class="seller-id">
+            <span>어니스트 플라워</span>님의 스토어입니다.
+        </div>
+
+        <div class="wrap">
+            
+            <!-- 타이틀 -->
+
+            <div class="title">
+                <span>&lt; 상품 등록 &gt;</span>
+            </div>
+
+            <!-- 상품 등록 -->
+            <form>
+                <table>
+                    <tr>
+                        <td>
+                            <label>판매자명</label>
+                        </td>
+                        <td>
+                            <input type="text" name="sellerId" value="어니스트 플라워" class="seller-name">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>상품코드</label>
+                        </td>
+                        <td>
+                            <input type="" value="123456" class="prod-no" min="1">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>상품명</label>
+                        </td>
+                        <td>
+                            <input type="text" name="productId" value="깜찍한 다육이" class="prod-id">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>카테고리</label>
+                        </td>
+                        <td>
+                            <select class="category">
+                                <option>생화</option>
+                                <option>다육이</option>
+                                <option>허브</option>
+                                <option>테라리움</option>
+                                <option>기타</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>재고</label>
+                        </td>
+                        <td>
+                            <input type="number" name="Quantity" min="0" max="999" step="10" value="0">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>메인 사진</label>
+                        </td>
+                        <td>
+                            <input type="file" name="prodMain" class="prod-main">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>내용 첨부</label>
+                        </td>
+                        <td>
+                            <input type="file" name="prodDetail" class="prod-detail" multiple>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>상태</label>
+                        </td>
+                        <td id="nowidth">
+                            <input type="radio" name="status" id="sell" value="S" checked>
+                            <label for="sell">판매</label>
+                            <input type="radio" name="status" id="hide" value="H">
+                            <label for="hide">숨김</label>
+                            <input type="radio" name="status" id="soldout" value="O">
+                            <label for="soldout">품절</label>
+                        </td>
+                    </tr>
+                </table>
+                <div class="prod-btn">
+                    <button type="submit" class="insert">등록</button>
+                </div>
+            </form>
+        </div>
+    
+    </div>
+
+    <div th:replace="common/footer.html"></div>
+
+</body>
+</html>
